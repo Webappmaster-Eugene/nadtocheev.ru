@@ -1,0 +1,80 @@
+---
+import { type Lang, t } from "../i18n/translations.ts";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = t(lang);
+
+const codeSnippet = `<span class="text-purple">const</span> <span class="text-text">pipeline</span> = <span class="text-accent">createRAG</span>({
+  <span class="text-green">embeddings</span>: <span class="text-orange">"openai"</span>,
+  <span class="text-green">vectorDB</span>: <span class="text-orange">"pinecone"</span>,
+  <span class="text-green">llm</span>: <span class="text-orange">"claude-3"</span>,
+  <span class="text-green">chunking</span>: <span class="text-orange">"semantic"</span>,
+});
+
+<span class="text-purple">const</span> <span class="text-text">answer</span> = <span class="text-purple">await</span> pipeline
+  .<span class="text-accent">retrieve</span>(<span class="text-text">query</span>)
+  .<span class="text-accent">augment</span>(<span class="text-text">context</span>)
+  .<span class="text-accent">generate</span>();`;
+
+const features = [
+  { title: tr.ai.feature1Title, desc: tr.ai.feature1Desc, icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />` },
+  { title: tr.ai.feature2Title, desc: tr.ai.feature2Desc, icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />` },
+  { title: tr.ai.feature3Title, desc: tr.ai.feature3Desc, icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />` },
+];
+
+const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", "Prompt Engineering"];
+---
+
+<section id="ai" class="py-20 sm:py-24" aria-label={tr.ai.title}>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <h2 class="section-title">{tr.ai.title}</h2>
+      <p class="section-subtitle">{tr.ai.subtitle}</p>
+    </div>
+
+    <div class="reveal mx-auto max-w-4xl">
+      <div class="card border-l-4 border-l-purple">
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="space-y-5">
+            <h3 class="text-xl font-bold">
+              {tr.ai.heading.split(" ").slice(0, -1).join(" ")}{" "}
+              <span class="text-purple">{tr.ai.heading.split(" ").at(-1)}</span>
+            </h3>
+            <p class="text-sm leading-relaxed text-text-muted">{tr.ai.description}</p>
+            <div class="space-y-4">
+              {features.map((f) => (
+                <div class="flex items-start gap-3">
+                  <div class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-purple/10 text-purple">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={f.icon} />
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold">{f.title}</p>
+                    <p class="text-xs leading-relaxed text-text-dim">{f.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center space-y-3">
+            <div class="rounded-xl border border-border bg-bg p-4">
+              <div class="mb-3 flex items-center gap-2">
+                <div class="h-3 w-3 rounded-full bg-red/80"></div>
+                <div class="h-3 w-3 rounded-full bg-orange/80"></div>
+                <div class="h-3 w-3 rounded-full bg-green/80"></div>
+                <span class="ml-2 font-mono text-xs text-text-dim">ai-workflow.ts</span>
+              </div>
+              <pre class="overflow-x-auto font-mono text-xs leading-relaxed"><code set:html={codeSnippet} /></pre>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              {tags.map((tag) => (
+                <span class="inline-block rounded-md bg-purple/8 px-2 py-0.5 text-xs font-medium text-purple">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

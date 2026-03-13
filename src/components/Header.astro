@@ -1,0 +1,118 @@
+---
+import { personal } from "../data/personal.ts";
+import { type Lang, t, getLangUrl } from "../i18n/translations.ts";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = t(lang);
+
+const navLinks = [
+  { href: "#about", label: tr.nav.about },
+  { href: "#expertise", label: tr.nav.expertise },
+  { href: "#stack", label: tr.nav.stack },
+  { href: "#experience", label: tr.nav.experience },
+  { href: "#projects", label: tr.nav.projects },
+  { href: "#ai", label: tr.nav.ai },
+  { href: "#contacts", label: tr.nav.contacts },
+];
+
+const switchLangUrl = lang === "ru" ? "/en/" : "/";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-bg/80 backdrop-blur-xl">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+    <!-- Logo -->
+    <a href={getLangUrl(lang)} class="group text-lg font-bold tracking-tight text-text transition-colors hover:text-accent">
+      {personal.name.last[lang]}<span class="text-accent transition-transform group-hover:scale-125 inline-block">.</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden items-center gap-1 md:flex">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="rounded-lg px-3 py-1.5 text-sm font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right side: Lang switch + CTA -->
+    <div class="flex items-center gap-2">
+      <a
+        href={switchLangUrl}
+        class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-bold text-text-muted transition-all hover:border-accent hover:text-accent"
+        aria-label={tr.nav.switchLangLabel}
+      >
+        {tr.nav.switchLang}
+      </a>
+      <a
+        href={personal.telegram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20 sm:inline-block"
+      >
+        {tr.nav.contact}
+      </a>
+
+      <!-- Mobile menu toggle -->
+      <button
+        id="mobile-menu-toggle"
+        class="flex items-center justify-center rounded-lg p-2 text-text-muted transition-colors hover:bg-white/5 hover:text-text md:hidden"
+        aria-label={tr.nav.openMenu}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="menu-icon-open" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t border-white/5 bg-bg/95 backdrop-blur-xl md:hidden">
+    <ul class="flex flex-col gap-1 px-4 py-3">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="mobile-nav-link block rounded-lg px-3 py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text">
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="mt-2 border-t border-white/5 pt-2">
+        <a href={personal.telegram} target="_blank" rel="noopener noreferrer" class="block rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-semibold text-white">
+          {tr.nav.contact}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var toggle = document.getElementById("mobile-menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    var iconOpen = document.getElementById("menu-icon-open");
+    var iconClose = document.getElementById("menu-icon-close");
+    if (!toggle || !menu || !iconOpen || !iconClose) return;
+    toggle.addEventListener("click", function () {
+      var isOpen = !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden");
+      iconOpen.classList.toggle("hidden");
+      iconClose.classList.toggle("hidden");
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+    menu.querySelectorAll(".mobile-nav-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        menu.classList.add("hidden");
+        iconOpen.classList.remove("hidden");
+        iconClose.classList.add("hidden");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,32 @@
+---
+import { techStackGroups } from "../data/skills.ts";
+import { type Lang, t } from "../i18n/translations.ts";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = t(lang);
+---
+
+<section id="stack" class="py-20 sm:py-24" aria-label={tr.stack.title}>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <h2 class="section-title">{tr.stack.title}</h2>
+      <p class="section-subtitle">{tr.stack.subtitle}</p>
+    </div>
+
+    <div class="stagger-children grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {techStackGroups.map((group) => (
+        <div class="card">
+          <h3 class="mb-3 text-xs font-semibold tracking-widest text-text-dim uppercase">{group.category}</h3>
+          <div class="flex flex-wrap gap-1.5">
+            {group.items.map((item) => (
+              <span class="inline-block rounded-lg bg-white/[0.03] px-2.5 py-1 text-sm font-medium text-text-muted transition-colors hover:bg-accent/10 hover:text-accent-light">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

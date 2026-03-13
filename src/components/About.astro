@@ -1,0 +1,24 @@
+---
+import { type Lang, t } from "../i18n/translations.ts";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = t(lang);
+---
+
+<section id="about" class="py-20 sm:py-24" aria-label={tr.about.title}>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <h2 class="section-title">{tr.about.title}</h2>
+      <p class="section-subtitle">{tr.about.subtitle}</p>
+    </div>
+
+    <div class="reveal mx-auto max-w-3xl">
+      <div class="space-y-4 text-base leading-relaxed text-text-muted sm:text-lg">
+        {tr.about.paragraphs.map((p) => (
+          <p set:html={p} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

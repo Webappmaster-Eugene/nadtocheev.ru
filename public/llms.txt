@@ -1,0 +1,61 @@
+# Evgeny Nadtocheev — Fullstack Developer Portfolio
+
+> Personal website of Evgeny Nadtocheev (Евгений Надточеев), a Fullstack Developer based in Moscow, Russia.
+> 5+ years of commercial experience in backend development, DevOps, and frontend.
+> Available in Russian (/) and English (/en/).
+
+## Contact Information
+
+- Name: Evgeny Nadtocheev (Евгений Надточеев)
+- Email: johnn.hotmail@mail.ru
+- Phone: +7 (920) 080-87-00
+- Telegram: https://t.me/eugene_nadtocheev (preferred)
+- GitHub: https://github.com/Webappmaster-Eugene
+- Habr Career: https://career.habr.com/webappmaster
+- YouTube: https://www.youtube.com/@webappmaster/videos
+- Location: Moscow, Russia
+
+## About
+
+Evgeny Nadtocheev is a Fullstack Developer specializing in Node.js, Go, and React with a strong focus on backend (80%) and DevOps. He has extensive experience building high-load microservice architectures in fintech and real estate analytics domains. He actively uses AI tools (Claude Code, Cursor, RAG pipelines) in development.
+
+## Key Expertise
+
+- **Backend**: Node.js, NestJS, Go, Express, Moleculer.js, PostgreSQL, MySQL, MongoDB, Redis, Kafka, RabbitMQ, gRPC, WebSocket, SSE
+- **DevOps**: Kubernetes, Docker (Compose, Swarm), CI/CD (GitHub Actions, GitLab CI, TeamCity), nginx, Dokploy, Coolify, OpenTelemetry, Grafana, Sentry
+- **Frontend**: React, Vue, Next.js, Nuxt.js, Astro, TypeScript, Tailwind CSS, Redux Toolkit, Tanstack Query
+- **AI & Automation**: LLM integration, RAG pipelines, Claude Code, Cursor, vector databases, embeddings
+- **Architecture**: Microservices, Event-Driven Architecture, DDD, CQRS, Inbox Pattern, Circuit Breaker
+
+## Professional Experience
+
+### bnmap.pro (November 2024 — present)
+- Role: Fullstack Developer (Node.js/React), 80% backend
+- Industry: Real Estate Analytics — #1 platform in Russia
+- Scale: 40,000+ daily visits, 5,000 rps
+- Key: OpenTelemetry distributed tracing, Redis Streams, microservices on NestJS and Moleculer.js
+
+### Forward LLC (February 2024 — November 2024)
+- Role: Fullstack Developer (Node.js/React), 70% backend
+- Industry: Fintech — 11th registered financial platform operator in Russia
+- Key: Payment module (crypto, fiat, international channels), Kafka, Nx monorepo with 5 microservices
+
+### Vitrina A (November 2022 — February 2024)
+- Role: Fullstack Developer, 60% backend
+- Industry: Marketing & Advertising
+- Key: Legacy migration from Koa2 to NestJS, FSD architecture, 70% test coverage, team of 8-10
+
+### Systems-fd (August 2021 — November 2022)
+- Role: Fullstack Developer, 50/50
+- Industry: System Integration & IT Consulting
+- Key: REST API integrations (Telegram, Google Maps, Stripe, amoCRM), TypeScript adoption
+
+## Education
+
+- Academy of the Federal Security Service of Russia (2019)
+- Automated Control Systems, Automated Information Processing and Control Systems
+
+## Languages
+
+- Russian: Native
+- English: B1

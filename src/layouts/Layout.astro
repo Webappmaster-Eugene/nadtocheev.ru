@@ -1,0 +1,180 @@
+---
+/**
+ * Base layout — полное SEO (meta, OG, hreflang, JSON-LD Person),
+ * шрифты, анимации, двуязычная поддержка.
+ */
+import "../styles/global.css";
+import { personal } from "../data/personal.ts";
+import { type Lang, t } from "../i18n/translations.ts";
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+
+const title = Astro.props.title ?? tr.meta.title;
+const description = Astro.props.description ?? tr.meta.description;
+const ogImage = Astro.props.ogImage ?? "/og-image.png";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ruURL = new URL("/", Astro.site);
+const enURL = new URL("/en/", Astro.site);
+
+/** JSON-LD: Person + WebSite — структурированные данные для SEO и LLM */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${personal.website}/#person`,
+      name: personal.name.full[lang],
+      alternateName: lang === "ru" ? personal.name.full.en : personal.name.full.ru,
+      givenName: personal.name.first[lang],
+      familyName: personal.name.last[lang],
+      jobTitle: lang === "ru"
+        ? "Fullstack-разработчик (Node.js, Go, React)"
+        : "Fullstack Developer (Node.js, Go, React)",
+      description: description,
+      url: personal.website,
+      email: personal.email,
+      telephone: personal.phone,
+      image: `${personal.website}/photo.jpg`,
+      sameAs: [
+        personal.github,
+        personal.habr,
+        personal.telegram,
+        personal.youtube,
+        personal.habrArticles,
+      ],
+      knowsAbout: [
+        "Node.js", "Go", "TypeScript", "React", "Vue.js", "NestJS",
+        "Kubernetes", "Docker", "PostgreSQL", "Redis", "Apache Kafka",
+        "Microservices", "CI/CD", "System Design", "AI/LLM", "RAG",
+        "gRPC", "Event-Driven Architecture", "DevOps",
+      ],
+      knowsLanguage: [
+        { "@type": "Language", name: "Russian", alternateName: "ru" },
+        { "@type": "Language", name: "English", alternateName: "en", proficiencyLevel: "B1" },
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: lang === "ru" ? "Москва" : "Moscow",
+        addressCountry: "RU",
+      },
+      nationality: { "@type": "Country", name: lang === "ru" ? "Россия" : "Russia" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${personal.website}/#website`,
+      url: personal.website,
+      name: title,
+      description: description,
+      inLanguage: [tr.meta.htmlLang],
+      publisher: { "@id": `${personal.website}/#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": canonicalURL.href,
+      url: canonicalURL.href,
+      name: title,
+      description: description,
+      inLanguage: tr.meta.htmlLang,
+      isPartOf: { "@id": `${personal.website}/#website` },
+      about: { "@id": `${personal.website}/#person` },
+      mainEntity: { "@id": `${personal.website}/#person` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang={tr.meta.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={personal.name.full[lang]} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang — для мультиязычного SEO -->
+    <link rel="alternate" hreflang="ru" href={ruURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={ruURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={tr.meta.ogLocale} />
+    <meta property="og:locale:alternate" content={lang === "ru" ? "en_US" : "ru_RU"} />
+    <meta property="og:site_name" content={personal.name.full[lang]} />
+    <meta property="profile:first_name" content={personal.name.first[lang]} />
+    <meta property="profile:last_name" content={personal.name.last[lang]} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts: Inter + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Yandex / Google verification — вставьте реальные ID -->
+    <!-- <meta name="yandex-verification" content="XXXXXX" /> -->
+    <!-- <meta name="google-site-verification" content="XXXXXX" /> -->
+  </head>
+
+  <body class="min-h-screen bg-bg text-text antialiased">
+    <slot />
+
+    <!-- Scroll-triggered reveal animations -->
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        var targets = document.querySelectorAll(".reveal, .stagger-children");
+        if (!targets.length) return;
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+        );
+        targets.forEach(function (el) { observer.observe(el); });
+      });
+    </script>
+  </body>
+</html>
