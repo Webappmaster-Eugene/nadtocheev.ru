@@ -15,11 +15,11 @@ const experience = getExperience(lang);
       <p class="section-subtitle">{tr.experience.subtitle}</p>
     </div>
 
-    <div class="relative mx-auto max-w-4xl pl-10">
+    <div class="relative mx-auto max-w-4xl pl-8 sm:pl-10">
       <div class="timeline-line" aria-hidden="true"></div>
 
       {experience.map((job, index) => (
-        <div class="reveal relative mb-10 last:mb-0">
+        <article class="reveal relative mb-10 last:mb-0">
           <div class={`timeline-dot ${index === 0 ? "timeline-dot--active" : ""}`} aria-hidden="true" />
 
           <div class="card">
@@ -63,7 +63,7 @@ const experience = getExperience(lang);
               ))}
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   </div>

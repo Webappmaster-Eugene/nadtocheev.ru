@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://nadtocheev.ru/sitemap-index.xml

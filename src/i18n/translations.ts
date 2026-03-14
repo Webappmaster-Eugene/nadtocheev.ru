@@ -22,10 +22,12 @@ export interface Translation {
     experience: string;
     projects: string;
     ai: string;
+    mentoring: string;
     contacts: string;
     contact: string;
     switchLang: string;
     switchLangLabel: string;
+    switchThemeLabel: string;
     openMenu: string;
   };
 
@@ -89,6 +91,37 @@ export interface Translation {
     feature3Desc: string;
   };
 
+  /* Coding Challenges */
+  coding: {
+    title: string;
+    subtitle: string;
+    description: string;
+    leetcodeLabel: string;
+    codewarsLabel: string;
+  };
+
+  /* Mentoring */
+  mentoring: {
+    title: string;
+    subtitle: string;
+    description: string;
+    platformsTitle: string;
+    activitiesTitle: string;
+    channelsTitle: string;
+    channelsDesc: string;
+    ambassadorTitle: string;
+    ambassadorDesc: string;
+    freelanceTitle: string;
+    freelanceDesc: string;
+  };
+
+  /* Startups */
+  startups: {
+    title: string;
+    subtitle: string;
+    description: string;
+  };
+
   /* Contacts */
   contacts: {
     title: string;
@@ -120,10 +153,12 @@ export const translations: Record<Lang, Translation> = {
       experience: "Опыт",
       projects: "Проекты",
       ai: "AI",
+      mentoring: "Менторство",
       contacts: "Контакты",
       contact: "Связаться",
       switchLang: "EN",
       switchLangLabel: "Switch to English",
+      switchThemeLabel: "Переключить тему",
       openMenu: "Открыть меню навигации",
     },
     hero: {
@@ -145,8 +180,8 @@ export const translations: Record<Lang, Translation> = {
       paragraphs: [
         'Fullstack-разработчик с <strong class="text-text">5+ годами коммерческого опыта</strong>. Специализируюсь на <strong class="text-text">backend-разработке</strong> (Node.js, Go) и <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Фокус — <strong class="text-accent">80% backend</strong>.',
         'Работал в <strong class="text-text">финтехе</strong> (платёжные системы, криптовалюты, биллинг) и <strong class="text-text">аналитике недвижимости</strong> (топ-1 платформа в РФ) с нагрузкой до 50 000 посещений в сутки. Строил микросервисные архитектуры, внедрял Event-Driven подходы, настраивал мониторинг и distributed tracing.',
-        'Активно использую <strong class="text-text">AI в разработке</strong>: пишу RAG-пайплайны, работаю с LLM, Claude Code, Cursor. Имею опыт с векторными базами данных и embeddings. Имею опыт <strong class="text-text">двух собственных стартапов</strong> в сфере архитектурного и системного дизайна.',
-        'Управлял небольшими командами разработки. Ценю Agile, результат для бизнеса и чистый масштабируемый код. Работаю в распределённых командах, имею опыт Scrum и Kanban. Английский — <strong class="text-text">B1</strong>.',
+        'Также работаю с <strong class="text-text">Telegram-ботами</strong>, <strong class="text-text">Telegram Mini App</strong>, <strong class="text-text">React Native</strong> и <strong class="text-text">Electron</strong>. Активно использую <strong class="text-text">AI в разработке</strong>: пишу RAG-пайплайны, работаю с LLM, Claude Code, Cursor. Веду собственный проектный портал — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
+        'Создатель <strong class="text-text">двух стартапов</strong>, автор open-source проектов. Управлял командами разработки, ценю Agile, результат для бизнеса и чистый масштабируемый код. Английский — <strong class="text-text">B1</strong>.',
       ],
     },
     expertise: {
@@ -182,6 +217,31 @@ export const translations: Record<Lang, Translation> = {
       feature3Desc:
         "Семантический поиск, хранение и работа с векторными представлениями данных",
     },
+    coding: {
+      title: "Алгоритмы и задачи",
+      subtitle: "Решаю задачи для удовольствия и развития алгоритмического мышления",
+      description: "Люблю решать алгоритмические задачи на LeetCode и Codewars — это помогает поддерживать остроту мышления и глубокое понимание структур данных.",
+      leetcodeLabel: "LeetCode",
+      codewarsLabel: "Codewars",
+    },
+    mentoring: {
+      title: "Менторство и преподавание",
+      subtitle: "Делюсь опытом и помогаю расти другим разработчикам",
+      description: "Менторю по собственной системе и роадмапам через личный сайт, Telegram и сторонние площадки. Провожу мок-собеседования и карьерные консультации для fullstack-разработчиков.",
+      platformsTitle: "Площадки",
+      activitiesTitle: "Что я делаю",
+      channelsTitle: "Telegram-каналы",
+      channelsDesc: "Веду каналы о разработке и карьере",
+      ambassadorTitle: "Амбассадор",
+      ambassadorDesc: "Амбассадор платформы PreOffer",
+      freelanceTitle: "Фриланс-опыт",
+      freelanceDesc: "В прошлом — фрилансер на биржах",
+    },
+    startups: {
+      title: "Стартапы",
+      subtitle: "Создатель собственных проектов",
+      description: "Являюсь создателем 2 стартапов и нескольких open-source проектов",
+    },
     contacts: {
       title: "Контакты",
       subtitle: "Свяжитесь со мной удобным способом",
@@ -209,10 +269,12 @@ export const translations: Record<Lang, Translation> = {
       experience: "Experience",
       projects: "Projects",
       ai: "AI",
+      mentoring: "Mentoring",
       contacts: "Contacts",
       contact: "Get in Touch",
       switchLang: "RU",
       switchLangLabel: "Переключить на русский",
+      switchThemeLabel: "Toggle theme",
       openMenu: "Open navigation menu",
     },
     hero: {
@@ -234,8 +296,8 @@ export const translations: Record<Lang, Translation> = {
       paragraphs: [
         'Fullstack Developer with <strong class="text-text">5+ years of commercial experience</strong>. I specialize in <strong class="text-text">backend development</strong> (Node.js, Go) and <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Focus — <strong class="text-accent">80% backend</strong>.',
         'I have worked in <strong class="text-text">fintech</strong> (payment systems, cryptocurrency, billing) and <strong class="text-text">real estate analytics</strong> (the #1 platform in Russia) handling up to 50,000 daily visitors. I have designed microservice architectures, implemented Event-Driven approaches, and set up monitoring and distributed tracing.',
-        'I actively leverage <strong class="text-text">AI in development</strong>: building RAG pipelines, working with LLMs, Claude Code, and Cursor. I have hands-on experience with vector databases and embeddings. I have co-founded <strong class="text-text">two startups</strong> focused on architectural and system design.',
-        'I have managed small development teams. I value Agile practices, business outcomes, and clean scalable code. Experienced in distributed teams, Scrum, and Kanban. English — <strong class="text-text">B1</strong>.',
+        'I also work with <strong class="text-text">Telegram Bots</strong>, <strong class="text-text">Telegram Mini App</strong>, <strong class="text-text">React Native</strong>, and <strong class="text-text">Electron</strong>. I actively leverage <strong class="text-text">AI in development</strong>: building RAG pipelines, working with LLMs, Claude Code, and Cursor. I run my own project portal — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
+        'Founder of <strong class="text-text">two startups</strong>, author of open-source projects. I have managed development teams, value Agile practices, business outcomes, and clean scalable code. English — <strong class="text-text">B1</strong>.',
       ],
     },
     expertise: {
@@ -270,6 +332,31 @@ export const translations: Record<Lang, Translation> = {
       feature3Title: "Vector Databases & Embeddings",
       feature3Desc:
         "Semantic search, storage, and working with vector representations of data",
+    },
+    coding: {
+      title: "Algorithms & Challenges",
+      subtitle: "Solving problems for fun and to sharpen algorithmic thinking",
+      description: "I enjoy solving algorithmic problems on LeetCode and Codewars — it keeps my thinking sharp and deepens my understanding of data structures.",
+      leetcodeLabel: "LeetCode",
+      codewarsLabel: "Codewars",
+    },
+    mentoring: {
+      title: "Mentoring & Teaching",
+      subtitle: "Sharing experience and helping other developers grow",
+      description: "I mentor through my own system and roadmaps via personal website, Telegram, and third-party platforms. I conduct mock interviews and career consultations for fullstack developers.",
+      platformsTitle: "Platforms",
+      activitiesTitle: "What I do",
+      channelsTitle: "Telegram Channels",
+      channelsDesc: "Running channels about development and career",
+      ambassadorTitle: "Ambassador",
+      ambassadorDesc: "Ambassador of the PreOffer platform",
+      freelanceTitle: "Freelance Experience",
+      freelanceDesc: "Former freelancer on exchanges",
+    },
+    startups: {
+      title: "Startups",
+      subtitle: "Creator of own projects",
+      description: "Creator of 2 startups and several open-source projects",
     },
     contacts: {
       title: "Contacts",

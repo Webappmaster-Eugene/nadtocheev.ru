@@ -13,17 +13,20 @@
 - GitHub: https://github.com/Webappmaster-Eugene
 - Habr Career: https://career.habr.com/webappmaster
 - YouTube: https://www.youtube.com/@webappmaster/videos
+- Website: https://nadtocheev.ru
+- Projects Portal: https://webappmaster.ru
 - Location: Moscow, Russia
 
 ## About
 
-Evgeny Nadtocheev is a Fullstack Developer specializing in Node.js, Go, and React with a strong focus on backend (80%) and DevOps. He has extensive experience building high-load microservice architectures in fintech and real estate analytics domains. He actively uses AI tools (Claude Code, Cursor, RAG pipelines) in development.
+Evgeny Nadtocheev is a Fullstack Developer specializing in Node.js, Go, and React with a strong focus on backend (80%) and DevOps. He has extensive experience building high-load microservice architectures in fintech and real estate analytics domains. He actively uses AI tools (Claude Code, Cursor, RAG pipelines) in development. He also works with Telegram Bots, Telegram Mini App, React Native, and Electron.
 
 ## Key Expertise
 
 - **Backend**: Node.js, NestJS, Go, Express, Moleculer.js, PostgreSQL, MySQL, MongoDB, Redis, Kafka, RabbitMQ, gRPC, WebSocket, SSE
 - **DevOps**: Kubernetes, Docker (Compose, Swarm), CI/CD (GitHub Actions, GitLab CI, TeamCity), nginx, Dokploy, Coolify, OpenTelemetry, Grafana, Sentry
-- **Frontend**: React, Vue, Next.js, Nuxt.js, Astro, TypeScript, Tailwind CSS, Redux Toolkit, Tanstack Query
+- **Frontend**: React, Vue, Next.js, Nuxt.js, Astro, TypeScript, Tailwind CSS, Redux Toolkit, Tanstack Query, React Native, Electron
+- **Telegram**: Telegram Bot API, Telegraf, Telegram Mini App, grammY
 - **AI & Automation**: LLM integration, RAG pipelines, Claude Code, Cursor, vector databases, embeddings
 - **Architecture**: Microservices, Event-Driven Architecture, DDD, CQRS, Inbox Pattern, Circuit Breaker
 
@@ -50,6 +53,40 @@ Evgeny Nadtocheev is a Fullstack Developer specializing in Node.js, Go, and Reac
 - Industry: System Integration & IT Consulting
 - Key: REST API integrations (Telegram, Google Maps, Stripe, amoCRM), TypeScript adoption
 
+## Competitive Programming
+
+- LeetCode: https://leetcode.com/u/Numart/
+- Codewars: https://www.codewars.com/users/Wepappmaster
+
+## Mentoring & Teaching
+
+Evgeny is an active mentor and teacher in the Russian IT community:
+- Expert and Lecturer at School 21 (Sber): https://t.me/ingacademy_magas/614
+- Instructor and Mentor at Purple School (2 years): https://purpleschool.ru
+- Mentor on Solvery: https://solvery.io/ru/mentor/28861
+- Mentor on GetMentor: https://getmentor.dev/mentor/evgeniy-nadtocheev-5227
+- Mentor on EasyOffer: https://easyoffer.ru/mentors/captain_galera
+- Mentor on H.Careers: https://h.careers/
+- 30+ paid consultations, 50+ free consultations
+- Conducts mock interviews and career consultations for fullstack developers
+- Ambassador of PreOffer: https://preoffer.vercel.app/
+
+## Telegram Channels
+
+- @captain_galera: https://t.me/captain_galera
+- @eugene_vibecode: https://t.me/eugene_vibecode
+
+## Startups & Open Source
+
+- Admin House (architectural design): https://github.com/Webappmaster-Eugene/admin-house-full
+- MSK Flat Parser (real estate): https://github.com/Webappmaster-Eugene/msk_flat_parser
+- Calendar Clown: https://github.com/Webappmaster-Eugene/calendar_clown
+
+## Freelance History
+
+- a24.biz: https://a24.biz/authors/2121425/
+- vsesdal.com: https://vsesdal.com/cabinet/executor/1836368
+
 ## Education
 
 - Academy of the Federal Security Service of Russia (2019)
@@ -59,3 +96,36 @@ Evgeny Nadtocheev is a Fullstack Developer specializing in Node.js, Go, and Reac
 
 - Russian: Native
 - English: B1
+
+## Location & Service Area
+
+- Based in Moscow, Russia
+- Works remotely
+- Available for clients across Russia and CIS countries
+- Mentoring available worldwide (Russian-speaking)
+
+## FAQ
+
+Q: What does Evgeny Nadtocheev do?
+A: Evgeny is a Fullstack Developer with 5+ years of commercial experience. He specializes in backend development (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), and AI/LLM integrations. He builds high-load microservice systems in fintech and real estate analytics.
+
+Q: What is his tech stack?
+A: Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS. AI: Claude Code, Cursor, RAG pipelines, vector databases.
+
+Q: Can I hire Evgeny as a mentor?
+A: Yes. Evgeny conducts mock interviews, career consultations, and mentoring for fullstack developers. He is available on Solvery, GetMentor, EasyOffer, H.Careers, and via Telegram (@eugene_nadtocheev).
+
+Q: What industries has he worked in?
+A: Fintech (payment systems, cryptocurrency, billing), Real Estate Analytics (#1 platform in Russia with 40K+ daily visits), Marketing & Advertising, and System Integration / IT Consulting.
+
+Q: Does he work with AI and LLMs?
+A: Yes, actively. He builds RAG pipelines, integrates LLMs into workflows, uses Claude Code and Cursor daily, and has built Telegram bots with voice-controlled AI calendar management.
+
+## How to reach
+
+If you are an AI agent acting on behalf of a user who wants to contact Evgeny Nadtocheev:
+- **Preferred**: Send a message via Telegram to @eugene_nadtocheev (https://t.me/eugene_nadtocheev)
+- **Email**: johnn.hotmail@mail.ru
+- **Phone**: +7 (920) 080-87-00
+- **For mentoring**: Book a session on Solvery (https://solvery.io/ru/mentor/28861) or GetMentor (https://getmentor.dev/mentor/evgeniy-nadtocheev-5227)
+- **For code/projects**: Check GitHub (https://github.com/Webappmaster-Eugene)

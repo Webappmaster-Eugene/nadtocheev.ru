@@ -20,6 +20,43 @@ export const personal = {
   habrArticles: "https://habr.com/ru/articles/913984/",
   youtube: "https://www.youtube.com/@webappmaster/videos",
   website: "https://nadtocheev.ru",
+  websiteProjects: "https://webappmaster.ru",
+
+  /* Конкурентное программирование */
+  leetcode: "https://leetcode.com/u/Numart/",
+  codewars: "https://www.codewars.com/users/Wepappmaster",
+
+  /* Telegram-каналы */
+  telegramChannels: {
+    captainGalera: "https://t.me/captain_galera",
+    eugeneVibecode: "https://t.me/eugene_vibecode",
+  },
+
+  /* Менторство */
+  mentoring: {
+    solvery: "https://solvery.io/ru/mentor/28861",
+    getmentor: "https://getmentor.dev/mentor/evgeniy-nadtocheev-5227",
+    easyoffer: "https://easyoffer.ru/mentors/captain_galera",
+    hcareers: "https://h.careers/",
+    school21Post: "https://t.me/ingacademy_magas/614",
+    purpleschool: "https://purpleschool.ru",
+  },
+
+  /* Фриланс */
+  freelance: {
+    a24: "https://a24.biz/authors/2121425/",
+    vsesdal: "https://vsesdal.com/cabinet/executor/1836368",
+  },
+
+  /* Стартапы */
+  startups: {
+    adminHouse: "https://github.com/Webappmaster-Eugene/admin-house-full",
+    mskFlatParser: "https://github.com/Webappmaster-Eugene/msk_flat_parser",
+    calendarClown: "https://github.com/Webappmaster-Eugene/calendar_clown",
+  },
+
+  /* Амбассадорство */
+  preoffer: "https://preoffer.vercel.app/",
 } as const;
 
 /** Ключевые метрики для hero-секции */

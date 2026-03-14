@@ -12,6 +12,8 @@ import TechStack from "../components/TechStack.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import AISection from "../components/AISection.astro";
+import CodingChallenges from "../components/CodingChallenges.astro";
+import Mentoring from "../components/Mentoring.astro";
 import Contacts from "../components/Contacts.astro";
 import Footer from "../components/Footer.astro";
 
@@ -20,7 +22,7 @@ const lang = "ru" as const;
 
 <Layout lang={lang}>
   <Header lang={lang} />
-  <main>
+  <main id="main-content">
     <Hero lang={lang} />
     <About lang={lang} />
     <Expertise lang={lang} />
@@ -28,6 +30,8 @@ const lang = "ru" as const;
     <Experience lang={lang} />
     <Projects lang={lang} />
     <AISection lang={lang} />
+    <CodingChallenges lang={lang} />
+    <Mentoring lang={lang} />
     <Contacts lang={lang} />
   </main>
   <Footer lang={lang} />

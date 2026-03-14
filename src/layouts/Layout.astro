@@ -26,6 +26,21 @@ const ruURL = new URL("/", Astro.site);
 const enURL = new URL("/en/", Astro.site);
 
 /** JSON-LD: Person + WebSite — структурированные данные для SEO и LLM */
+/** FAQ для LLM и SEO */
+const faqItems = lang === "ru"
+  ? [
+      { q: "Чем занимается Евгений Надточеев?", a: "Fullstack-разработчик с 5+ годами опыта. Специализируется на backend (Node.js, Go), DevOps (Kubernetes, Docker) и AI/LLM интеграциях. Работает в сфере highload-систем в финтехе и аналитике недвижимости." },
+      { q: "Какой технологический стек?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
+      { q: "Можно ли нанять Евгения как ментора?", a: "Да, Евгений проводит мок-собеседования, карьерные консультации и менторство для fullstack-разработчиков. Доступен на Solvery, GetMentor, EasyOffer и через Telegram." },
+      { q: "Как связаться с Евгением?", a: "Предпочитаемый способ — Telegram: @eugene_nadtocheev. Также доступен по email: johnn.hotmail@mail.ru и телефону: +7 (920) 080-87-00." },
+    ]
+  : [
+      { q: "What does Evgeny Nadtocheev do?", a: "Fullstack Developer with 5+ years of experience. Specializes in backend (Node.js, Go), DevOps (Kubernetes, Docker), and AI/LLM integrations. Works on high-load systems in fintech and real estate analytics." },
+      { q: "What is his tech stack?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
+      { q: "Can I hire Evgeny as a mentor?", a: "Yes, Evgeny conducts mock interviews, career consultations, and mentoring for fullstack developers. Available on Solvery, GetMentor, EasyOffer, and via Telegram." },
+      { q: "How to contact Evgeny?", a: "Preferred method — Telegram: @eugene_nadtocheev. Also available via email: johnn.hotmail@mail.ru and phone: +7 (920) 080-87-00." },
+    ];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -50,12 +65,21 @@ const jsonLd = {
         personal.telegram,
         personal.youtube,
         personal.habrArticles,
+        personal.websiteProjects,
+        personal.leetcode,
+        personal.codewars,
+        personal.telegramChannels.captainGalera,
+        personal.telegramChannels.eugeneVibecode,
+        personal.mentoring.solvery,
+        personal.mentoring.getmentor,
       ],
       knowsAbout: [
         "Node.js", "Go", "TypeScript", "React", "Vue.js", "NestJS",
         "Kubernetes", "Docker", "PostgreSQL", "Redis", "Apache Kafka",
         "Microservices", "CI/CD", "System Design", "AI/LLM", "RAG",
         "gRPC", "Event-Driven Architecture", "DevOps",
+        "Telegram Bots", "Telegram Mini App", "React Native", "Electron",
+        "Mentoring", "Technical Education",
       ],
       knowsLanguage: [
         { "@type": "Language", name: "Russian", alternateName: "ru" },
@@ -88,6 +112,61 @@ const jsonLd = {
       about: { "@id": `${personal.website}/#person` },
       mainEntity: { "@id": `${personal.website}/#person` },
     },
+    {
+      "@type": "Service",
+      "@id": `${personal.website}/#mentoring`,
+      name: lang === "ru"
+        ? "Менторство и карьерные консультации для разработчиков"
+        : "Mentoring & Career Consulting for Developers",
+      description: lang === "ru"
+        ? "Мок-собеседования, карьерные консультации, менторство для fullstack-разработчиков по авторской системе"
+        : "Mock interviews, career consulting, mentoring for fullstack developers with custom methodology",
+      provider: { "@id": `${personal.website}/#person` },
+      areaServed: [
+        { "@type": "Country", name: "Russia" },
+        { "@type": "Country", name: "CIS" },
+      ],
+      serviceType: lang === "ru" ? "Менторство в IT" : "IT Mentoring",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonicalURL.href}#faq`,
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": `${personal.website}/#startup-admin-house`,
+      name: "Admin House",
+      description: lang === "ru"
+        ? "Платформа для архитектурного проектирования"
+        : "Architectural design platform",
+      url: personal.startups.adminHouse,
+      author: { "@id": `${personal.website}/#person` },
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": `${personal.website}/#startup-msk-flat-parser`,
+      name: "MSK Flat Parser",
+      description: lang === "ru"
+        ? "Парсер недвижимости в Москве"
+        : "Moscow real estate parser",
+      url: personal.startups.mskFlatParser,
+      author: { "@id": `${personal.website}/#person` },
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": `${personal.website}/#startup-calendar-clown`,
+      name: "Calendar Clown",
+      description: lang === "ru"
+        ? "Telegram-бот для управления Google Calendar через голос и AI"
+        : "Telegram bot for Google Calendar management via voice and AI",
+      url: personal.startups.calendarClown,
+      author: { "@id": `${personal.website}/#person` },
+    },
   ],
 };
 ---
@@ -116,6 +195,9 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:alt" content={lang === "ru"
+      ? `${personal.name.full.ru} — Fullstack-разработчик`
+      : `${personal.name.full.en} — Fullstack Developer`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={tr.meta.ogLocale} />
@@ -134,12 +216,31 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Theme color -->
-    <meta name="theme-color" content="#0a0a0b" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a0a0b" id="meta-theme-color" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      (function() {
+        var theme = localStorage.getItem("theme") || "dark";
+        if (theme === "light") {
+          document.documentElement.classList.add("light");
+          var m = document.getElementById("meta-theme-color");
+          if (m) m.setAttribute("content", "#f8fafc");
+        }
+      })();
+    </script>
+
+    <!-- IndieWeb: rel="me" для связывания профилей -->
+    <link rel="me" href={personal.telegram} />
+    <link rel="me" href={personal.github} />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#0a0a0b" />
 
     <!-- Fonts: Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -149,12 +250,19 @@ const jsonLd = {
       rel="stylesheet"
     />
 
+    <!-- GEO-оптимизация для нейросетей и поисковиков -->
+    <meta name="geo.region" content="RU-MOW" />
+    <meta name="geo.placename" content={lang === "ru" ? "Москва" : "Moscow"} />
+    <meta name="geo.position" content="55.7558;37.6173" />
+    <meta name="ICBM" content="55.7558, 37.6173" />
+
     <!-- Yandex / Google verification — вставьте реальные ID -->
     <!-- <meta name="yandex-verification" content="XXXXXX" /> -->
     <!-- <meta name="google-site-verification" content="XXXXXX" /> -->
   </head>
 
   <body class="min-h-screen bg-bg text-text antialiased">
+    <a href="#main-content" class="skip-link">{lang === "ru" ? "Перейти к содержимому" : "Skip to content"}</a>
     <slot />
 
     <!-- Scroll-triggered reveal animations -->

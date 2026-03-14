@@ -65,7 +65,7 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
                 <div class="h-3 w-3 rounded-full bg-green/80"></div>
                 <span class="ml-2 font-mono text-xs text-text-dim">ai-workflow.ts</span>
               </div>
-              <pre class="overflow-x-auto font-mono text-xs leading-relaxed"><code set:html={codeSnippet} /></pre>
+              <pre class="overflow-x-auto font-mono text-xs leading-relaxed" aria-label={lang === "ru" ? "Пример кода RAG-пайплайна" : "RAG pipeline code example"}><code set:html={codeSnippet} /></pre>
             </div>
             <div class="flex flex-wrap gap-1.5">
               {tags.map((tag) => (
