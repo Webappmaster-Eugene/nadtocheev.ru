@@ -29,7 +29,7 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
 <section id="ai" class="py-20 sm:py-24" aria-label={tr.ai.title}>
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <div class="reveal text-center">
-      <h2 class="section-title">{tr.ai.title}</h2>
+      <h2 class="section-title"><span class="section-title-reveal">{tr.ai.title}</span></h2>
       <p class="section-subtitle">{tr.ai.subtitle}</p>
     </div>
 
@@ -65,7 +65,7 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
                 <div class="h-3 w-3 rounded-full bg-green/80"></div>
                 <span class="ml-2 font-mono text-xs text-text-dim">ai-workflow.ts</span>
               </div>
-              <pre class="overflow-x-auto font-mono text-xs leading-relaxed" aria-label={lang === "ru" ? "Пример кода RAG-пайплайна" : "RAG pipeline code example"}><code set:html={codeSnippet} /></pre>
+              <pre class="overflow-x-auto font-mono text-xs leading-relaxed" aria-label={lang === "ru" ? "Пример кода RAG-пайплайна" : "RAG pipeline code example"}><code id="ai-code-block" set:html={codeSnippet} /></pre>
             </div>
             <div class="flex flex-wrap gap-1.5">
               {tags.map((tag) => (
@@ -77,4 +77,50 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
       </div>
     </div>
   </div>
+
+  <!-- Code typing animation -->
+  <script is:inline>
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var codeEl = document.getElementById("ai-code-block");
+      if (!codeEl) return;
+      var fullHTML = codeEl.innerHTML;
+      codeEl.innerHTML = "";
+      var typed = false;
+
+      function typeCode(html, el) {
+        var i = 0;
+        var buffer = "";
+        function step() {
+          if (i >= html.length) { el.innerHTML = html; return; }
+          if (html[i] === "<") {
+            var closeIdx = html.indexOf(">", i);
+            if (closeIdx !== -1) {
+              buffer += html.slice(i, closeIdx + 1);
+              i = closeIdx + 1;
+              el.innerHTML = buffer;
+              step();
+              return;
+            }
+          }
+          buffer += html[i];
+          i++;
+          el.innerHTML = buffer;
+          setTimeout(step, 18);
+        }
+        step();
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !typed) {
+            typed = true;
+            typeCode(fullHTML, codeEl);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(codeEl);
+    })();
+  </script>
 </section>

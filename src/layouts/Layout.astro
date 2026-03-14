@@ -263,6 +263,7 @@ const jsonLd = {
 
   <body class="min-h-screen bg-bg text-text antialiased">
     <a href="#main-content" class="skip-link">{lang === "ru" ? "Перейти к содержимому" : "Skip to content"}</a>
+    <div id="scroll-progress" aria-hidden="true"></div>
     <slot />
 
     <!-- Scroll-triggered reveal animations -->
@@ -283,6 +284,42 @@ const jsonLd = {
         );
         targets.forEach(function (el) { observer.observe(el); });
       });
+    </script>
+
+    <!-- Scroll progress bar -->
+    <script is:inline>
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var bar = document.getElementById("scroll-progress");
+        if (!bar) return;
+        window.addEventListener("scroll", function () {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight > 0) {
+            bar.style.width = (scrollTop / docHeight * 100) + "%";
+          }
+        }, { passive: true });
+      })();
+    </script>
+
+    <!-- Button ripple effect -->
+    <script is:inline>
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        document.addEventListener("click", function (e) {
+          var btn = e.target.closest(".btn-ripple");
+          if (!btn) return;
+          var rect = btn.getBoundingClientRect();
+          var ripple = document.createElement("span");
+          ripple.className = "ripple";
+          ripple.style.left = (e.clientX - rect.left) + "px";
+          ripple.style.top = (e.clientY - rect.top) + "px";
+          btn.appendChild(ripple);
+          ripple.addEventListener("animationend", function () {
+            ripple.remove();
+          });
+        });
+      })();
     </script>
   </body>
 </html>
