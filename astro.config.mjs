@@ -5,7 +5,17 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://nadtocheev.ru",
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "ru",
+        locales: {
+          ru: "ru",
+          en: "en",
+        },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

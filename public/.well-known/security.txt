@@ -1,0 +1,5 @@
+Contact: mailto:johnn.hotmail@mail.ru
+Contact: https://t.me/eugene_nadtocheev
+Preferred-Languages: ru, en
+Canonical: https://nadtocheev.ru/.well-known/security.txt
+Expires: 2027-04-01T00:00:00.000Z

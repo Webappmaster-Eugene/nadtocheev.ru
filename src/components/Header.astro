@@ -21,7 +21,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-bg/80 backdrop-blur-xl">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+  <nav aria-label={tr.a11y.mainNav} class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
     <!-- Logo -->
     <a href={getLangUrl(lang)} class="group text-lg font-bold tracking-tight text-text transition-colors hover:text-accent">
       {personal.name.last[lang]}<span class="text-accent transition-transform group-hover:scale-125 inline-block">.</span>
@@ -68,6 +68,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
         class="hidden rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20 sm:inline-block"
       >
         {tr.nav.contact}
+        <span class="sr-only"> {tr.a11y.opensNewTab}</span>
       </a>
 
       <!-- Mobile menu toggle -->
@@ -101,6 +102,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
       <li class="mt-2 border-t border-white/5 pt-2">
         <a href={personal.telegram} target="_blank" rel="noopener noreferrer" class="block rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-semibold text-white">
           {tr.nav.contact}
+          <span class="sr-only"> {tr.a11y.opensNewTab}</span>
         </a>
       </li>
     </ul>
@@ -115,20 +117,53 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
     var iconOpen = document.getElementById("menu-icon-open");
     var iconClose = document.getElementById("menu-icon-close");
     if (toggle && menu && iconOpen && iconClose) {
+      function closeMenu() {
+        menu.classList.add("hidden");
+        iconOpen.classList.remove("hidden");
+        iconClose.classList.add("hidden");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+
       toggle.addEventListener("click", function () {
         var isOpen = !menu.classList.contains("hidden");
         menu.classList.toggle("hidden");
         iconOpen.classList.toggle("hidden");
         iconClose.classList.toggle("hidden");
         toggle.setAttribute("aria-expanded", String(!isOpen));
+        if (!isOpen) {
+          var firstLink = menu.querySelector("a");
+          if (firstLink) firstLink.focus();
+        }
       });
+
       menu.querySelectorAll(".mobile-nav-link").forEach(function (link) {
         link.addEventListener("click", function () {
-          menu.classList.add("hidden");
-          iconOpen.classList.remove("hidden");
-          iconClose.classList.add("hidden");
-          toggle.setAttribute("aria-expanded", "false");
+          closeMenu();
         });
+      });
+
+      /* Focus trap + Escape */
+      menu.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMenu();
+          return;
+        }
+        if (e.key !== "Tab") return;
+        var focusable = menu.querySelectorAll("a, button");
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       });
     }
 

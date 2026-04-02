@@ -33,12 +33,22 @@ const faqItems = lang === "ru"
       { q: "Какой технологический стек?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Можно ли нанять Евгения как ментора?", a: "Да, Евгений проводит мок-собеседования, карьерные консультации и менторство для fullstack-разработчиков. Доступен на Solvery, GetMentor, EasyOffer и через Telegram." },
       { q: "Как связаться с Евгением?", a: "Предпочитаемый способ — Telegram: @eugene_nadtocheev. Также доступен по email: johnn.hotmail@mail.ru и телефону: +7 (920) 080-87-00." },
+      { q: "В каких отраслях работал Евгений?", a: "Финтех (платёжные системы, криптовалюты, биллинг), аналитика недвижимости (топ-1 платформа в РФ с 40K+ посещений/сутки), маркетинг и реклама, системная интеграция и IT-консалтинг." },
+      { q: "Работает ли Евгений с AI и LLM?", a: "Да, активно. Строит RAG-пайплайны, интегрирует LLM в рабочие процессы, ежедневно использует Claude Code и Cursor. Создал Telegram-бота с голосовым управлением Google Calendar через AI." },
+      { q: "Какое образование у Евгения?", a: "Академия ФСБ России (2019). Специальность: автоматизированные системы управления, автоматизированная обработка информации и управление." },
+      { q: "Создавал ли Евгений свои стартапы?", a: "Да, создатель двух стартапов: Admin House (платформа для архитектурного проектирования) и MSK Flat Parser (парсер недвижимости в Москве). Также автор Calendar Clown — Telegram-бота для Google Calendar." },
+      { q: "В каком формате Евгений работает?", a: "Удалённо из Москвы. Доступен для клиентов по всей России и странам СНГ. Менторство — для русскоязычных разработчиков по всему миру." },
     ]
   : [
       { q: "What does Evgeny Nadtocheev do?", a: "Fullstack Developer with 5+ years of experience. Specializes in backend (Node.js, Go), DevOps (Kubernetes, Docker), and AI/LLM integrations. Works on high-load systems in fintech and real estate analytics." },
       { q: "What is his tech stack?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Can I hire Evgeny as a mentor?", a: "Yes, Evgeny conducts mock interviews, career consultations, and mentoring for fullstack developers. Available on Solvery, GetMentor, EasyOffer, and via Telegram." },
       { q: "How to contact Evgeny?", a: "Preferred method — Telegram: @eugene_nadtocheev. Also available via email: johnn.hotmail@mail.ru and phone: +7 (920) 080-87-00." },
+      { q: "What industries has he worked in?", a: "Fintech (payment systems, cryptocurrency, billing), real estate analytics (#1 platform in Russia with 40K+ daily visits), marketing & advertising, system integration and IT consulting." },
+      { q: "Does he work with AI and LLMs?", a: "Yes, actively. He builds RAG pipelines, integrates LLMs into workflows, uses Claude Code and Cursor daily. He built a Telegram bot with voice-controlled Google Calendar management via AI." },
+      { q: "What is his education?", a: "Academy of the Federal Security Service of Russia (2019). Specialty: Automated Control Systems, Automated Information Processing and Control Systems." },
+      { q: "Has Evgeny founded any startups?", a: "Yes, he is the founder of two startups: Admin House (architectural design platform) and MSK Flat Parser (Moscow real estate parser). He also created Calendar Clown — a Telegram bot for Google Calendar." },
+      { q: "What is his work format?", a: "Remote from Moscow. Available for clients across Russia and CIS countries. Mentoring available worldwide for Russian-speaking developers." },
     ];
 
 const jsonLd = {
@@ -111,6 +121,31 @@ const jsonLd = {
       isPartOf: { "@id": `${personal.website}/#website` },
       about: { "@id": `${personal.website}/#person` },
       mainEntity: { "@id": `${personal.website}/#person` },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["#hero", "#about", "#contacts"],
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalURL.href}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: lang === "ru" ? "Главная" : "Home",
+          item: lang === "ru" ? personal.website : `${personal.website}/en/`,
+        },
+      ],
+    },
+    {
+      "@type": "Organization",
+      "@id": `${personal.website}/#organization`,
+      name: personal.name.full[lang],
+      url: personal.website,
+      logo: `${personal.website}/favicon-512.png`,
+      founder: { "@id": `${personal.website}/#person` },
+      sameAs: [personal.github, personal.telegram],
     },
     {
       "@type": "Service",
@@ -167,6 +202,23 @@ const jsonLd = {
       url: personal.startups.calendarClown,
       author: { "@id": `${personal.website}/#person` },
     },
+    {
+      "@type": "ItemList",
+      "@id": `${personal.website}/#techstack`,
+      name: lang === "ru" ? "Технологический стек" : "Tech Stack",
+      numberOfItems: 9,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Node.js" },
+        { "@type": "ListItem", position: 2, name: "Go" },
+        { "@type": "ListItem", position: 3, name: "TypeScript" },
+        { "@type": "ListItem", position: 4, name: "React" },
+        { "@type": "ListItem", position: 5, name: "Kubernetes" },
+        { "@type": "ListItem", position: 6, name: "Docker" },
+        { "@type": "ListItem", position: 7, name: "PostgreSQL" },
+        { "@type": "ListItem", position: 8, name: "NestJS" },
+        { "@type": "ListItem", position: 9, name: "Kafka" },
+      ],
+    },
   ],
 };
 ---
@@ -182,6 +234,9 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta name="author" content={personal.name.full[lang]} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="keywords" content={lang === "ru"
+      ? "fullstack разработчик, backend разработчик, Node.js, Go, React, DevOps, Kubernetes, Docker, микросервисы, менторство, AI, LLM, Москва, highload, NestJS, TypeScript, портфолио"
+      : "fullstack developer, backend developer, Node.js, Go, React, DevOps, Kubernetes, Docker, microservices, mentoring, AI, LLM, Moscow, high-load, NestJS, TypeScript, portfolio"} />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- hreflang — для мультиязычного SEO -->
@@ -242,13 +297,25 @@ const jsonLd = {
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#0a0a0b" />
 
-    <!-- Fonts: Inter + JetBrains Mono -->
+    <!-- DNS prefetch + Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts: Inter + JetBrains Mono (non-blocking) -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- GEO-оптимизация для нейросетей и поисковиков -->
     <meta name="geo.region" content="RU-MOW" />
@@ -262,7 +329,7 @@ const jsonLd = {
   </head>
 
   <body class="min-h-screen bg-bg text-text antialiased">
-    <a href="#main-content" class="skip-link">{lang === "ru" ? "Перейти к содержимому" : "Skip to content"}</a>
+    <a href="#main-content" class="skip-link">{tr.a11y.skipToContent}</a>
     <div id="scroll-progress" aria-hidden="true"></div>
     <slot />
 

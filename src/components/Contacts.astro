@@ -93,11 +93,13 @@ const contacts: ContactItem[] = [
       {contacts.map((contact) => {
         const isExternal = contact.href.startsWith("http");
         return (
+          <div role="listitem">
           <a
             href={contact.href}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
             class={`card flex items-center gap-4 !p-4 ${contact.color}`}
+            aria-label={`${contact.label}: ${contact.username}${isExternal ? ` ${tr.a11y.opensNewTab}` : ""}`}
           >
             <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/[0.03]">
               <svg
@@ -123,6 +125,7 @@ const contacts: ContactItem[] = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
+          </div>
         );
       })}
     </div>

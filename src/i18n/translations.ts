@@ -135,6 +135,13 @@ export interface Translation {
     rights: string;
     madeWith: string;
   };
+
+  /* Accessibility */
+  a11y: {
+    mainNav: string;
+    opensNewTab: string;
+    skipToContent: string;
+  };
 }
 
 export const translations: Record<Lang, Translation> = {
@@ -252,6 +259,11 @@ export const translations: Record<Lang, Translation> = {
       rights: "Все права защищены.",
       madeWith: "Сделано с",
     },
+    a11y: {
+      mainNav: "Основная навигация",
+      opensNewTab: "(откроется в новой вкладке)",
+      skipToContent: "Перейти к содержимому",
+    },
   },
 
   en: {
@@ -367,6 +379,11 @@ export const translations: Record<Lang, Translation> = {
     footer: {
       rights: "All rights reserved.",
       madeWith: "Built with",
+    },
+    a11y: {
+      mainNav: "Main navigation",
+      opensNewTab: "(opens in new tab)",
+      skipToContent: "Skip to content",
     },
   },
 };

@@ -65,6 +65,7 @@ const mentoring = getMentoring(lang);
                 <svg class="h-4 w-4 shrink-0 text-text-dim transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
+                <span class="sr-only"> {tr.a11y.opensNewTab}</span>
               </a>
             ))}
           </div>
@@ -92,8 +93,8 @@ const mentoring = getMentoring(lang);
             <h3 class="mb-2 text-sm font-bold">{tr.mentoring.channelsTitle}</h3>
             <p class="mb-3 text-xs text-text-dim">{tr.mentoring.channelsDesc}</p>
             <div class="flex flex-wrap gap-2">
-              <a href={personal.telegramChannels.captainGalera} target="_blank" rel="noopener noreferrer" class="badge hover:bg-accent/15">@captain_galera</a>
-              <a href={personal.telegramChannels.eugeneVibecode} target="_blank" rel="noopener noreferrer" class="badge hover:bg-accent/15">@eugene_vibecode</a>
+              <a href={personal.telegramChannels.captainGalera} target="_blank" rel="noopener noreferrer" class="badge hover:bg-accent/15">@captain_galera<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+              <a href={personal.telegramChannels.eugeneVibecode} target="_blank" rel="noopener noreferrer" class="badge hover:bg-accent/15">@eugene_vibecode<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
             </div>
           </div>
 
@@ -105,6 +106,7 @@ const mentoring = getMentoring(lang);
               <svg class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
+              <span class="sr-only"> {tr.a11y.opensNewTab}</span>
             </a>
           </div>
         </div>
@@ -113,7 +115,7 @@ const mentoring = getMentoring(lang);
       <!-- My Website + Freelance + Startups -->
       <div class="mt-5 grid gap-4 sm:grid-cols-3">
         <!-- Website -->
-        <a href={personal.websiteProjects} target="_blank" rel="noopener noreferrer" class="card group text-center">
+        <a href={personal.websiteProjects} target="_blank" rel="noopener noreferrer" class="card group text-center" aria-label={`webappmaster.ru ${tr.a11y.opensNewTab}`}>
           <div class="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
             <svg class="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418" />
@@ -132,9 +134,9 @@ const mentoring = getMentoring(lang);
           </div>
           <p class="text-sm font-semibold">{tr.mentoring.freelanceTitle}</p>
           <div class="mt-1 flex justify-center gap-2">
-            <a href={personal.freelance.a24} target="_blank" rel="noopener noreferrer" class="text-xs text-text-dim hover:text-accent">a24.biz</a>
+            <a href={personal.freelance.a24} target="_blank" rel="noopener noreferrer" class="text-xs text-text-dim hover:text-accent">a24.biz<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
             <span class="text-text-dim">·</span>
-            <a href={personal.freelance.vsesdal} target="_blank" rel="noopener noreferrer" class="text-xs text-text-dim hover:text-accent">vsesdal.com</a>
+            <a href={personal.freelance.vsesdal} target="_blank" rel="noopener noreferrer" class="text-xs text-text-dim hover:text-accent">vsesdal.com<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
           </div>
         </div>
 
@@ -147,9 +149,9 @@ const mentoring = getMentoring(lang);
           </div>
           <p class="text-sm font-semibold">{tr.startups.title}</p>
           <div class="mt-1 flex flex-wrap justify-center gap-1.5">
-            <a href={personal.startups.adminHouse} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">admin-house</a>
-            <a href={personal.startups.mskFlatParser} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">msk-flat-parser</a>
-            <a href={personal.startups.calendarClown} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">calendar-clown</a>
+            <a href={personal.startups.adminHouse} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">admin-house<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+            <a href={personal.startups.mskFlatParser} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">msk-flat-parser<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+            <a href={personal.startups.calendarClown} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">calendar-clown<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
           </div>
         </div>
       </div>
