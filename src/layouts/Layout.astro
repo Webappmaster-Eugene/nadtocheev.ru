@@ -29,25 +29,25 @@ const enURL = new URL("/en/", Astro.site);
 /** FAQ для LLM и SEO */
 const faqItems = lang === "ru"
   ? [
-      { q: "Чем занимается Евгений Надточеев?", a: "Fullstack-разработчик с 5+ годами опыта. Специализируется на backend (Node.js, Go), DevOps (Kubernetes, Docker) и AI/LLM интеграциях. Работает в сфере highload-систем в финтехе и аналитике недвижимости." },
+      { q: "Чем занимается Евгений Надточеев?", a: "Fullstack-разработчик с 5 годами опыта. Специализируется на backend (Node.js, Go), DevOps (Kubernetes, Docker) и AI/LLM интеграциях. Работает в сфере highload-систем в финтехе и аналитике недвижимости." },
       { q: "Какой технологический стек?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Можно ли нанять Евгения как ментора?", a: "Да, Евгений проводит мок-собеседования, карьерные консультации и менторство для fullstack-разработчиков. Доступен на Solvery, GetMentor, EasyOffer и через Telegram." },
       { q: "Как связаться с Евгением?", a: "Предпочитаемый способ — Telegram: @eugene_nadtocheev. Также доступен по email: johnn.hotmail@mail.ru и телефону: +7 (920) 080-87-00." },
       { q: "В каких отраслях работал Евгений?", a: "Финтех (платёжные системы, криптовалюты, биллинг), аналитика недвижимости (топ-1 платформа в РФ с 40K+ посещений/сутки), маркетинг и реклама, системная интеграция и IT-консалтинг." },
       { q: "Работает ли Евгений с AI и LLM?", a: "Да, активно. Строит RAG-пайплайны, интегрирует LLM в рабочие процессы, ежедневно использует Claude Code и Cursor. Создал Telegram-бота с голосовым управлением Google Calendar через AI." },
       { q: "Какое образование у Евгения?", a: "Академия ФСБ России (2019). Специальность: автоматизированные системы управления, автоматизированная обработка информации и управление." },
-      { q: "Создавал ли Евгений свои стартапы?", a: "Да, создатель двух стартапов: Admin House (платформа для архитектурного проектирования) и MSK Flat Parser (парсер недвижимости в Москве). Также автор Calendar Clown — Telegram-бота для Google Calendar." },
+      { q: "Создавал ли Евгений свои стартапы?", a: "Да, создатель двух собственных продуктов: СПИН (podbor-minuta.ru) — сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) в Telegram; и SMETAS (alibaba.hhos.ru) — SaaS-платформа для составления строительных смет с базой материалов и командной работой." },
       { q: "В каком формате Евгений работает?", a: "Удалённо из Москвы. Доступен для клиентов по всей России и странам СНГ. Менторство — для русскоязычных разработчиков по всему миру." },
     ]
   : [
-      { q: "What does Evgeny Nadtocheev do?", a: "Fullstack Developer with 5+ years of experience. Specializes in backend (Node.js, Go), DevOps (Kubernetes, Docker), and AI/LLM integrations. Works on high-load systems in fintech and real estate analytics." },
+      { q: "What does Evgeny Nadtocheev do?", a: "Fullstack Developer with 5 years of experience. Specializes in backend (Node.js, Go), DevOps (Kubernetes, Docker), and AI/LLM integrations. Works on high-load systems in fintech and real estate analytics." },
       { q: "What is his tech stack?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Can I hire Evgeny as a mentor?", a: "Yes, Evgeny conducts mock interviews, career consultations, and mentoring for fullstack developers. Available on Solvery, GetMentor, EasyOffer, and via Telegram." },
       { q: "How to contact Evgeny?", a: "Preferred method — Telegram: @eugene_nadtocheev. Also available via email: johnn.hotmail@mail.ru and phone: +7 (920) 080-87-00." },
       { q: "What industries has he worked in?", a: "Fintech (payment systems, cryptocurrency, billing), real estate analytics (#1 platform in Russia with 40K+ daily visits), marketing & advertising, system integration and IT consulting." },
       { q: "Does he work with AI and LLMs?", a: "Yes, actively. He builds RAG pipelines, integrates LLMs into workflows, uses Claude Code and Cursor daily. He built a Telegram bot with voice-controlled Google Calendar management via AI." },
       { q: "What is his education?", a: "Academy of the Federal Security Service of Russia (2019). Specialty: Automated Control Systems, Automated Information Processing and Control Systems." },
-      { q: "Has Evgeny founded any startups?", a: "Yes, he is the founder of two startups: Admin House (architectural design platform) and MSK Flat Parser (Moscow real estate parser). He also created Calendar Clown — a Telegram bot for Google Calendar." },
+      { q: "Has Evgeny founded any startups?", a: "Yes, he is the founder of two products of his own: SPIN (podbor-minuta.ru) — a Moscow new-build price tracker with Telegram alerts on discounts from major developers (PIK, Samolet, Granel, Level, Etalon); and SMETAS (alibaba.hhos.ru) — a SaaS platform for construction estimates with a shared materials database and team collaboration." },
       { q: "What is his work format?", a: "Remote from Moscow. Available for clients across Russia and CIS countries. Mentoring available worldwide for Russian-speaking developers." },
     ];
 
@@ -73,7 +73,6 @@ const jsonLd = {
         personal.github,
         personal.habr,
         personal.telegram,
-        personal.youtube,
         personal.habrArticles,
         personal.websiteProjects,
         personal.leetcode,
@@ -173,33 +172,27 @@ const jsonLd = {
       })),
     },
     {
-      "@type": "CreativeWork",
-      "@id": `${personal.website}/#startup-admin-house`,
-      name: "Admin House",
+      "@type": "SoftwareApplication",
+      "@id": `${personal.website}/#startup-spin`,
+      name: "СПИН",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
       description: lang === "ru"
-        ? "Платформа для архитектурного проектирования"
-        : "Architectural design platform",
-      url: personal.startups.adminHouse,
+        ? "Сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков в Telegram"
+        : "Moscow new-build price tracker with Telegram alerts on discounts from major developers",
+      url: personal.startups.spin,
       author: { "@id": `${personal.website}/#person` },
     },
     {
-      "@type": "CreativeWork",
-      "@id": `${personal.website}/#startup-msk-flat-parser`,
-      name: "MSK Flat Parser",
+      "@type": "SoftwareApplication",
+      "@id": `${personal.website}/#startup-smetas`,
+      name: "SMETAS",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
       description: lang === "ru"
-        ? "Парсер недвижимости в Москве"
-        : "Moscow real estate parser",
-      url: personal.startups.mskFlatParser,
-      author: { "@id": `${personal.website}/#person` },
-    },
-    {
-      "@type": "CreativeWork",
-      "@id": `${personal.website}/#startup-calendar-clown`,
-      name: "Calendar Clown",
-      description: lang === "ru"
-        ? "Telegram-бот для управления Google Calendar через голос и AI"
-        : "Telegram bot for Google Calendar management via voice and AI",
-      url: personal.startups.calendarClown,
+        ? "SaaS-платформа для составления строительных смет с базой материалов и командной работой"
+        : "SaaS platform for construction estimates with shared materials database and team collaboration",
+      url: personal.startups.smetas,
       author: { "@id": `${personal.website}/#person` },
     },
     {

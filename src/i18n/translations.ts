@@ -22,7 +22,9 @@ export interface Translation {
     experience: string;
     projects: string;
     ai: string;
+    publications: string;
     mentoring: string;
+    services: string;
     contacts: string;
     contact: string;
     switchLang: string;
@@ -39,6 +41,7 @@ export interface Translation {
     tagline: string;
     ctaTelegram: string;
     ctaGithub: string;
+    ctaHabr: string;
     metricsYears: string;
     metricsVisits: string;
     metricsRps: string;
@@ -115,6 +118,26 @@ export interface Translation {
     freelanceDesc: string;
   };
 
+  /* Publications */
+  publications: {
+    title: string;
+    subtitle: string;
+    description: string;
+    articlesTitle: string;
+    talksTitle: string;
+    readMore: string;
+  };
+
+  /* Services */
+  services: {
+    title: string;
+    subtitle: string;
+    description: string;
+    priceLabel: string;
+    includesLabel: string;
+    note: string;
+  };
+
   /* Startups */
   startups: {
     title: string;
@@ -149,7 +172,7 @@ export const translations: Record<Lang, Translation> = {
     meta: {
       title: "Евгений Надточеев — Fullstack-разработчик | Backend, DevOps, AI",
       description:
-        "Fullstack-разработчик с 5+ годами опыта. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). Highload-системы в финтехе и аналитике недвижимости. Микросервисная архитектура, AI/LLM интеграции.",
+        "Fullstack-разработчик с 5 годами опыта. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). Highload-системы в финтехе и аналитике недвижимости. Микросервисная архитектура, AI/LLM интеграции.",
       ogLocale: "ru_RU",
       htmlLang: "ru",
     },
@@ -160,7 +183,9 @@ export const translations: Record<Lang, Translation> = {
       experience: "Опыт",
       projects: "Проекты",
       ai: "AI",
+      publications: "Публикации",
       mentoring: "Менторство",
+      services: "Услуги",
       contacts: "Контакты",
       contact: "Связаться",
       switchLang: "EN",
@@ -176,6 +201,7 @@ export const translations: Record<Lang, Translation> = {
         "Строю highload-системы на Node.js и Go. Внедряю микросервисную архитектуру, настраиваю инфраструктуру и автоматизирую процессы с помощью AI.",
       ctaTelegram: "Написать в Telegram",
       ctaGithub: "GitHub",
+      ctaHabr: "Habr Career",
       metricsYears: "лет опыта",
       metricsVisits: "посещений/сутки",
       metricsRps: "rps в production",
@@ -185,10 +211,10 @@ export const translations: Record<Lang, Translation> = {
       title: "Обо мне",
       subtitle: "Кратко о подходе и опыте",
       paragraphs: [
-        'Fullstack-разработчик с <strong class="text-text">5+ годами коммерческого опыта</strong>. Специализируюсь на <strong class="text-text">backend-разработке</strong> (Node.js, Go) и <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Фокус — <strong class="text-accent">80% backend</strong>.',
+        'Fullstack-разработчик с <strong class="text-text">5 годами коммерческого опыта</strong>. Специализируюсь на <strong class="text-text">backend-разработке</strong> (Node.js, Go) и <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Фокус — <strong class="text-accent">80% backend</strong>.',
         'Работал в <strong class="text-text">финтехе</strong> (платёжные системы, криптовалюты, биллинг) и <strong class="text-text">аналитике недвижимости</strong> (топ-1 платформа в РФ) с нагрузкой до 50 000 посещений в сутки. Строил микросервисные архитектуры, внедрял Event-Driven подходы, настраивал мониторинг и distributed tracing.',
         'Также работаю с <strong class="text-text">Telegram-ботами</strong>, <strong class="text-text">Telegram Mini App</strong>, <strong class="text-text">React Native</strong> и <strong class="text-text">Electron</strong>. Активно использую <strong class="text-text">AI в разработке</strong>: пишу RAG-пайплайны, работаю с LLM, Claude Code, Cursor. Веду собственный проектный портал — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
-        'Создатель <strong class="text-text">двух стартапов</strong>, автор open-source проектов. Управлял командами разработки, ценю Agile, результат для бизнеса и чистый масштабируемый код. Английский — <strong class="text-text">B1</strong>.',
+        'Создатель <strong class="text-text">двух собственных стартапов</strong>: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">СПИН</a> (мониторинг цен на новостройки Москвы) и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> (SaaS-платформа для строительных смет), автор open-source проектов. Ценю Agile, результат для бизнеса и чистый масштабируемый код. Английский — <strong class="text-text">B2</strong>. Резюме на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>.',
       ],
     },
     expertise: {
@@ -244,10 +270,28 @@ export const translations: Record<Lang, Translation> = {
       freelanceTitle: "Фриланс-опыт",
       freelanceDesc: "В прошлом — фрилансер на биржах",
     },
+    publications: {
+      title: "Публикации и выступления",
+      subtitle: "Статьи, лекции и экспертная активность",
+      description:
+        "Пишу технические и карьерные статьи на Хабре и vc.ru, выступаю экспертом и лектором в Школе 21 (Сбер), на профильных IT-конференциях и митапах, веду Telegram-каналы о разработке и карьере.",
+      articlesTitle: "Статьи",
+      talksTitle: "Выступления и экспертиза",
+      readMore: "Читать",
+    },
+    services: {
+      title: "Платные услуги",
+      subtitle: "Карьерные консультации и мок-собеседования для разработчиков",
+      description:
+        "Помогаю fullstack- и backend-разработчикам структурно расти в карьере и уверенно проходить технические интервью. Формат — онлайн, удобное время согласуем в Telegram.",
+      priceLabel: "Стоимость",
+      includesLabel: "Что входит",
+      note: "Оплата по факту проведения. Для постоянных клиентов и студентов — индивидуальные условия.",
+    },
     startups: {
       title: "Стартапы",
       subtitle: "Создатель собственных проектов",
-      description: "Являюсь создателем 2 стартапов и нескольких open-source проектов",
+      description: "СПИН — мониторинг цен на новостройки Москвы. SMETAS — SaaS для строительных смет.",
     },
     contacts: {
       title: "Контакты",
@@ -270,7 +314,7 @@ export const translations: Record<Lang, Translation> = {
     meta: {
       title: "Evgeny Nadtocheev — Fullstack Developer | Backend, DevOps, AI",
       description:
-        "Fullstack Developer with 5+ years of experience. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). High-load systems in fintech and real estate analytics. Microservice architecture, AI/LLM integrations.",
+        "Fullstack Developer with 5 years of experience. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). High-load systems in fintech and real estate analytics. Microservice architecture, AI/LLM integrations.",
       ogLocale: "en_US",
       htmlLang: "en",
     },
@@ -281,7 +325,9 @@ export const translations: Record<Lang, Translation> = {
       experience: "Experience",
       projects: "Projects",
       ai: "AI",
+      publications: "Publications",
       mentoring: "Mentoring",
+      services: "Services",
       contacts: "Contacts",
       contact: "Get in Touch",
       switchLang: "RU",
@@ -297,6 +343,7 @@ export const translations: Record<Lang, Translation> = {
         "I build high-load systems on Node.js and Go. I implement microservice architectures, set up infrastructure, and automate processes with AI.",
       ctaTelegram: "Message on Telegram",
       ctaGithub: "GitHub",
+      ctaHabr: "Habr Career",
       metricsYears: "years of experience",
       metricsVisits: "daily visits",
       metricsRps: "rps in production",
@@ -306,10 +353,10 @@ export const translations: Record<Lang, Translation> = {
       title: "About Me",
       subtitle: "A brief overview of my approach and experience",
       paragraphs: [
-        'Fullstack Developer with <strong class="text-text">5+ years of commercial experience</strong>. I specialize in <strong class="text-text">backend development</strong> (Node.js, Go) and <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Focus — <strong class="text-accent">80% backend</strong>.',
+        'Fullstack Developer with <strong class="text-text">5 years of commercial experience</strong>. I specialize in <strong class="text-text">backend development</strong> (Node.js, Go) and <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Focus — <strong class="text-accent">80% backend</strong>.',
         'I have worked in <strong class="text-text">fintech</strong> (payment systems, cryptocurrency, billing) and <strong class="text-text">real estate analytics</strong> (the #1 platform in Russia) handling up to 50,000 daily visitors. I have designed microservice architectures, implemented Event-Driven approaches, and set up monitoring and distributed tracing.',
         'I also work with <strong class="text-text">Telegram Bots</strong>, <strong class="text-text">Telegram Mini App</strong>, <strong class="text-text">React Native</strong>, and <strong class="text-text">Electron</strong>. I actively leverage <strong class="text-text">AI in development</strong>: building RAG pipelines, working with LLMs, Claude Code, and Cursor. I run my own project portal — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
-        'Founder of <strong class="text-text">two startups</strong>, author of open-source projects. I have managed development teams, value Agile practices, business outcomes, and clean scalable code. English — <strong class="text-text">B1</strong>.',
+        'Founder of <strong class="text-text">two products of my own</strong>: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SPIN</a> (Moscow new-build price tracker) and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> (SaaS for construction estimates), author of open-source projects. I value Agile practices, business outcomes, and clean scalable code. English — <strong class="text-text">B2</strong>. CV on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>.',
       ],
     },
     expertise: {
@@ -365,10 +412,28 @@ export const translations: Record<Lang, Translation> = {
       freelanceTitle: "Freelance Experience",
       freelanceDesc: "Former freelancer on exchanges",
     },
+    publications: {
+      title: "Publications & Talks",
+      subtitle: "Articles, lectures, and expert engagements",
+      description:
+        "I write technical and career articles on Habr and vc.ru, serve as an expert and lecturer at School 21 (Sber) and at IT conferences and meetups, and run Telegram channels about development and career.",
+      articlesTitle: "Articles",
+      talksTitle: "Talks & Expert Roles",
+      readMore: "Read",
+    },
+    services: {
+      title: "Paid Services",
+      subtitle: "Career consultations and mock interviews for developers",
+      description:
+        "I help fullstack and backend engineers grow their careers and confidently pass technical interviews. Format — online, exact time agreed via Telegram.",
+      priceLabel: "Price",
+      includesLabel: "What's included",
+      note: "Payment after the session. Returning clients and students — flexible terms available.",
+    },
     startups: {
       title: "Startups",
-      subtitle: "Creator of own projects",
-      description: "Creator of 2 startups and several open-source projects",
+      subtitle: "Creator of own products",
+      description: "SPIN — Moscow new-build price tracker. SMETAS — SaaS for construction estimates.",
     },
     contacts: {
       title: "Contacts",

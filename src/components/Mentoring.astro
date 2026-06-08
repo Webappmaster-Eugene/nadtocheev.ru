@@ -148,10 +148,10 @@ const mentoring = getMentoring(lang);
             </svg>
           </div>
           <p class="text-sm font-semibold">{tr.startups.title}</p>
-          <div class="mt-1 flex flex-wrap justify-center gap-1.5">
-            <a href={personal.startups.adminHouse} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">admin-house<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
-            <a href={personal.startups.mskFlatParser} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">msk-flat-parser<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
-            <a href={personal.startups.calendarClown} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15">calendar-clown<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+          <p class="mt-0.5 text-xs text-text-dim">{tr.startups.description}</p>
+          <div class="mt-2 flex flex-wrap justify-center gap-1.5">
+            <a href={personal.startups.spin} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15" title={lang === "ru" ? "Мониторинг цен на новостройки Москвы" : "Moscow new-build price tracker"}>СПИН<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+            <a href={personal.startups.smetas} target="_blank" rel="noopener noreferrer" class="badge text-xs hover:bg-purple/15" title={lang === "ru" ? "SaaS для строительных смет" : "SaaS for construction estimates"}>SMETAS<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
           </div>
         </div>
       </div>

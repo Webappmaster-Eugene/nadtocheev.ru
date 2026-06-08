@@ -1,0 +1,174 @@
+---
+import { getPublications } from "../data/publications.ts";
+import { type Lang, t } from "../i18n/translations.ts";
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const tr = t(lang);
+const pubs = getPublications(lang);
+
+const sourceColor: Record<string, string> = {
+  "Хабр": "text-green",
+  "Habr": "text-green",
+  "vc.ru": "text-orange",
+};
+---
+
+<section id="publications" class="py-20 sm:py-24" aria-label={tr.publications.title}>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <h2 class="section-title"><span class="section-title-reveal">{tr.publications.title}</span></h2>
+      <p class="section-subtitle">{tr.publications.subtitle}</p>
+    </div>
+
+    <div class="reveal mx-auto max-w-5xl">
+      <p class="mb-8 text-center text-base leading-relaxed text-text-muted sm:text-lg">
+        {tr.publications.description}
+      </p>
+
+      <!-- Stats -->
+      <div id="publications-stats" class="mb-10 grid grid-cols-3 gap-3">
+        <div class="rounded-2xl border border-border bg-surface/50 px-4 py-5 text-center">
+          <div class="counter text-2xl font-bold text-accent" data-target={pubs.stats.talks}>{pubs.stats.talks}</div>
+          <div class="mt-1 text-xs font-medium text-text-dim">{pubs.statsLabels.talks}</div>
+        </div>
+        <div class="rounded-2xl border border-border bg-surface/50 px-4 py-5 text-center">
+          <div class="counter text-2xl font-bold text-green" data-target={pubs.stats.articles}>{pubs.stats.articles}</div>
+          <div class="mt-1 text-xs font-medium text-text-dim">{pubs.statsLabels.articles}</div>
+        </div>
+        <div class="rounded-2xl border border-border bg-surface/50 px-4 py-5 text-center">
+          <div class="counter text-2xl font-bold text-purple" data-target={pubs.stats.yearsTeaching}>{pubs.stats.yearsTeaching}</div>
+          <div class="mt-1 text-xs font-medium text-text-dim">{pubs.statsLabels.yearsTeaching}</div>
+        </div>
+      </div>
+
+      <div class="grid gap-5 lg:grid-cols-2">
+        <!-- Articles -->
+        <div class="card">
+          <div class="mb-5 flex items-center gap-2">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-green/10">
+              <svg class="h-4 w-4 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v10a2 2 0 01-2 2z M14 4v6h6 M9 14h6 M9 18h4" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold">{tr.publications.articlesTitle}</h3>
+          </div>
+
+          <ul class="space-y-4">
+            {pubs.articles.map((article) => (
+              <li>
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group block rounded-xl border border-transparent p-3 transition-colors hover:border-border hover:bg-white/[0.03]"
+                >
+                  <div class="mb-1.5 flex flex-wrap items-center gap-2 text-xs">
+                    <span class={`font-bold ${sourceColor[article.source] ?? "text-accent"}`}>{article.source}</span>
+                    <span class="text-text-dim">·</span>
+                    <span class="text-text-dim">{article.year}</span>
+                  </div>
+                  <h4 class="mb-1 text-sm font-semibold leading-snug transition-colors group-hover:text-accent sm:text-base">
+                    {article.title}
+                  </h4>
+                  <p class="text-xs leading-relaxed text-text-muted sm:text-sm">{article.summary}</p>
+                  <span class="sr-only"> {tr.a11y.opensNewTab}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Talks -->
+        <div class="card">
+          <div class="mb-5 flex items-center gap-2">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-purple/10">
+              <svg class="h-4 w-4 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-14 0 M12 18v3 M8 21h8 M12 3a4 4 0 00-4 4v4a4 4 0 008 0V7a4 4 0 00-4-4z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold">{tr.publications.talksTitle}</h3>
+          </div>
+
+          <ul class="space-y-4">
+            {pubs.talks.map((talk) => {
+              const inner = (
+                <Fragment>
+                  <div class="mb-1.5 flex flex-wrap items-center gap-2 text-xs">
+                    <span class="font-bold text-purple">{talk.venue}</span>
+                    <span class="text-text-dim">·</span>
+                    <span class="text-text-dim">{talk.role}</span>
+                  </div>
+                  <h4 class="mb-1 text-sm font-semibold leading-snug transition-colors group-hover:text-accent sm:text-base">
+                    {talk.title}
+                  </h4>
+                  <p class="text-xs leading-relaxed text-text-muted sm:text-sm">{talk.description}</p>
+                </Fragment>
+              );
+              return (
+                <li>
+                  {talk.url ? (
+                    <a
+                      href={talk.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group block rounded-xl border border-transparent p-3 transition-colors hover:border-border hover:bg-white/[0.03]"
+                    >
+                      {inner}
+                      <span class="sr-only"> {tr.a11y.opensNewTab}</span>
+                    </a>
+                  ) : (
+                    <div class="group block rounded-xl p-3">{inner}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated counters -->
+  <script is:inline>
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var counters = document.querySelectorAll("#publications-stats .counter");
+      if (!counters.length) return;
+
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function animateCounter(el) {
+        var raw = el.getAttribute("data-target") || "";
+        var suffix = "";
+        var numStr = raw;
+        if (raw.endsWith("K+")) { suffix = "K+"; numStr = raw.slice(0, -2); }
+        else if (raw.endsWith("+")) { suffix = "+"; numStr = raw.slice(0, -1); }
+        var target = parseInt(numStr, 10);
+        if (isNaN(target)) return;
+        var duration = 1500;
+        var start = performance.now();
+        el.textContent = "0" + suffix;
+        function step(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var value = Math.round(easeOutCubic(progress) * target);
+          el.textContent = value + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      counters.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</section>

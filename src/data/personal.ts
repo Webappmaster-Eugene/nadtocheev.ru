@@ -18,7 +18,6 @@ export const personal = {
   github: "https://github.com/Webappmaster-Eugene",
   habr: "https://career.habr.com/webappmaster",
   habrArticles: "https://habr.com/ru/articles/913984/",
-  youtube: "https://www.youtube.com/@webappmaster/videos",
   website: "https://nadtocheev.ru",
   websiteProjects: "https://webappmaster.ru",
 
@@ -48,11 +47,10 @@ export const personal = {
     vsesdal: "https://vsesdal.com/cabinet/executor/1836368",
   },
 
-  /* Стартапы */
+  /* Стартапы (собственные продукты) */
   startups: {
-    adminHouse: "https://github.com/Webappmaster-Eugene/admin-house-full",
-    mskFlatParser: "https://github.com/Webappmaster-Eugene/msk_flat_parser",
-    calendarClown: "https://github.com/Webappmaster-Eugene/calendar_clown",
+    spin: "https://podbor-minuta.ru/",
+    smetas: "https://alibaba.hhos.ru/",
   },
 
   /* Амбассадорство */
@@ -61,7 +59,7 @@ export const personal = {
 
 /** Ключевые метрики для hero-секции */
 export const heroMetrics = [
-  { value: "5+" },
+  { value: "5" },
   { value: "50K+" },
   { value: "5000" },
   { value: "10+" },
