@@ -14,7 +14,6 @@
 # Установка зависимостей
 npm install
 
-# Локальная разработка (hot-reload)
 npm run dev        # → http://localhost:4321
 
 # Продакшн-сборка
