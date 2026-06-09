@@ -197,6 +197,7 @@ const jsonLd = {
         },
       ],
       brand: { "@type": "Brand", name: personal.name.full[lang] },
+      priceRange: "₽₽",
     },
     {
       "@type": "WebSite",
@@ -231,8 +232,8 @@ const jsonLd = {
       name: title,
       description: description,
       inLanguage: tr.meta.htmlLang,
-      datePublished: "2025-03-12",
-      dateModified: "2026-06-09",
+      datePublished: "2025-03-12T00:00:00+03:00",
+      dateModified: "2026-06-09T00:00:00+03:00",
       isPartOf: { "@id": `${personal.website}/#website` },
       about: { "@id": `${personal.website}/#person` },
       mainEntity: { "@id": `${personal.website}/#person` },
@@ -360,7 +361,7 @@ const jsonLd = {
       url: personal.startups.smetas,
       author: { "@id": `${personal.website}/#person` },
       creator: { "@id": `${personal.website}/#person` },
-      offers: { "@type": "Offer", priceCurrency: "RUB", availability: "https://schema.org/InStock" },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "RUB", availability: "https://schema.org/InStock" },
     },
     {
       "@type": "Article",
@@ -369,10 +370,17 @@ const jsonLd = {
         ? "Критическое осмысление фриланса - гайд с высоты опыта 6 лет"
         : "A critical take on freelancing: a guide built on 6 years of experience",
       url: "https://habr.com/ru/articles/913984/",
-      datePublished: "2025",
+      datePublished: "2025-04-01T00:00:00+03:00",
+      dateModified: "2025-04-01T00:00:00+03:00",
       inLanguage: "ru",
+      image: { "@type": "ImageObject", url: `${personal.website}/og-image.png`, width: 1200, height: 630 },
       author: { "@id": `${personal.website}/#person` },
-      publisher: { "@type": "Organization", name: "Habr" },
+      publisher: {
+        "@type": "Organization",
+        name: "Habr",
+        url: "https://habr.com",
+        logo: { "@type": "ImageObject", url: "https://habr.com/img/favicons/apple-touch-icon-180x180.png" },
+      },
     },
     {
       "@type": "Article",
@@ -381,10 +389,17 @@ const jsonLd = {
         ? "Опыт создания коммерческого приложения аренды авто в Дубае"
         : "Building a commercial car rental app in Dubai",
       url: "https://habr.com/p/727810/",
-      datePublished: "2023",
+      datePublished: "2023-05-01T00:00:00+03:00",
+      dateModified: "2023-05-01T00:00:00+03:00",
       inLanguage: "ru",
+      image: { "@type": "ImageObject", url: `${personal.website}/og-image.png`, width: 1200, height: 630 },
       author: { "@id": `${personal.website}/#person` },
-      publisher: { "@type": "Organization", name: "Habr" },
+      publisher: {
+        "@type": "Organization",
+        name: "Habr",
+        url: "https://habr.com",
+        logo: { "@type": "ImageObject", url: "https://habr.com/img/favicons/apple-touch-icon-180x180.png" },
+      },
     },
   ],
 };
