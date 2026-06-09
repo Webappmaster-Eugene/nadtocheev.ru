@@ -1,12 +1,49 @@
 {
-  "name": "Евгений Надточеев — Fullstack Developer",
+  "name": "Евгений Надточеев - Fullstack Developer (Node.js, Go, AI)",
   "short_name": "Надточеев",
-  "icons": [
-    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
-    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512" }
-  ],
+  "description": "Fullstack-разработчик с 5 годами опыта: Node.js, Go, React, Kubernetes, AI/LLM. Highload, микросервисы, менторство, мок-собеседования.",
+  "lang": "ru",
+  "dir": "ltr",
+  "start_url": "/?utm_source=pwa&utm_medium=manifest",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
   "theme_color": "#0a0a0b",
   "background_color": "#09090b",
-  "display": "standalone"
+  "categories": ["business", "productivity", "education"],
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },
+    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Связаться в Telegram",
+      "short_name": "Telegram",
+      "url": "https://t.me/eugene_nadtocheev",
+      "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Услуги (консультации, мок-собесы)",
+      "short_name": "Услуги",
+      "url": "/#services"
+    },
+    {
+      "name": "Проекты",
+      "short_name": "Проекты",
+      "url": "/#projects"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Главная страница - Евгений Надточеев, Fullstack-разработчик"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { personal } from "../data/personal.ts";
+
+const lang = "ru" as const;
+const title = "404 - Страница не найдена | Евгений Надточеев";
+const description = "Этой страницы не существует. Вернитесь на главную или свяжитесь со мной в Telegram.";
+---
+
+<Layout lang={lang} title={title} description={description}>
+  <main id="main-content" class="flex min-h-screen items-center justify-center px-4 py-24">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="font-mono text-sm font-medium uppercase tracking-wider text-accent">404</p>
+      <h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Страница не найдена</h1>
+      <p class="mt-4 text-base text-text-muted sm:text-lg">
+        Кажется, тут пусто. Зато на главной есть всё про мой опыт, проекты и услуги.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20"
+        >
+          Вернуться на главную
+        </a>
+        <a
+          href={personal.telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold text-text transition-all hover:border-text/30 hover:bg-white/5"
+        >
+          Написать в Telegram
+        </a>
+      </div>
+
+      <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-text-dim">
+        <li><a href="/#about" class="hover:text-accent">Обо мне</a></li>
+        <li><a href="/#experience" class="hover:text-accent">Опыт</a></li>
+        <li><a href="/#projects" class="hover:text-accent">Проекты</a></li>
+        <li><a href="/#services" class="hover:text-accent">Услуги</a></li>
+        <li><a href="/#contacts" class="hover:text-accent">Контакты</a></li>
+        <li><a href="/en/" class="hover:text-accent">English</a></li>
+      </ul>
+    </div>
+  </main>
+</Layout>

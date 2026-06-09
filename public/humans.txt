@@ -1,0 +1,29 @@
+/* TEAM */
+
+  Owner / Engineer: Евгений Надточеев (Evgeny Nadtocheev)
+  Role: Fullstack Developer (Node.js / Go / React / DevOps / AI)
+  Contact: johnn.hotmail@mail.ru
+  Telegram: https://t.me/eugene_nadtocheev
+  GitHub: https://github.com/Webappmaster-Eugene
+  Habr Career: https://career.habr.com/webappmaster
+  Location: Moscow, Russia
+  Languages: ru, en (B2)
+
+/* THANKS */
+
+  Built with Astro 5, TypeScript, Tailwind CSS v4.
+  Hosted as a static site.
+
+/* SITE */
+
+  Standards: HTML5, JSON-LD (schema.org), Open Graph, Twitter Cards, hreflang
+  Components: Astro Components
+  Software: Node.js, Astro, tsup, tsx
+  Last update: 2026-06-09
+
+/* AI / LLM NOTE */
+
+  This site is friendly to LLM-powered search engines.
+  See /llms.txt and /llms-full.txt for structured, citation-ready summaries.
+  Attribution required when content is quoted. Preferred attribution:
+  "Evgeny Nadtocheev, Fullstack Developer" with link to https://nadtocheev.ru

@@ -1,6 +1,6 @@
 ---
 /**
- * Base layout — полное SEO (meta, OG, hreflang, JSON-LD Person),
+ * Base layout - полное SEO (meta, OG, hreflang, JSON-LD Person),
  * шрифты, анимации, двуязычная поддержка.
  */
 import "../styles/global.css";
@@ -25,29 +25,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ruURL = new URL("/", Astro.site);
 const enURL = new URL("/en/", Astro.site);
 
-/** JSON-LD: Person + WebSite — структурированные данные для SEO и LLM */
+/** JSON-LD: Person + WebSite - структурированные данные для SEO и LLM */
 /** FAQ для LLM и SEO */
 const faqItems = lang === "ru"
   ? [
       { q: "Чем занимается Евгений Надточеев?", a: "Fullstack-разработчик с 5 годами опыта. Специализируется на backend (Node.js, Go), DevOps (Kubernetes, Docker) и AI/LLM интеграциях. Работает в сфере highload-систем в финтехе и аналитике недвижимости." },
       { q: "Какой технологический стек?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Можно ли нанять Евгения как ментора?", a: "Да, Евгений проводит мок-собеседования, карьерные консультации и менторство для fullstack-разработчиков. Доступен на Solvery, GetMentor, EasyOffer и через Telegram." },
-      { q: "Как связаться с Евгением?", a: "Предпочитаемый способ — Telegram: @eugene_nadtocheev. Также доступен по email: johnn.hotmail@mail.ru и телефону: +7 (920) 080-87-00." },
+      { q: "Как связаться с Евгением?", a: "Предпочитаемый способ - Telegram: @eugene_nadtocheev. Также доступен по email: johnn.hotmail@mail.ru и телефону: +7 (920) 080-87-00." },
       { q: "В каких отраслях работал Евгений?", a: "Финтех (платёжные системы, криптовалюты, биллинг), аналитика недвижимости (топ-1 платформа в РФ с 200K+ посещений/сутки и 2000 rps), маркетинг и реклама, системная интеграция и IT-консалтинг." },
       { q: "Работает ли Евгений с AI и LLM?", a: "Да, активно. Строит RAG-пайплайны, интегрирует LLM в рабочие процессы, ежедневно использует Claude Code и Cursor. Создал Telegram-бота с голосовым управлением Google Calendar через AI." },
       { q: "Какое образование у Евгения?", a: "Академия ФСБ России (2019). Специальность: автоматизированные системы управления, автоматизированная обработка информации и управление." },
-      { q: "Создавал ли Евгений свои стартапы?", a: "Да, создатель двух собственных продуктов: СПИН (podbor-minuta.ru) — сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) в Telegram; и SMETAS (alibaba.hhos.ru) — SaaS-платформа для составления строительных смет с базой материалов и командной работой." },
-      { q: "В каком формате Евгений работает?", a: "Удалённо из Москвы. Доступен для клиентов по всей России и странам СНГ. Менторство — для русскоязычных разработчиков по всему миру." },
+      { q: "Создавал ли Евгений свои стартапы?", a: "Да, создатель двух собственных продуктов: СПИН (podbor-minuta.ru) - сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) в Telegram; и SMETAS (alibaba.hhos.ru) - SaaS-платформа для составления строительных смет с базой материалов и командной работой." },
+      { q: "В каком формате Евгений работает?", a: "Удалённо из Москвы. Доступен для клиентов по всей России и странам СНГ. Менторство - для русскоязычных разработчиков по всему миру." },
     ]
   : [
       { q: "What does Evgeny Nadtocheev do?", a: "Fullstack Developer with 5 years of experience. Specializes in backend (Node.js, Go), DevOps (Kubernetes, Docker), and AI/LLM integrations. Works on high-load systems in fintech and real estate analytics." },
       { q: "What is his tech stack?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Can I hire Evgeny as a mentor?", a: "Yes, Evgeny conducts mock interviews, career consultations, and mentoring for fullstack developers. Available on Solvery, GetMentor, EasyOffer, and via Telegram." },
-      { q: "How to contact Evgeny?", a: "Preferred method — Telegram: @eugene_nadtocheev. Also available via email: johnn.hotmail@mail.ru and phone: +7 (920) 080-87-00." },
+      { q: "How to contact Evgeny?", a: "Preferred method - Telegram: @eugene_nadtocheev. Also available via email: johnn.hotmail@mail.ru and phone: +7 (920) 080-87-00." },
       { q: "What industries has he worked in?", a: "Fintech (payment systems, cryptocurrency, billing), real estate analytics (#1 platform in Russia with 200K+ daily visits and 2,000 rps), marketing & advertising, system integration and IT consulting." },
       { q: "Does he work with AI and LLMs?", a: "Yes, actively. He builds RAG pipelines, integrates LLMs into workflows, uses Claude Code and Cursor daily. He built a Telegram bot with voice-controlled Google Calendar management via AI." },
       { q: "What is his education?", a: "Academy of the Federal Security Service of Russia (2019). Specialty: Automated Control Systems, Automated Information Processing and Control Systems." },
-      { q: "Has Evgeny founded any startups?", a: "Yes, he is the founder of two products of his own: SPIN (podbor-minuta.ru) — a Moscow new-build price tracker with Telegram alerts on discounts from major developers (PIK, Samolet, Granel, Level, Etalon); and SMETAS (alibaba.hhos.ru) — a SaaS platform for construction estimates with a shared materials database and team collaboration." },
+      { q: "Has Evgeny founded any startups?", a: "Yes, he is the founder of two products of his own: SPIN (podbor-minuta.ru) - a Moscow new-build price tracker with Telegram alerts on discounts from major developers (PIK, Samolet, Granel, Level, Etalon); and SMETAS (alibaba.hhos.ru) - a SaaS platform for construction estimates with a shared materials database and team collaboration." },
       { q: "What is his work format?", a: "Remote from Moscow. Available for clients across Russia and CIS countries. Mentoring available worldwide for Russian-speaking developers." },
     ];
 
@@ -55,20 +55,22 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
+      "@type": ["Person", "ProfessionalService"],
       "@id": `${personal.website}/#person`,
       name: personal.name.full[lang],
       alternateName: lang === "ru" ? personal.name.full.en : personal.name.full.ru,
       givenName: personal.name.first[lang],
       familyName: personal.name.last[lang],
+      gender: { "@type": "GenderType", name: "Male" },
       jobTitle: lang === "ru"
         ? "Fullstack-разработчик (Node.js, Go, React)"
         : "Fullstack Developer (Node.js, Go, React)",
       description: description,
       url: personal.website,
-      email: personal.email,
+      mainEntityOfPage: canonicalURL.href,
+      email: `mailto:${personal.email}`,
       telephone: personal.phone,
-      image: `${personal.website}/photo.jpg`,
+      image: { "@type": "ImageObject", url: `${personal.website}/og-image.png`, width: 1200, height: 630 },
       sameAs: [
         personal.github,
         personal.habr,
@@ -81,34 +83,146 @@ const jsonLd = {
         personal.telegramChannels.eugeneVibecode,
         personal.mentoring.solvery,
         personal.mentoring.getmentor,
+        personal.mentoring.easyoffer,
+        personal.mentoring.hcareers,
+        personal.startups.spin,
+        personal.startups.smetas,
+      ],
+      hasOccupation: {
+        "@type": "Occupation",
+        name: lang === "ru" ? "Fullstack-разработчик" : "Fullstack Developer",
+        occupationLocation: { "@type": "City", name: lang === "ru" ? "Москва" : "Moscow" },
+        skills: "Node.js, Go, TypeScript, NestJS, Fastify, PostgreSQL, Redis, Kafka, Kubernetes, Docker, React, Vue, Next.js, Astro, AI/LLM, RAG, OpenTelemetry, gRPC, GraphQL Federation",
+        estimatedSalary: {
+          "@type": "MonetaryAmountDistribution",
+          currency: "RUB",
+          duration: "P1M",
+          median: 280000,
+        },
+        occupationalCategory: "15-1252.00",
+        responsibilities: lang === "ru"
+          ? "Проектирование и разработка highload-микросервисов, observability, DevOps, frontend SSR-приложения, AI-интеграции, менторство и проведение технических собеседований."
+          : "Design and development of high-load microservices, observability, DevOps, frontend SSR apps, AI integrations, mentoring and conducting technical interviews.",
+      },
+      worksFor: {
+        "@type": "Organization",
+        name: "bnmap.pro",
+        url: "https://bnmap.pro",
+        industry: lang === "ru" ? "Аналитика недвижимости" : "Real Estate Analytics",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: lang === "ru"
+          ? "Академия Федеральной службы охраны Российской Федерации"
+          : "Academy of the Federal Guard Service of the Russian Federation",
+        address: { "@type": "PostalAddress", addressLocality: lang === "ru" ? "Орёл" : "Oryol", addressCountry: "RU" },
+      },
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "degree",
+          name: lang === "ru"
+            ? "Информационная безопасность телекоммуникационных систем; Автоматизированные системы обработки информации и управления"
+            : "Information Security of Telecommunication Systems; Automated Information Processing and Control Systems",
+          dateCreated: "2019",
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certificate",
+          name: "English Level B2",
+          dateCreated: "2023",
+        },
       ],
       knowsAbout: [
-        "Node.js", "Go", "TypeScript", "React", "Vue.js", "NestJS",
-        "Kubernetes", "Docker", "PostgreSQL", "Redis", "Apache Kafka",
-        "Microservices", "CI/CD", "System Design", "AI/LLM", "RAG",
-        "gRPC", "Event-Driven Architecture", "DevOps",
-        "Telegram Bots", "Telegram Mini App", "React Native", "Electron",
-        "Mentoring", "Technical Education",
+        "Node.js", "Go", "TypeScript", "Fullstack development",
+        "NestJS", "Fastify", "Express", "Moleculer.js", "BullMQ",
+        "React", "React Native", "Expo", "Vue.js", "Next.js", "Nuxt.js", "Vike", "Astro",
+        "Kubernetes", "Helm", "FluxCD", "Docker", "Docker Swarm", "Dokploy",
+        "PostgreSQL", "pgvector", "MySQL", "MongoDB", "Redis", "Drizzle ORM", "Prisma",
+        "Apache Kafka", "RabbitMQ", "gRPC", "GraphQL Federation", "Apollo Federation",
+        "Microservices", "Event-Driven Architecture", "DDD", "CQRS", "Outbox Pattern", "Circuit Breaker", "Saga",
+        "OpenTelemetry", "Prometheus", "Grafana", "Tempo", "Loki", "Sentry", "Observability",
+        "CI/CD", "GitHub Actions", "GitLab CI", "Self-hosted runners",
+        "AI", "LLM", "RAG", "Claude Code", "Cursor", "OpenAI API", "Vector Databases", "Embeddings",
+        "Telegram Bots", "Telegram Mini App", "grammY", "Telegraf",
+        "System Design", "High-load systems", "Distributed systems",
+        "Tech Lead", "Technical Interviews", "Mentoring", "Technical Education",
+        "Real Estate Analytics", "Fintech", "Payment Gateways", "Robokassa",
       ],
       knowsLanguage: [
         { "@type": "Language", name: "Russian", alternateName: "ru" },
-        { "@type": "Language", name: "English", alternateName: "en", proficiencyLevel: "B1" },
+        { "@type": "Language", name: "English", alternateName: "en", proficiencyLevel: "B2" },
       ],
       address: {
         "@type": "PostalAddress",
         addressLocality: lang === "ru" ? "Москва" : "Moscow",
+        addressRegion: "RU-MOW",
         addressCountry: "RU",
       },
+      workLocation: { "@type": "Place", name: lang === "ru" ? "Удалённо / Москва (гибрид)" : "Remote / Moscow (hybrid)" },
       nationality: { "@type": "Country", name: lang === "ru" ? "Россия" : "Russia" },
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: lang === "ru" ? "Профессиональные запросы" : "Professional inquiries",
+          email: personal.email,
+          telephone: personal.phone,
+          url: personal.telegram,
+          availableLanguage: ["Russian", "English"],
+          areaServed: ["RU", "CIS", "Worldwide"],
+        },
+      ],
+      makesOffer: [
+        {
+          "@type": "Offer",
+          name: lang === "ru" ? "Карьерная консультация" : "Career Consultation",
+          description: lang === "ru"
+            ? "Часовая консультация: разбор резюме, карьерный трек, выбор стека, подготовка к переговорам об оффере"
+            : "1-hour consultation: resume review, career track, stack choice, offer negotiation prep",
+          price: "2000",
+          priceCurrency: "RUB",
+          eligibleDuration: { "@type": "QuantitativeValue", value: 1, unitCode: "HUR" },
+          availability: "https://schema.org/InStock",
+        },
+        {
+          "@type": "Offer",
+          name: lang === "ru" ? "Мок-собеседование" : "Mock Interview",
+          description: lang === "ru"
+            ? "Двухчасовое техническое интервью: live coding, system design, теория, soft skills, развёрнутый фидбек"
+            : "2-hour technical interview: live coding, system design, theory, soft skills, detailed feedback",
+          price: "5000",
+          priceCurrency: "RUB",
+          eligibleDuration: { "@type": "QuantitativeValue", value: 2, unitCode: "HUR" },
+          availability: "https://schema.org/InStock",
+        },
+      ],
+      brand: { "@type": "Brand", name: personal.name.full[lang] },
     },
     {
       "@type": "WebSite",
       "@id": `${personal.website}/#website`,
       url: personal.website,
-      name: title,
+      name: personal.name.full[lang],
+      alternateName: personal.name.full[lang === "ru" ? "en" : "ru"],
       description: description,
-      inLanguage: [tr.meta.htmlLang],
+      inLanguage: [tr.meta.htmlLang, lang === "ru" ? "en" : "ru"],
       publisher: { "@id": `${personal.website}/#person` },
+      copyrightHolder: { "@id": `${personal.website}/#person` },
+      copyrightYear: 2026,
+      potentialAction: [
+        {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${personal.website}/?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
+        {
+          "@type": "ReadAction",
+          target: [personal.website, `${personal.website}/en/`],
+        },
+      ],
     },
     {
       "@type": "ProfilePage",
@@ -117,24 +231,29 @@ const jsonLd = {
       name: title,
       description: description,
       inLanguage: tr.meta.htmlLang,
+      datePublished: "2025-03-12",
+      dateModified: "2026-06-09",
       isPartOf: { "@id": `${personal.website}/#website` },
       about: { "@id": `${personal.website}/#person` },
       mainEntity: { "@id": `${personal.website}/#person` },
+      author: { "@id": `${personal.website}/#person` },
+      primaryImageOfPage: { "@type": "ImageObject", url: `${personal.website}/og-image.png` },
       speakable: {
         "@type": "SpeakableSpecification",
-        cssSelector: ["#hero", "#about", "#contacts"],
+        cssSelector: ["#hero", "#about", "#contacts", "#services"],
+        xpath: ["/html/head/title", "/html/head/meta[@name='description']/@content"],
       },
     },
     {
       "@type": "BreadcrumbList",
       "@id": `${canonicalURL.href}#breadcrumb`,
       itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: lang === "ru" ? "Главная" : "Home",
-          item: lang === "ru" ? personal.website : `${personal.website}/en/`,
-        },
+        { "@type": "ListItem", position: 1, name: lang === "ru" ? "Главная" : "Home", item: lang === "ru" ? personal.website : `${personal.website}/en/` },
+        { "@type": "ListItem", position: 2, name: lang === "ru" ? "Обо мне" : "About", item: `${canonicalURL.href}#about` },
+        { "@type": "ListItem", position: 3, name: lang === "ru" ? "Опыт" : "Experience", item: `${canonicalURL.href}#experience` },
+        { "@type": "ListItem", position: 4, name: lang === "ru" ? "Проекты" : "Projects", item: `${canonicalURL.href}#projects` },
+        { "@type": "ListItem", position: 5, name: lang === "ru" ? "Услуги" : "Services", item: `${canonicalURL.href}#services` },
+        { "@type": "ListItem", position: 6, name: lang === "ru" ? "Контакты" : "Contacts", item: `${canonicalURL.href}#contacts` },
       ],
     },
     {
@@ -142,75 +261,130 @@ const jsonLd = {
       "@id": `${personal.website}/#organization`,
       name: personal.name.full[lang],
       url: personal.website,
-      logo: `${personal.website}/favicon-512.png`,
+      logo: { "@type": "ImageObject", url: `${personal.website}/favicon-512.png`, width: 512, height: 512 },
       founder: { "@id": `${personal.website}/#person` },
-      sameAs: [personal.github, personal.telegram],
+      sameAs: [personal.github, personal.telegram, personal.habr],
     },
     {
       "@type": "Service",
-      "@id": `${personal.website}/#mentoring`,
-      name: lang === "ru"
-        ? "Менторство и карьерные консультации для разработчиков"
-        : "Mentoring & Career Consulting for Developers",
+      "@id": `${personal.website}/#service-consultation`,
+      name: lang === "ru" ? "Карьерная консультация по fullstack-разработке" : "Career Consultation for Fullstack Developers",
       description: lang === "ru"
-        ? "Мок-собеседования, карьерные консультации, менторство для fullstack-разработчиков по авторской системе"
-        : "Mock interviews, career consulting, mentoring for fullstack developers with custom methodology",
+        ? "Часовая консультация для разработчиков: разбор резюме, карьерный трек, выбор стека, подготовка к переговорам об оффере."
+        : "One-hour consultation for developers: resume review, career track, stack choice, offer negotiation prep.",
       provider: { "@id": `${personal.website}/#person` },
-      areaServed: [
-        { "@type": "Country", name: "Russia" },
-        { "@type": "Country", name: "CIS" },
-      ],
-      serviceType: lang === "ru" ? "Менторство в IT" : "IT Mentoring",
+      serviceType: lang === "ru" ? "Карьерная консультация" : "Career Consulting",
+      audience: { "@type": "Audience", audienceType: lang === "ru" ? "Разработчики ПО (Junior/Middle/Senior)" : "Software Developers (Junior/Middle/Senior)" },
+      areaServed: [{ "@type": "Country", name: "Russia" }, { "@type": "Country", name: "Worldwide" }],
+      offers: {
+        "@type": "Offer",
+        price: "2000",
+        priceCurrency: "RUB",
+        availability: "https://schema.org/InStock",
+        eligibleDuration: { "@type": "QuantitativeValue", value: 1, unitCode: "HUR" },
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": `${personal.website}/#service-mock-interview`,
+      name: lang === "ru" ? "Мок-собеседование для fullstack-разработчиков" : "Mock Interview for Fullstack Developers",
+      description: lang === "ru"
+        ? "Полноценное техническое интервью (2 часа): live coding, system design, теория по Node.js / БД / архитектуре, soft skills, развёрнутый фидбек."
+        : "Full technical interview (2 hours): live coding, system design, Node.js / DB / architecture theory, soft skills, detailed feedback.",
+      provider: { "@id": `${personal.website}/#person` },
+      serviceType: lang === "ru" ? "Мок-собеседование" : "Mock Interview",
+      audience: { "@type": "Audience", audienceType: lang === "ru" ? "Разработчики ПО (Junior/Middle/Senior)" : "Software Developers (Junior/Middle/Senior)" },
+      areaServed: [{ "@type": "Country", name: "Russia" }, { "@type": "Country", name: "Worldwide" }],
+      offers: {
+        "@type": "Offer",
+        price: "5000",
+        priceCurrency: "RUB",
+        availability: "https://schema.org/InStock",
+        eligibleDuration: { "@type": "QuantitativeValue", value: 2, unitCode: "HUR" },
+      },
+    },
+    {
+      "@type": "Course",
+      "@id": `${personal.website}/#course-mentoring`,
+      name: lang === "ru" ? "Менторство для fullstack-разработчиков" : "Fullstack Developer Mentoring",
+      description: lang === "ru"
+        ? "Авторская система менторства: индивидуальные роадмапы, регулярные созвоны, разбор кода, подготовка к собеседованиям, помощь с первым/следующим оффером."
+        : "Original mentoring system: individual roadmaps, regular calls, code review, interview prep, help with first or next offer.",
+      provider: { "@id": `${personal.website}/#person` },
+      educationalLevel: ["Beginner", "Intermediate", "Advanced"],
+      teaches: ["Node.js", "TypeScript", "React", "System Design", "Microservices", "Career growth"],
+      inLanguage: ["ru", "en"],
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "Online",
+        courseWorkload: "P3M",
+        instructor: { "@id": `${personal.website}/#person` },
+      },
     },
     {
       "@type": "FAQPage",
       "@id": `${canonicalURL.href}#faq`,
+      inLanguage: tr.meta.htmlLang,
       mainEntity: faqItems.map((item) => ({
         "@type": "Question",
         name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
+        acceptedAnswer: { "@type": "Answer", text: item.a, author: { "@id": `${personal.website}/#person` } },
       })),
     },
     {
       "@type": "SoftwareApplication",
       "@id": `${personal.website}/#startup-spin`,
       name: "СПИН",
+      alternateName: "SPIN",
       applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
+      applicationSubCategory: lang === "ru" ? "Мониторинг цен на недвижимость" : "Real Estate Price Tracker",
+      operatingSystem: "Web, iOS, Android (Telegram)",
       description: lang === "ru"
-        ? "Сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков в Telegram"
-        : "Moscow new-build price tracker with Telegram alerts on discounts from major developers",
+        ? "Сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) в Telegram."
+        : "Moscow new-build price tracker with Telegram alerts on discounts from major developers (PIK, Samolet, Granel, Level, Etalon).",
       url: personal.startups.spin,
       author: { "@id": `${personal.website}/#person` },
+      creator: { "@id": `${personal.website}/#person` },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "RUB", availability: "https://schema.org/InStock" },
     },
     {
       "@type": "SoftwareApplication",
       "@id": `${personal.website}/#startup-smetas`,
       name: "SMETAS",
       applicationCategory: "BusinessApplication",
+      applicationSubCategory: lang === "ru" ? "SaaS для строительных смет" : "SaaS for Construction Estimates",
       operatingSystem: "Web",
       description: lang === "ru"
-        ? "SaaS-платформа для составления строительных смет с базой материалов и командной работой"
-        : "SaaS platform for construction estimates with shared materials database and team collaboration",
+        ? "SaaS-платформа для составления строительных смет: единая база материалов, гибкие справочники, командная работа, безопасное хранение данных."
+        : "SaaS platform for construction estimates: shared materials database, flexible references, team collaboration, secure data storage.",
       url: personal.startups.smetas,
       author: { "@id": `${personal.website}/#person` },
+      creator: { "@id": `${personal.website}/#person` },
+      offers: { "@type": "Offer", priceCurrency: "RUB", availability: "https://schema.org/InStock" },
     },
     {
-      "@type": "ItemList",
-      "@id": `${personal.website}/#techstack`,
-      name: lang === "ru" ? "Технологический стек" : "Tech Stack",
-      numberOfItems: 9,
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Node.js" },
-        { "@type": "ListItem", position: 2, name: "Go" },
-        { "@type": "ListItem", position: 3, name: "TypeScript" },
-        { "@type": "ListItem", position: 4, name: "React" },
-        { "@type": "ListItem", position: 5, name: "Kubernetes" },
-        { "@type": "ListItem", position: 6, name: "Docker" },
-        { "@type": "ListItem", position: 7, name: "PostgreSQL" },
-        { "@type": "ListItem", position: 8, name: "NestJS" },
-        { "@type": "ListItem", position: 9, name: "Kafka" },
-      ],
+      "@type": "Article",
+      "@id": "https://habr.com/ru/articles/913984/#article",
+      headline: lang === "ru"
+        ? "Критическое осмысление фриланса - гайд с высоты опыта 6 лет"
+        : "A critical take on freelancing: a guide built on 6 years of experience",
+      url: "https://habr.com/ru/articles/913984/",
+      datePublished: "2025",
+      inLanguage: "ru",
+      author: { "@id": `${personal.website}/#person` },
+      publisher: { "@type": "Organization", name: "Habr" },
+    },
+    {
+      "@type": "Article",
+      "@id": "https://habr.com/p/727810/#article",
+      headline: lang === "ru"
+        ? "Опыт создания коммерческого приложения аренды авто в Дубае"
+        : "Building a commercial car rental app in Dubai",
+      url: "https://habr.com/p/727810/",
+      datePublished: "2023",
+      inLanguage: "ru",
+      author: { "@id": `${personal.website}/#person` },
+      publisher: { "@type": "Organization", name: "Habr" },
     },
   ],
 };
@@ -226,15 +400,27 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={personal.name.full[lang]} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="creator" content={personal.name.full[lang]} />
+    <meta name="publisher" content={personal.name.full[lang]} />
+    <meta name="copyright" content={`© 2026 ${personal.name.full[lang]}`} />
+
+    <!-- Robots / индексация -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="yandex" content="all" />
+    <meta name="bingbot" content="index, follow" />
+
+    <!-- Keywords (всё ещё используются Яндексом) -->
     <meta name="keywords" content={lang === "ru"
-      ? "fullstack разработчик, backend разработчик, Node.js, Go, React, DevOps, Kubernetes, Docker, микросервисы, менторство, AI, LLM, Москва, highload, NestJS, TypeScript, портфолио"
-      : "fullstack developer, backend developer, Node.js, Go, React, DevOps, Kubernetes, Docker, microservices, mentoring, AI, LLM, Moscow, high-load, NestJS, TypeScript, portfolio"} />
+      ? "fullstack разработчик, backend разработчик, Node.js, Go, NestJS, Fastify, React, Vue, Next.js, Astro, DevOps, Kubernetes, Docker, микросервисы, Event-Driven Architecture, GraphQL Federation, OpenTelemetry, Kafka, PostgreSQL, pgvector, Redis, gRPC, AI, LLM, RAG, Claude Code, Cursor, ментор, мок-собеседование, карьерная консультация, технический собес, Москва, highload, TypeScript, портфолио, тимлид, Евгений Надточеев, fullstack-разработчик Москва, найм senior разработчика"
+      : "fullstack developer, backend engineer, Node.js, Go, NestJS, Fastify, React, Vue, Next.js, Astro, DevOps, Kubernetes, Docker, microservices, Event-Driven, GraphQL Federation, OpenTelemetry, Kafka, PostgreSQL, pgvector, Redis, gRPC, AI, LLM, RAG, Claude Code, Cursor, mentor, mock interview, career consulting, technical interviewer, Moscow, high-load, TypeScript, portfolio, tech lead, Evgeny Nadtocheev, hire senior fullstack developer"} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- hreflang — для мультиязычного SEO -->
+    <!-- hreflang - для мультиязычного SEO -->
     <link rel="alternate" hreflang="ru" href={ruURL} />
+    <link rel="alternate" hreflang="ru-RU" href={ruURL} />
     <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="en-US" href={enURL} />
     <link rel="alternate" hreflang="x-default" href={ruURL} />
 
     <!-- Open Graph -->
@@ -243,9 +429,11 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:secure_url" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content={lang === "ru"
-      ? `${personal.name.full.ru} — Fullstack-разработчик`
-      : `${personal.name.full.en} — Fullstack Developer`} />
+      ? `${personal.name.full.ru} - Fullstack-разработчик`
+      : `${personal.name.full.en} - Fullstack Developer`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={tr.meta.ogLocale} />
@@ -253,12 +441,27 @@ const jsonLd = {
     <meta property="og:site_name" content={personal.name.full[lang]} />
     <meta property="profile:first_name" content={personal.name.first[lang]} />
     <meta property="profile:last_name" content={personal.name.last[lang]} />
+    <meta property="profile:gender" content="male" />
+    <meta property="profile:username" content="webappmaster" />
+    <meta property="article:author" content={personal.website} />
+    <meta property="article:published_time" content="2025-03-12T00:00:00+03:00" />
+    <meta property="article:modified_time" content="2026-06-09T00:00:00+03:00" />
+    <meta property="og:updated_time" content="2026-06-09T00:00:00+03:00" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image:alt" content={lang === "ru"
+      ? `${personal.name.full.ru} - Fullstack-разработчик`
+      : `${personal.name.full.en} - Fullstack Developer`} />
+    <meta name="twitter:domain" content="nadtocheev.ru" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:label1" content={lang === "ru" ? "Должность" : "Job title"} />
+    <meta name="twitter:data1" content={lang === "ru" ? "Fullstack-разработчик" : "Fullstack Developer"} />
+    <meta name="twitter:label2" content={lang === "ru" ? "Локация" : "Location"} />
+    <meta name="twitter:data2" content={lang === "ru" ? "Москва, удалённо" : "Moscow, remote"} />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -266,6 +469,19 @@ const jsonLd = {
     <!-- Theme color -->
     <meta name="theme-color" content="#0a0a0b" id="meta-theme-color" />
     <meta name="color-scheme" content="dark light" />
+
+    <!-- PWA + Apple Web App + Windows tiles -->
+    <meta name="application-name" content={personal.name.full[lang]} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={personal.name.last[lang]} />
+    <meta name="format-detection" content="telephone=yes, email=yes, address=no" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="msapplication-TileImage" content="/favicon-512.png" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-tap-highlight" content="no" />
 
     <!-- Prevent flash of wrong theme -->
     <script is:inline>
@@ -310,15 +526,51 @@ const jsonLd = {
       />
     </noscript>
 
-    <!-- GEO-оптимизация для нейросетей и поисковиков -->
+    <!-- GEO-теги (физическая локация, для Я.Карт / Google Maps / локального SEO) -->
     <meta name="geo.region" content="RU-MOW" />
     <meta name="geo.placename" content={lang === "ru" ? "Москва" : "Moscow"} />
     <meta name="geo.position" content="55.7558;37.6173" />
     <meta name="ICBM" content="55.7558, 37.6173" />
 
-    <!-- Yandex / Google verification — вставьте реальные ID -->
-    <!-- <meta name="yandex-verification" content="XXXXXX" /> -->
-    <!-- <meta name="google-site-verification" content="XXXXXX" /> -->
+    <!-- Verification для поисковых консолей (вставьте реальные ID) -->
+    <!-- <meta name="yandex-verification" content="ВСТАВИТЬ_ID_ИЗ_WEBMASTER_YANDEX" /> -->
+    <!-- <meta name="google-site-verification" content="ВСТАВИТЬ_ID_ИЗ_SEARCH_CONSOLE" /> -->
+    <!-- <meta name="msvalidate.01" content="ВСТАВИТЬ_ID_ИЗ_BING_WEBMASTER" /> -->
+    <!-- <meta name="mailru-verification" content="ВСТАВИТЬ_ID_ИЗ_MAIL_RU" /> -->
+
+    <!-- llms.txt + AI discovery (GEO для LLM-движков) -->
+    <link rel="llms.txt" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-friendly full profile" />
+    <link rel="alternate" type="text/plain" href="/humans.txt" title="Humans of this site" />
+
+    <!-- Telegram Instant View / Mini App / Channel reference -->
+    <meta name="telegram:channel" content="@captain_galera" />
+    <meta name="telegram:contact" content="@eugene_nadtocheev" />
+
+    <!-- Аналитика: Яндекс.Метрика - вставить свой ID счётчика -->
+    <!--
+    <script is:inline>
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ecommerce:"dataLayer" });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    -->
+
+    <!-- Аналитика: Google Analytics 4 - вставить свой Measurement ID -->
+    <!--
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX", { anonymize_ip: true });
+    </script>
+    -->
   </head>
 
   <body class="min-h-screen bg-bg text-text antialiased">

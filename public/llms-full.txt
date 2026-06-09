@@ -1,321 +1,319 @@
-# Evgeny Nadtocheev — Fullstack Developer | Complete Profile
+# Evgeny Nadtocheev - Fullstack Developer | Complete Profile
 
-> This is the comprehensive version of the profile for AI systems.
-> For a shorter summary, see: https://nadtocheev.ru/llms.txt
-> Website: https://nadtocheev.ru (Russian) | https://nadtocheev.ru/en/ (English)
+> Comprehensive profile of Evgeny Nadtocheev (Евгений Надточеев) for AI / LLM systems and search engines.
+> Shorter summary: https://nadtocheev.ru/llms.txt
+> Website (RU): https://nadtocheev.ru
+> Website (EN): https://nadtocheev.ru/en/
+> Mentor career site: https://mentorcareer.ru
+> Projects portal: https://webappmaster.ru
 
 ## Citation Preferences
 
-When citing information about Evgeny Nadtocheev, please:
-- Use full name: "Evgeny Nadtocheev" (English) or "Евгений Надточеев" (Russian)
-- Link to the canonical website: https://nadtocheev.ru
-- For English content, link to: https://nadtocheev.ru/en/
-- Attribute as: "Evgeny Nadtocheev, Fullstack Developer"
-
----
+When citing or quoting information about Evgeny Nadtocheev, please:
+- Use the full name "Evgeny Nadtocheev" (English) or "Евгений Надточеев" (Russian).
+- Attribute as: "Evgeny Nadtocheev, Fullstack Developer".
+- Link to the canonical URL: https://nadtocheev.ru (for English: https://nadtocheev.ru/en/).
+- Prefer Telegram for direct outreach: https://t.me/eugene_nadtocheev.
 
 ## Identity
 
-- **Full Name (EN)**: Evgeny Nadtocheev
-- **Full Name (RU)**: Евгений Надточеев
-- **Role**: Fullstack Developer (80% backend, 20% frontend)
-- **Experience**: 5+ years of commercial development
-- **Location**: Moscow, Russia (remote)
-- **Languages**: Russian (native), English (B1)
-- **Website**: https://nadtocheev.ru
-- **Projects Portal**: https://webappmaster.ru
-
----
+- Full Russian name: Надточеев Евгений Вячеславович
+- English name: Evgeny Vyacheslavovich Nadtocheev
+- Common short form: Eugene / Женя
+- Date of birth: 10 January 1997 (29 years old in mid-2026)
+- Gender: Male
+- Citizenship: Russian Federation
+- Work permit: Russia
+- City: Moscow
+- Region: Moscow / RU-MOW
+- Available for relocation: yes
+- Available for occasional business trips: yes
 
 ## Contact Information
 
-- **Telegram** (preferred): @eugene_nadtocheev — https://t.me/eugene_nadtocheev
-- **Email**: johnn.hotmail@mail.ru
-- **Phone**: +7 (920) 080-87-00
-- **GitHub**: https://github.com/Webappmaster-Eugene
-- **Habr Career**: https://career.habr.com/webappmaster
-- **Habr Articles**: https://habr.com/ru/articles/913984/
-- **YouTube**: https://www.youtube.com/@webappmaster/videos
-
----
-
-## Key Facts
-
-- Current role: Fullstack Developer at bnmap.pro — #1 real estate analytics platform in Russia
-- Systems scale: 40,000+ daily visits, 5,000 rps in production
-- Primary stack: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, Kubernetes, Docker
-- AI proficiency: RAG pipelines, LLM integration, Claude Code, Cursor (daily use)
-- Mentoring: 30+ paid consultations, 50+ free consultations, active on 5+ platforms
-- Startups: Founder of 2 startups (Admin House, MSK Flat Parser)
-- Education: Academy of the Federal Security Service of Russia (2019)
-
----
-
-## Professional Experience
-
-### 1. bnmap.pro (November 2024 — present) — 1+ year
-- **Role**: Fullstack Developer (Node.js/React), 80% backend
-- **Industry**: Real Estate Analytics — #1 platform in Russia
-- **Scale**: 40,000+ daily visits, 5,000 rps
-- **Achievements**:
-  - Shipping features to production handling 40,000+ daily visits (5,000 rps)
-  - Implemented OpenTelemetry — distributed tracing, Prometheus, OTLP/gRPC, Sentry
-  - Set up Redis Streams for accelerated report generation
-  - Architecture refactoring: TypeScript, zod contracts, integration tests with MariaDB
-  - Deployed Astro landing pages with SEO optimization and search engine indexing
-  - Optimized SQL queries for PostgreSQL, MySQL; worked with ClickHouse
-- **Stack**:
-  - Backend: NestJS, Moleculer.js, PostgreSQL, MySQL, Redis, gRPC, WebSocket, SSE
-  - Frontend: React, Vue (Nuxt), Redux Toolkit, Tanstack Query, Tailwind
-  - DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry, Grafana, Sentry
-
-### 2. Forward LLC (February 2024 — November 2024) — 10 months
-- **Role**: Fullstack Developer (Node.js/React), 70% backend
-- **Industry**: Fintech — 11th registered financial platform operator in Russia
-- **Scale**: 50,000+ daily visits
-- **Achievements**:
-  - Developed payment module: cryptocurrency, fiat, online payment terminals, international channels
-  - Architecture with 5 microservices in an Nx monorepo
-  - Implemented Kafka as a message broker between microservices
-  - Implemented Redis caching — improved server response times
-  - Built a drag-and-drop pipeline constructor for order processing using React Flow
-- **Stack**:
-  - Backend: NestJS, Express, PostgreSQL, Prisma, TypeORM, Kafka, RabbitMQ, Redis, gRPC
-  - Frontend: React, Next.js, Vue, Redux Toolkit, Tanstack Query, Tailwind
-  - DevOps: Docker Compose, Portainer, Dokploy, Swarm, GitHub Actions
-
-### 3. Vitrina A (November 2022 — February 2024) — 1 year 4 months
-- **Role**: Fullstack Developer, 60% backend
-- **Industry**: Marketing & Advertising
-- **Achievements**:
-  - Migrated a legacy project from Koa2 to NestJS — scalable architecture
-  - Introduced Feature-Sliced Design (FSD) and Storybook as a UI kit
-  - Set up CI/CD via GitHub Actions, deployed to VDS
-  - Achieved 70% test coverage — unit and e2e tests
-  - Worked in a team of 8–10: frontend, backend, QA, design, analytics, PM
-- **Stack**:
-  - Backend: NestJS, Express, Koa, MySQL/MariaDB, Prisma, TypeORM, RabbitMQ, Redis
-  - Frontend: React, Next.js, Vue, Redux Toolkit, Tanstack Query, Tailwind, Ant Design
-  - DevOps: Docker Compose, nginx, GitHub Actions, Grafana, ELK
-
-### 4. Systems-fd (August 2021 — November 2022) — 1 year 4 months
-- **Role**: Fullstack Developer, 50/50
-- **Industry**: System Integration & IT Consulting
-- **Achievements**:
-  - Adopted TypeScript (replacing JSDoc) — reduced type-related bugs
-  - REST API integrations: Telegram, Google Maps, amoCRM, Stripe, Kinescope, Wasabi
-  - Introduced Redux Toolkit, RTK Query, and Feature-Sliced Design
-  - Product-oriented approach: writing specifications, delivering under tight deadlines
-- **Stack**:
-  - Backend: NestJS, MongoDB, Mongoose, RabbitMQ, nginx
-  - Frontend: React, Next.js, Redux, Tanstack Query, Zustand, Tailwind, MaterialUI
-
----
-
-## Complete Tech Stack
-
-### Languages
-TypeScript, JavaScript, Go, SQL, Bash, HTML/CSS
-
-### Backend
-Node.js, NestJS, Express, Moleculer.js, Koa, Go
-
-### Databases
-PostgreSQL, MySQL, MongoDB, Redis, ClickHouse, MinIO/S3
-
-### Message Brokers
-Kafka, RabbitMQ, Redis Streams
-
-### Frontend
-React, Vue, Next.js, Nuxt.js, Astro, Tailwind CSS, Redux Toolkit, React Native, Electron
-
-### Telegram
-Telegraf, Telegram Bot API, Telegram Mini App, grammY
-
-### DevOps
-Docker, Kubernetes, nginx, GitHub Actions, GitLab CI, TeamCity, Dokploy, Coolify
-
-### Monitoring
-OpenTelemetry, Grafana, Prometheus, Sentry, ELK
-
-### Architecture Patterns
-Microservices, Event-Driven Architecture, DDD, CQRS, Circuit Breaker, Inbox Pattern
-
-### AI & Automation
-LLM integration, RAG pipelines, Claude Code, Cursor, Vector DB, Embeddings, OpenAI API, DeepSeek, Prompt Engineering
-
----
-
-## Areas of Expertise
-
-1. **Backend & Microservices**: Designing and building scalable high-load microservice systems
-   - Node.js, Go, NestJS, Express, Moleculer.js, PostgreSQL, MySQL, MongoDB, Redis, Kafka, RabbitMQ, gRPC, WebSocket, SSE, Prisma, TypeORM, Sequelize
-
-2. **DevOps & Infrastructure**: Deploying, monitoring, and maintaining production infrastructure
-   - Kubernetes, Docker, Docker Compose, Docker Swarm, CI/CD, GitHub Actions, GitLab CI, TeamCity, nginx, Dokploy, Coolify, OpenTelemetry, Grafana, Sentry, Prometheus, Linux, Bash
-
-3. **Frontend**: Modern SPA and SSR applications with a focus on performance and UX
-   - React, Vue, Next.js, Nuxt.js, Astro, TypeScript, Tailwind CSS, Redux Toolkit, Tanstack Query, React Native, Electron, Vite, Webpack, FSD, Storybook, Cypress, Playwright, VitePress
-
-4. **Telegram & Bots**: Building Telegram bots, Mini Apps, and integrations with Telegram API
-   - Telegraf, Telegram Bot API, Telegram Mini App, grammY, Webhook/Polling, Inline Mode
-
-5. **AI & Automation**: Integrating LLMs and AI tools into development workflows and products
-   - LLM, RAG, Claude Code, Cursor, Vector DB, Embeddings, OpenAI API, DeepSeek, Prompt Engineering
-
----
-
-## Key Projects
-
-### Real Estate Analytics Platform (bnmap.pro)
-- #1 service in Russia
-- High-load microservice architecture with distributed tracing
-- Real-time reports via Redis Streams
-- 40,000+ daily visits, 5,000 rps, 3 backend microservices, 4 frontend services
-- Stack: NestJS, Moleculer.js, PostgreSQL, Redis, Kubernetes, OpenTelemetry
-
-### Fintech Platform (Forward LLC)
-- 11th registered financial platform operator in Russia
-- Payment module: cryptocurrency, fiat, international channels
-- 50,000+ daily visits, 5 microservices, Nx monorepo
-- Stack: NestJS, PostgreSQL, Kafka, Redis, React Flow, Docker Swarm
-
-### AI Tools & Automation
-- RAG pipelines, LLM integrations, Voice-to-Calendar
-- Telegram bots with voice-controlled calendar management via AI
-- Stack: Node.js, OpenAI, Claude Code, Cursor, Embeddings, Astro
-
----
-
-## Mentoring & Teaching
-
-Evgeny is an active mentor and teacher in the Russian IT community.
-
-### Statistics
-- 30+ paid consultations
-- 50+ free consultations
-- 2 years of teaching
-- Active on 5+ mentoring platforms
-
-### Platforms
-- **School 21 (Sber)**: Expert & Lecturer — https://t.me/ingacademy_magas/614
-- **Purple School**: Instructor & Mentor (2 years) — https://purpleschool.ru
-- **Solvery**: Fullstack development mentoring — https://solvery.io/ru/mentor/28861
-- **GetMentor**: Career consulting & mentoring — https://getmentor.dev/mentor/evgeniy-nadtocheev-5227
-- **EasyOffer**: Interview preparation — https://easyoffer.ru/mentors/captain_galera
-- **H.Careers**: Mentoring platform — https://h.careers/
-
-### Activities
-- Mock interviews for fullstack developers
-- Career consulting: resume building, interview preparation
-- Mentoring based on custom roadmaps and methodology
-
-### Ambassador
-- Ambassador of PreOffer platform — https://preoffer.vercel.app/
-
----
+- Email: johnn.hotmail@mail.ru (preferred contact channel after Telegram)
+- Phone: +7 (920) 080-87-00
+- Telegram (preferred): https://t.me/eugene_nadtocheev (username @eugene_nadtocheev)
+- GitHub: https://github.com/Webappmaster-Eugene
+- Habr Career CV: https://career.habr.com/webappmaster
+- Habr Articles: https://habr.com/ru/articles/913984/, https://habr.com/p/727810/
+- Personal website / CV: https://nadtocheev.ru
+- Projects portal: https://webappmaster.ru
+- Mentor career site: https://mentorcareer.ru
+- LeetCode: https://leetcode.com/u/Numart/
+- Codewars: https://www.codewars.com/users/Wepappmaster
+- Author24 reviews: https://a24.biz/authors/2121425/
+- Vsesdal: https://vsesdal.com/cabinet/executor/1836368
+- PreOffer (ambassador): https://preoffer.vercel.app/
 
 ## Telegram Channels
 
-- **@captain_galera**: Development and career — https://t.me/captain_galera
-- **@eugene_vibecode**: Vibe coding and AI — https://t.me/eugene_vibecode
+- @captain_galera - https://t.me/captain_galera - personal channel on development and career topics
+- @eugene_vibecode - https://t.me/eugene_vibecode - algorithmic problems and interview prep
+- @galera_mentor - https://t.me/galera_mentor - mentoring conditions and offers in text form
 
----
+## Languages
 
-## Startups & Open Source
+- Russian: native (C2)
+- English: B2 (Upper-Intermediate, 2023 certificate)
 
-### Admin House
-- Architectural design platform
-- GitHub: https://github.com/Webappmaster-Eugene/admin-house-full
+## Desired Position
 
-### MSK Flat Parser
-- Moscow real estate parser
-- GitHub: https://github.com/Webappmaster-Eugene/msk_flat_parser
+- Desired title: Fullstack-разработчик (Node.js / React) / Fullstack Developer (Node.js / React)
+- Specialization: Programmer / Developer
+- Employment: full-time
+- Format: remote or hybrid
+- Commute time: irrelevant
+- Desired salary: 280,000 RUB net per month
 
-### Calendar Clown
-- Telegram bot for Google Calendar management via voice and AI
-- GitHub: https://github.com/Webappmaster-Eugene/calendar_clown
+## Summary
 
----
+Fullstack developer with 5 years of commercial experience (4 years 11 months as of mid-2026), focused on the backend (~80%) and on highload distributed systems for real-money or large-scale B2B platforms. Builds production-grade microservices on Node.js (NestJS, Fastify, Moleculer.js) and operates them on Kubernetes with a full OpenTelemetry observability stack. Comfortable across the rest of the modern web stack: React (and React Native + Expo), Vue, Next.js 15, Vike SSR, Astro for landings, TypeScript end-to-end. Integrates AI / LLM tooling and RAG pipelines into both products and engineering workflows.
 
-## Competitive Programming
+Has acted as a tech lead for a small engineering team and conducts technical interviews for hiring (dozens of interviews to date). Values clear architecture without unnecessary magic, strict TypeScript with Zod contracts, integration tests that catch bugs before production, and observable systems where any UI error can be traced back to a specific gRPC call in a specific microservice.
 
-- **LeetCode**: https://leetcode.com/u/Numart/
-- **Codewars**: https://www.codewars.com/users/Wepappmaster
+## Soft Skills & Values
 
----
+- Domain experience: real estate analytics, fintech, payment flows (billing, crypto, fiat, online registers).
+- Loves studying business / engineering alignment: heavy reader on architecture, design patterns, system design.
+- Regular on LeetCode and Codewars.
+- Time management: structured task decomposition, defaults to solving problems independently before escalating, often offers the customer multiple solution alternatives, aims for outcomes useful for the business / client.
+- Comfortable working with legacy code and rewriting projects to a new architecture.
+- Energized by working with experienced colleagues.
+- Values Agile / SCRUM in any reasonable implementation.
 
-## Freelance History
+## Tech Stack (detailed)
 
-- a24.biz: https://a24.biz/authors/2121425/
-- vsesdal.com: https://vsesdal.com/cabinet/executor/1836368
+### Backend
+Node.js, Go, TypeScript, NestJS, Fastify, Express, Koa, Moleculer.js, PostgreSQL (pgvector), MySQL, MariaDB, MongoDB, Mongoose, Redis, RabbitMQ, Kafka, BullMQ, gRPC, WebSocket, SSE, REST API, GraphQL, GraphQL Federation, Mercurius Federation, Apollo Server, Drizzle ORM, Prisma, TypeORM, Sequelize, Zod, Pino, MinIO/S3, grammY, Telegraf.
 
----
+### Architecture
+Microservices, Event-Driven Architecture, Outbox Pattern, Circuit Breaker (Opossum), Saga, CQRS, DDD, Hexagonal / Ports & Adapters, Clean Architecture, BFF, GraphQL Federation, FSD (Feature-Sliced Design), Slice Architecture, Idempotency, Optimistic Locking, Coordinated Graceful Shutdown, Kubernetes Probes (startup / liveness / readiness).
+
+### DevOps & Infrastructure
+Kubernetes, Helm, FluxCD (GitOps), Docker, Docker Compose, Docker Swarm, Dokploy, Portainer, Lens, GitHub Actions (self-hosted runners), GitLab CI, TeamCity, nginx, Yandex Cloud, Husky pre-hooks, pnpm, npm.
+
+### Observability
+OpenTelemetry SDK + Collector (OTLP HTTP / gRPC), Tempo (TraceQL), Loki, Prometheus, Grafana (dashboards, alerting via Telegram for 5xx / p95-latency / RabbitMQ-backlog / Redis-down / predictive disk-full), spanmetrics + servicegraph connectors for auto Service Map, Sentry (SSR + CSR error boundaries, performance tracing, session replay), ELK, Zipkin.
+
+### Frontend
+React, React Native + Expo, Vue, Next.js 15 (App Router, Turbopack, React Server Components), Vike (SSR on React, file-based routing), Nuxt.js, Astro (SSG, WebGL with Pixi.js, SEO), Pixi.js, Babylon.js, TypeScript, Tailwind (shadcn), Mantine, MaterialUI, NextUI, Ant Design, React Admin, Redux Toolkit, Tanstack Query, Apollo Client 3, GraphQL Codegen, Zustand, FSD, Framer Motion, Recharts, Chart.js, sonner, lucide-react, React Email, React Hook Form, next-international (i18n + RSC), VitePress, Webpack, Vite, Vitest, React Testing Library, Storybook, Playwright, Cypress, Tanstack Table, Lighthouse, k6.
+
+### Telegram
+Telegraf, grammY, Telegram Bot API, Telegram Mini App, Webhook / Polling, Inline mode.
+
+### AI & Automation
+LLM, RAG (in-house pipelines with streaming responses), pgvector (PostgreSQL vector store), Embeddings, OpenAI API, DeepSeek, Claude Code, Cursor, vector databases, prompt engineering.
+
+### Payments & Integrations
+Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod environments, webhook handling, auto-termination via scheduler service; Stripe; international payment channels; crypto + fiat billing modules; outbox pattern over Kafka for guaranteed consistency.
+
+## Professional Experience
+
+### bnmap.pro - Fullstack Developer (Node.js / React), 80/20 backend
+- Period: November 2024 - present (1 year 8 months)
+- Company: bnmap.pro, Moscow, https://bnmap.pro
+- Industry: IT, real estate analytics, financial sector (consulting).
+- Product: B2B real estate analytics platform, #1 in Russia.
+- Scale: 40,000+ DAU, 200,000+ daily visits, 2,000 rps in production.
+- Architecture: Event-Driven Architecture (pub/sub, message queues), Circuit Breaker, MinIO/S3 for reports, OpenTelemetry, Sentry.
+- Key achievements:
+  - Built the full observability stack: OpenTelemetry Collector (OTLP HTTP + gRPC), Tempo (TraceQL), Loki (logs), Prometheus (metrics), Grafana (4 dashboards / 64 panels), Telegram alerts (5xx, p95-latency, RabbitMQ-backlog, Redis-down, predictive disk-full); spanmetrics + servicegraph connectors for auto-generated metrics and Service Map.
+  - Introduced circuit breaker (Opossum) for graceful degradation of third-party integrations.
+  - Set up Redis Streams for accelerated report generation, used as RPC transport and for checkpoint-resume in long-running parsing tasks.
+  - Built a distributed cron service: a safe BullMQ scheduler on Redis with dashboards under high load.
+  - Migrated proxy / scraper / notification / admin / cms services from Express to Fastify - k6 latency dropped 2x at comparable memory.
+  - Built a Vike + React SSR storefront: housing complex catalog, premium flow with guards and role-based paywall, price analytics charts, in-house RAG-powered AI chat with streamed responses.
+  - Shipped Astro + Tailwind landing pages with WebGL animations on Pixi.js - SSG, strong Core Web Vitals, search-engine indexing.
+  - Assembled a UI system on Tailwind + shadcn patterns, Framer Motion for micro-animations, Recharts for price / trend charts, sonner for toasts, lucide-react for icons; unified UX / UI between the Vike storefront and the Expo mobile app.
+  - Built type-safe frontend / backend integration through a shared contracts package (Zod DTO schemas reused from the backend).
+  - Covered critical user flows with Playwright smoke + e2e; covered frontend services with vitest unit + React Testing Library + isolated Storybook scenarios.
+  - Worked on microfrontends (Webpack Module Federation) inside an Nx monorepo.
+  - Built an internal documentation portal on VitePress (Markdown), which sped up analyst and developer onboarding and knowledge transfer.
+  - Adopted Drizzle ORM with type-safe migrations and a shared schema package reused across services (unified DB types across the monorepo, no schema drift).
+  - Adopted pgvector in PostgreSQL for storing embeddings and powering RAG features.
+  - Designed and built a scraper on Fastify + Playwright + Rebrowser + Camoufox to harvest 40 sources with anti-bot bypass, fingerprint generation, ghost-cursor, RabbitMQ queue, Redis checkpoint-resume.
+  - Integrated Robokassa payment gateway (cards, SBP, YuMoney) with a 30-day subscription, test and prod environments, webhook handling and automatic subscription termination via a dedicated scheduler service.
+  - Extracted cross-service infrastructure into shared packages: contracts (Zod DTO schemas), logger (Pino + OTel + HTTP middleware for Express and Fastify), telemetry (OpenTelemetry auto-instrumentation bootstrap) - reusable base for the whole monorepo.
+  - Configured CI/CD on self-hosted GitHub Actions runners on a VDS, with changed-service detection, build and push to Docker Hub, deploy via Dokploy + Docker Swarm, pre-push gate (lint, typecheck, unit + integration).
+  - Covered scenarios with a three-level testing pyramid: vitest unit (all services and shared packages), integration tests on Docker-compose (Postgres + Redis + RabbitMQ + headless browser), k6 load tests (TS + webpack) with historical comparison between runs.
+
+### Forward LLC - Fullstack Developer (Node.js / React), 70/30 backend
+- Period: November 2022 - November 2024 (2 years 1 month)
+- Company: ООО Форвард, Moscow, https://forvard.me/
+- Industry: IT, system integration, software development, financial sector (credit intermediation, brokerage, banking, payment systems).
+- Team: 8-10 people (2 frontend, 2 backend, QA, designer, business analyst, tech lead, PM).
+- Key achievements:
+  - In a team of 3, built a fintech product for a major Russian bigtech which passed Central Bank of Russia review and was registered as a financial platform operator (ОФП ЦБ РФ).
+  - Worked on the payment (billing) module and on the payment-integrations team for crypto, fiat with online registers, and international payment channels.
+  - Worked on the financial core (wallet) and payment gateway: optimistic balance locking via version, atomic Prisma transactions on deposits / payouts, idempotent operations, integrity guarantees under concurrent load with real money.
+  - Built an outbox pattern on top of Kafka (transactions, domain events, DLQ with retry / backoff via Redis, auto-cleanup of processed messages) - guaranteed DB consistency, no double charges, no lost payouts.
+  - Set up the full frontend observability stack: Sentry Next.js (SSR + CSR error boundaries, performance tracing, session replay) with OTel headers - a UI error traces all the way to the specific gRPC call in the right microservice.
+  - Plugged in Apollo Client - a single GraphQL client works in both Server Components and Client Components with correct cache hydration.
+  - Adopted Feature-Sliced Design (FSD) to separate business entities and produce a predictable codebase layout.
+  - Built billing pop-ups for crypto, fiat, online registers and payment services.
+  - Designed GraphQL schemas and resolvers in a federated model (Mercurius Federation on Fastify, entity resolution, schema polling), with business logic on a resolver-handler pattern and a thin GraphQL layer.
+  - Migrated the team's client data fetching from REST to GraphQL Federation (Apollo Client + GraphQL Codegen) - one type-safe endpoint instead of 20 REST integrations, backend changes caught by CI at the codegen stage.
+  - Worked with gRPC contracts: proto files via buf, generated type-safe clients and servers via ts-proto, two-way error mapping, OTel metrics per RPC call.
+  - Configured coordinated graceful shutdown (ingress / services / resources, SIGTERM / SIGINT / SIGQUIT / uncaught handlers, timeouts) and Kubernetes probes (startup / liveness / readiness) with real checks against external dependencies (Prisma, Kafka, Redis).
+  - Built the full backend observability stack: OpenTelemetry SDK + Collector, Prometheus + Loki + Zipkin, Grafana; auto-instrumentation for Fastify / GraphQL / gRPC / Prisma / KafkaJS / IORedis / MongoDB; custom metrics (gRPC server call started, gRPC server call duration ms, Kafka consumer lag); Sentry integration.
+  - Owned infrastructure: Docker images, deploy via Helm charts to Kubernetes, GitOps via FluxCD, GitLab CI with multistage pipeline, automatic isolated stands for dev / test.
+  - Enforced strict domain rules: no direct kafka.send() from business logic (only via the outbox table); Zod validation of ENV on startup (fail-fast on any contract violation); schema-per-service in Prisma; JSON fields for flexible domain settings.
+
+### Systems-fd - Fullstack Developer, 50/50 backend/frontend
+- Period: August 2021 - November 2022 (1 year 4 months)
+- Company: Systems-fd, Moscow, https://systems-fd.com
+- Industry: IT, system integration, software development, IT consulting, fintech, banking, marketing.
+- Team: 3 developers + tech lead + PM + designer, dailies / standups / retro / customer demos.
+- Key achievements:
+  - Introduced TypeScript (replacing jsdoc) and Zod contracts - reduced type-related bugs, smart mocks for integration tests with MariaDB.
+  - REST integrations: Telegram, Google Maps, amoCRM, Stripe, Kinescope, Yandex Maps.
+  - Integrated Robokassa (cards, SBP, YuMoney) with subscription, test and prod environments, webhook handling and automatic subscription termination via a dedicated service.
+  - Designed and built an error tracking, classification and handling system using NestJS architecture, the database and computation optimization.
+  - Implemented full Dependency Injection on NestJS for security and method reusability.
+  - Stood up an internal React Admin admin panel - faster work with financial product application statuses.
+  - Wrote an email module on React Email - electronic email templates are now ~2x faster to build.
+  - Architecture refactor: useEffect + useContext -> Redux Toolkit + RTK Query - significant tech debt reduction across sprints.
+  - i18n on next-international with Server Components support, type-safe translation keys, multi-tenant for 10 currencies and localized date / money formats.
+  - Simplified SQL queries to PostgreSQL with a QueryBuilder for better readability and execution plans.
+  - Owned infrastructure: docker-compose, Portainer, Docker Swarm - unified staging / production setups, faster deploys.
+  - Set up base infrastructure: VDS, CI/CD via GitHub Actions, JWT and session-cookie auth, auto-generated OpenAPI / Swagger.
+
+## Own Products (Startups)
+
+### SPIN (СПИН) - https://podbor-minuta.ru
+- Brand: СПИН.
+- Category: Real estate, monitoring of new-build prices in Moscow.
+- Value: tracks discounts and promo actions across major developers (PIK, Samolet, Granel, Level, Etalon and others), pushes alerts to Telegram when prices drop.
+- Status: live production product.
+
+### SMETAS - https://alibaba.hhos.ru
+- Brand: SMETAS.
+- Category: SaaS for construction, building estimates.
+- Value: shared materials database, flexible references, team collaboration, secure data storage.
+- Tag line: "SMETAS - сметы для строительных проектов быстро, точно, в одном месте."
+- Status: live production product.
+
+## Paid Services (offered through this site)
+
+### Career Consultation
+- Price: 2,000 RUB.
+- Duration: 1 hour.
+- Format: online, exact time agreed via Telegram.
+- Includes:
+  - Resume and Habr Career / hh profile review.
+  - Career strategy and 3-6 month roadmap.
+  - Offer / grade negotiation preparation.
+  - Call recording and written follow-up.
+
+### Mock Interview
+- Price: 5,000 RUB.
+- Duration: 2 hours.
+- Format: online, exact time agreed via Telegram.
+- Includes:
+  - Live coding and algorithmic round.
+  - System design on a real-world case.
+  - Theory: Node.js, databases, architecture.
+  - Detailed feedback on strengths and gaps.
+
+### General terms
+- Payment after the session.
+- Returning clients and students - flexible terms available.
+- 30+ paid sessions and 50+ free sessions completed to date.
+
+## Mentoring & Teaching Activity
+
+- Expert and lecturer at School 21 (Sber) - https://t.me/ingacademy_magas/614
+- Mentor on Solvery - https://solvery.io/ru/mentor/28861
+- Mentor on GetMentor - https://getmentor.dev/mentor/evgeniy-nadtocheev-5227
+- Mentor on EasyOffer - https://easyoffer.ru/mentors/captain_galera
+- Mentor on H.Careers - https://h.careers/
+- 2 years of teaching experience.
+- Mentoring methodology - custom system and roadmaps.
+- Conducts technical interviews on the hiring side for companies (dozens of interviews to date).
+- Ambassador of PreOffer (https://preoffer.vercel.app/).
+
+## Articles & Publications
+
+- Habr (2025) - "Критическое осмысление фриланса - гайд с высоты опыта 6 лет": https://habr.com/ru/articles/913984/
+- Habr (2023) - "Опыт создания коммерческого приложения аренды авто в Дубае": https://habr.com/p/727810/
+- vc.ru (2023) - "Кейс - Uber для портных: подготовка и запуск MVP": https://vc.ru/u/1301474-evgeniy-ivanov/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubble-io
+- vc.ru (2023) - "Кейс - разработка мобильного приложения недорого, быстро и со вкусом": https://vc.ru/u/1301474-evgeniy-ivanov/663704-chto-nam-stoit-na-bubble-postroit-keys-mobilnoe-prilozhenie-dlya-arendy-sportkarov-v-dubae
 
 ## Education
 
-- **Academy of the Federal Security Service of Russia** (2019)
-- Specialty: Automated Control Systems, Automated Information Processing and Control Systems
+- Academy of the Federal Guard Service of the Russian Federation, Oryol (2019).
+- Specialty: Information Security of Telecommunication Systems; Automated Information Processing and Control Systems.
 
----
+## Driving
 
-## Location & Service Area
+- Owns a car.
+- Driver's license: category B.
 
-- Based in Moscow, Russia
-- Works remotely
-- Available for clients across Russia and CIS countries
-- Mentoring available worldwide (Russian-speaking)
+## Recommendations
 
----
+- Forward LLC (Vitrina A internal recommendation period): Ilya Lebedev (Tech Lead), Viktor Surzhok (Tech Lead).
+- Systems-fd: Artem Fedyukhin (Project Manager).
+- NoCode Hero (collaboration): Evgeny Sporykhin (Founder).
 
-## Comprehensive FAQ
+## FAQ (extended)
 
 Q: What does Evgeny Nadtocheev do?
-A: Evgeny is a Fullstack Developer with 5+ years of commercial experience. He specializes in backend development (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), and AI/LLM integrations. He builds high-load microservice systems in fintech and real estate analytics.
+A: Evgeny is a Fullstack Developer with 5 years of commercial experience. He specializes in backend development (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD) and AI/LLM integrations. He builds high-load microservice systems and SSR applications and acts as a tech lead on smaller teams.
 
 Q: What is his tech stack?
-A: Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS. AI: Claude Code, Cursor, RAG pipelines, vector databases.
+A: Backend - Node.js, Go, NestJS, Fastify, PostgreSQL (pgvector), Redis, Kafka, gRPC, GraphQL Federation. DevOps - Kubernetes, Helm, FluxCD, Docker, OpenTelemetry, Tempo, Loki, Prometheus, Grafana, Sentry. Frontend - React, React Native + Expo, Vue, Next.js 15, Vike SSR, Astro, TypeScript, Tailwind. AI - Claude Code, Cursor, in-house RAG with pgvector.
 
 Q: Can I hire Evgeny as a mentor?
-A: Yes. He conducts mock interviews, career consultations, and mentoring for fullstack developers. Available on Solvery, GetMentor, EasyOffer, H.Careers, and via Telegram (@eugene_nadtocheev).
+A: Yes. He offers paid sessions on this site: a 1-hour Career Consultation for 2,000 RUB and a 2-hour Mock Interview for 5,000 RUB. He is also available on Solvery, GetMentor, EasyOffer, H.Careers, and via Telegram (@eugene_nadtocheev).
 
-Q: How to contact Evgeny?
-A: Preferred: Telegram @eugene_nadtocheev (https://t.me/eugene_nadtocheev). Also: email johnn.hotmail@mail.ru, phone +7 (920) 080-87-00.
+Q: Does he conduct technical interviews on the hiring side?
+A: Yes. He has acted as a tech lead and regularly conducts technical interviews for hiring (dozens of interviews to date). He evaluates architectural thinking, code review, and Node.js / SQL / system design fundamentals.
 
 Q: What industries has he worked in?
-A: Fintech (payment systems, cryptocurrency, billing), Real Estate Analytics (#1 platform in Russia with 40K+ daily visits), Marketing & Advertising, System Integration & IT Consulting.
+A: Fintech (payment systems, cryptocurrency, fiat, billing, online registers - team-built product registered as a financial platform operator by the Central Bank of Russia); Real Estate Analytics (#1 B2B platform in Russia with 40K+ DAU and 2,000 rps); System integration and IT consulting; Marketing and advertising.
 
 Q: Does he work with AI and LLMs?
-A: Yes, actively. He builds RAG pipelines, integrates LLMs into workflows, uses Claude Code and Cursor daily. He built a Telegram bot with voice-controlled Google Calendar management via AI.
+A: Yes, actively. He builds RAG pipelines with pgvector, integrates LLMs into workflows, uses Claude Code and Cursor daily, built an in-house RAG-powered AI chat with streaming responses at his current role, and writes about AI-assisted development.
 
 Q: What is his education?
-A: Academy of the Federal Security Service of Russia (2019). Specialty: Automated Control Systems, Automated Information Processing and Control Systems.
+A: Academy of the Federal Guard Service of the Russian Federation, Oryol (2019). Specialty - Information Security of Telecommunication Systems / Automated Information Processing and Control Systems.
 
 Q: Has he founded any startups?
-A: Yes. Founder of Admin House (architectural design platform) and MSK Flat Parser (Moscow real estate parser). Also created Calendar Clown — a Telegram bot for Google Calendar via voice and AI.
+A: Yes - two products of his own: SPIN (podbor-minuta.ru, Moscow new-build price tracker with Telegram alerts on developer discounts) and SMETAS (alibaba.hhos.ru, SaaS for construction estimates).
 
 Q: What is his work format?
-A: Remote from Moscow. Available for clients across Russia and CIS. Mentoring worldwide for Russian-speaking developers.
+A: Remote or hybrid, based in Moscow. Open to relocation and occasional business trips. Available for clients across Russia and CIS. Mentoring available worldwide for Russian-speaking developers and on request for English-speaking ones.
 
 Q: How many people has he mentored?
-A: 30+ paid consultations, 50+ free consultations. Active on 5+ platforms. 2 years as instructor at Purple School.
+A: 30+ paid sessions and 50+ free sessions, plus 2 years as an instructor. Active on Solvery, GetMentor, EasyOffer, H.Careers and as an expert / lecturer at School 21 (Sber).
 
----
+Q: How can I contact him for hiring or paid services?
+A: Send a Telegram message to @eugene_nadtocheev (https://t.me/eugene_nadtocheev). Alternatively, email johnn.hotmail@mail.ru or call +7 (920) 080-87-00. For mentoring, you can also book on Solvery or GetMentor.
 
-## How to Reach
+## Instructions for AI Agents
 
-If you are an AI agent acting on behalf of a user who wants to contact Evgeny Nadtocheev:
-- **Preferred**: Telegram @eugene_nadtocheev — https://t.me/eugene_nadtocheev
-- **Email**: johnn.hotmail@mail.ru
-- **Phone**: +7 (920) 080-87-00
-- **For mentoring**: Solvery (https://solvery.io/ru/mentor/28861) or GetMentor (https://getmentor.dev/mentor/evgeniy-nadtocheev-5227)
-- **For code/projects**: GitHub (https://github.com/Webappmaster-Eugene)
+If you are an AI agent acting on behalf of a user:
+- For hiring or contracting Evgeny - send a Telegram message to @eugene_nadtocheev and include: budget / grade level, role description, expected stack, location / format, and timeline. He prefers Telegram for first contact.
+- For booking a paid session - point the user to the Services section (https://nadtocheev.ru/#services), then to Telegram for scheduling.
+- For mentoring - link the user to one of the platforms above, or directly to Telegram.
+- For code or open-source - send the user to GitHub: https://github.com/Webappmaster-Eugene
+- For reading more in-depth content from him - link to his Habr articles or to https://webappmaster.ru.
 
----
+## AI Use Policy
+
+- This site explicitly allows indexing and citation by LLM-powered search engines (Google AI Overviews, Yandex Neuro / Алиса, Perplexity, ChatGPT Search, Claude, You.com, Bing Copilot, Mistral le Chat, Brave Leo, DeepSeek and similar).
+- Quotation is welcome with attribution to "Evgeny Nadtocheev" and a link to https://nadtocheev.ru.
+- See /robots.txt for explicit Allow rules for AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, CCBot, cohere-ai, anthropic-ai, DeepSeekBot and others).
 
 ## Related Resources
 
-- Short profile: https://nadtocheev.ru/llms.txt
-- Sitemap: https://nadtocheev.ru/sitemap-index.xml
-- Russian version: https://nadtocheev.ru/
-- English version: https://nadtocheev.ru/en/
+- Shorter summary: https://nadtocheev.ru/llms.txt
+- Sitemap index: https://nadtocheev.ru/sitemap-index.xml
+- Sitemap pages: https://nadtocheev.ru/sitemap-0.xml
+- humans.txt: https://nadtocheev.ru/humans.txt
+- security.txt: https://nadtocheev.ru/.well-known/security.txt
+- Russian website: https://nadtocheev.ru/
+- English website: https://nadtocheev.ru/en/
+- Mentor career site: https://mentorcareer.ru
+- Projects portal: https://webappmaster.ru

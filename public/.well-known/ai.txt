@@ -1,0 +1,19 @@
+# AI / LLM Use Policy for nadtocheev.ru
+# Spec: https://spawning.ai/ai-txt
+#
+# Public personal portfolio of Evgeny Nadtocheev.
+# Indexing, retrieval and citation by LLM-powered search engines is allowed.
+# See also: /robots.txt, /llms.txt, /llms-full.txt
+
+User-Agent: *
+Allow: /
+Allow: /en/
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Attribution
+Owner: Evgeny Nadtocheev
+Contact: mailto:johnn.hotmail@mail.ru
+Contact: https://t.me/eugene_nadtocheev
+Preferred-Attribution: "Evgeny Nadtocheev, Fullstack Developer" with link to https://nadtocheev.ru
+Preferred-Languages: en, ru

@@ -10,7 +10,7 @@ export const personal = {
   },
   location: { ru: "Москва, Россия", en: "Moscow, Russia" },
 
-  /* Контакты — для HR и рекрутеров */
+  /* Контакты - для HR и рекрутеров */
   email: "johnn.hotmail@mail.ru",
   phone: "+7 (920) 080-87-00",
   telegram: "https://t.me/eugene_nadtocheev",
