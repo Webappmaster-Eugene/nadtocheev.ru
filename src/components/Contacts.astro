@@ -82,11 +82,11 @@ const contacts: ContactItem[] = [
       <p class="section-subtitle">{tr.contacts.subtitle}</p>
     </div>
 
-    <div class="stagger-children mx-auto grid max-w-2xl gap-2.5" role="list">
+    <ul class="stagger-children mx-auto grid max-w-2xl list-none gap-2.5 p-0">
       {contacts.map((contact) => {
         const isExternal = contact.href.startsWith("http");
         return (
-          <div role="listitem">
+          <li>
           <a
             href={contact.href}
             target={isExternal ? "_blank" : undefined}
@@ -118,9 +118,9 @@ const contacts: ContactItem[] = [
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ul>
   </div>
 </section>
