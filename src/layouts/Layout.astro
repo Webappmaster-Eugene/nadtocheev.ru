@@ -33,7 +33,7 @@ const faqItems = lang === "ru"
       { q: "Какой технологический стек?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Можно ли нанять Евгения как ментора?", a: "Да, Евгений проводит мок-собеседования, карьерные консультации и менторство для fullstack-разработчиков. Доступен на Solvery, GetMentor, EasyOffer и через Telegram." },
       { q: "Как связаться с Евгением?", a: "Предпочитаемый способ — Telegram: @eugene_nadtocheev. Также доступен по email: johnn.hotmail@mail.ru и телефону: +7 (920) 080-87-00." },
-      { q: "В каких отраслях работал Евгений?", a: "Финтех (платёжные системы, криптовалюты, биллинг), аналитика недвижимости (топ-1 платформа в РФ с 40K+ посещений/сутки), маркетинг и реклама, системная интеграция и IT-консалтинг." },
+      { q: "В каких отраслях работал Евгений?", a: "Финтех (платёжные системы, криптовалюты, биллинг), аналитика недвижимости (топ-1 платформа в РФ с 200K+ посещений/сутки и 2000 rps), маркетинг и реклама, системная интеграция и IT-консалтинг." },
       { q: "Работает ли Евгений с AI и LLM?", a: "Да, активно. Строит RAG-пайплайны, интегрирует LLM в рабочие процессы, ежедневно использует Claude Code и Cursor. Создал Telegram-бота с голосовым управлением Google Calendar через AI." },
       { q: "Какое образование у Евгения?", a: "Академия ФСБ России (2019). Специальность: автоматизированные системы управления, автоматизированная обработка информации и управление." },
       { q: "Создавал ли Евгений свои стартапы?", a: "Да, создатель двух собственных продуктов: СПИН (podbor-minuta.ru) — сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) в Telegram; и SMETAS (alibaba.hhos.ru) — SaaS-платформа для составления строительных смет с базой материалов и командной работой." },
@@ -44,7 +44,7 @@ const faqItems = lang === "ru"
       { q: "What is his tech stack?", a: "Backend: Node.js, Go, NestJS, PostgreSQL, Redis, Kafka, gRPC. DevOps: Kubernetes, Docker, CI/CD, OpenTelemetry. Frontend: React, Vue, Next.js, Astro, TypeScript, Tailwind CSS." },
       { q: "Can I hire Evgeny as a mentor?", a: "Yes, Evgeny conducts mock interviews, career consultations, and mentoring for fullstack developers. Available on Solvery, GetMentor, EasyOffer, and via Telegram." },
       { q: "How to contact Evgeny?", a: "Preferred method — Telegram: @eugene_nadtocheev. Also available via email: johnn.hotmail@mail.ru and phone: +7 (920) 080-87-00." },
-      { q: "What industries has he worked in?", a: "Fintech (payment systems, cryptocurrency, billing), real estate analytics (#1 platform in Russia with 40K+ daily visits), marketing & advertising, system integration and IT consulting." },
+      { q: "What industries has he worked in?", a: "Fintech (payment systems, cryptocurrency, billing), real estate analytics (#1 platform in Russia with 200K+ daily visits and 2,000 rps), marketing & advertising, system integration and IT consulting." },
       { q: "Does he work with AI and LLMs?", a: "Yes, actively. He builds RAG pipelines, integrates LLMs into workflows, uses Claude Code and Cursor daily. He built a Telegram bot with voice-controlled Google Calendar management via AI." },
       { q: "What is his education?", a: "Academy of the Federal Security Service of Russia (2019). Specialty: Automated Control Systems, Automated Information Processing and Control Systems." },
       { q: "Has Evgeny founded any startups?", a: "Yes, he is the founder of two products of his own: SPIN (podbor-minuta.ru) — a Moscow new-build price tracker with Telegram alerts on discounts from major developers (PIK, Samolet, Granel, Level, Etalon); and SMETAS (alibaba.hhos.ru) — a SaaS platform for construction estimates with a shared materials database and team collaboration." },
@@ -380,6 +380,55 @@ const jsonLd = {
           });
         });
       })();
+    </script>
+
+    <!-- Section anchor links + back-to-top -->
+    <button id="back-to-top" class="back-to-top" type="button" aria-label={lang === "ru" ? "Наверх" : "Back to top"} title={lang === "ru" ? "Наверх" : "Back to top"}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 19V5" />
+        <path d="M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script is:inline define:vars={{ anchorAria: lang === "ru" ? "Скопировать ссылку на раздел" : "Copy link to section" }}>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* Section anchor # buttons */
+        document.querySelectorAll("section[id]").forEach(function (section) {
+          var id = section.id;
+          if (!id || id === "hero") return;
+          var h2 = section.querySelector("h2.section-title");
+          if (!h2 || h2.querySelector(".section-anchor")) return;
+          var a = document.createElement("a");
+          a.href = "#" + id;
+          a.className = "section-anchor";
+          a.textContent = "#";
+          a.setAttribute("aria-label", anchorAria + ": " + h2.textContent.trim());
+          a.addEventListener("click", function (e) {
+            if (navigator.clipboard && window.location && window.location.href) {
+              var url = window.location.origin + window.location.pathname + "#" + id;
+              navigator.clipboard.writeText(url).then(function () {
+                a.classList.add("copied");
+                setTimeout(function () { a.classList.remove("copied"); }, 1500);
+              }).catch(function () {});
+            }
+          });
+          h2.appendChild(a);
+        });
+
+        /* Back-to-top button */
+        var btn = document.getElementById("back-to-top");
+        if (!btn) return;
+        var threshold = 600;
+        var update = function () {
+          if (window.scrollY > threshold) btn.classList.add("visible");
+          else btn.classList.remove("visible");
+        };
+        window.addEventListener("scroll", update, { passive: true });
+        update();
+        btn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
     </script>
   </body>
 </html>

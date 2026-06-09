@@ -60,7 +60,7 @@ export const personal = {
 /** Ключевые метрики для hero-секции */
 export const heroMetrics = [
   { value: "5" },
-  { value: "50K+" },
-  { value: "5000" },
+  { value: "200K+" },
+  { value: "2000" },
   { value: "10+" },
 ] as const;

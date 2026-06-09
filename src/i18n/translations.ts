@@ -22,6 +22,7 @@ export interface Translation {
     experience: string;
     projects: string;
     ai: string;
+    coding: string;
     publications: string;
     mentoring: string;
     services: string;
@@ -156,7 +157,6 @@ export interface Translation {
   /* Footer */
   footer: {
     rights: string;
-    madeWith: string;
   };
 
   /* Accessibility */
@@ -183,6 +183,7 @@ export const translations: Record<Lang, Translation> = {
       experience: "Опыт",
       projects: "Проекты",
       ai: "AI",
+      coding: "Алгоритмы",
       publications: "Публикации",
       mentoring: "Менторство",
       services: "Услуги",
@@ -209,12 +210,14 @@ export const translations: Record<Lang, Translation> = {
     },
     about: {
       title: "Обо мне",
-      subtitle: "Кратко о подходе и опыте",
+      subtitle: "Несколько слов от первого лица — без канцелярита",
       paragraphs: [
-        'Fullstack-разработчик с <strong class="text-text">5 годами коммерческого опыта</strong>. Специализируюсь на <strong class="text-text">backend-разработке</strong> (Node.js, Go) и <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Фокус — <strong class="text-accent">80% backend</strong>.',
-        'Работал в <strong class="text-text">финтехе</strong> (платёжные системы, криптовалюты, биллинг) и <strong class="text-text">аналитике недвижимости</strong> (топ-1 платформа в РФ) с нагрузкой до 50 000 посещений в сутки. Строил микросервисные архитектуры, внедрял Event-Driven подходы, настраивал мониторинг и distributed tracing.',
-        'Также работаю с <strong class="text-text">Telegram-ботами</strong>, <strong class="text-text">Telegram Mini App</strong>, <strong class="text-text">React Native</strong> и <strong class="text-text">Electron</strong>. Активно использую <strong class="text-text">AI в разработке</strong>: пишу RAG-пайплайны, работаю с LLM, Claude Code, Cursor. Веду собственный проектный портал — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
-        'Создатель <strong class="text-text">двух собственных стартапов</strong>: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">СПИН</a> (мониторинг цен на новостройки Москвы) и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> (SaaS-платформа для строительных смет), автор open-source проектов. Ценю Agile, результат для бизнеса и чистый масштабируемый код. Английский — <strong class="text-text">B2</strong>. Резюме на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>.',
+        'Привет, меня зовут <strong class="text-text">Женя</strong>. Пятый год пишу highload-сервисы на <strong class="text-text">Node.js</strong> — фокус <strong class="text-accent">~80% на бэке</strong>, остальное делю между фронтом (React, Vue), DevOps и AI-автоматизациями. Сейчас работаю в <a href="https://bnmap.pro" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">bnmap.pro</a> — это топ-1 в России платформа аналитики недвижимости: в проде стабильно держим <strong class="text-text">200K+ заходов в день</strong> и <strong class="text-text">2000 rps</strong>.',
+        'До этого 2 года в <strong class="text-text">финтехе</strong> на аутсорсе для крупного бигтеха (ООО Форвард): wallet + платёжный шлюз (карты, крипта, fiat, онлайн-кассы), outbox-паттерн поверх Kafka, миграция клиента с REST на GraphQL Federation. Командой из 3 человек довели продукт до регистрации как <strong class="text-text">ОФП ЦБ РФ</strong>. Ещё раньше — системная интеграция в <strong class="text-text">Systems-fd</strong>, где я по совместительству был фронтом, бэком и devops в одном лице.',
+        'Что мне важно в работе: внятная архитектура без лишней магии, строгий TypeScript с zod-контрактами, интеграционные тесты, которые ловят баги до прода, и понятные метрики через OpenTelemetry. Микросервисы, Kafka, Redis, gRPC — не как чек-лист в резюме, а как инструменты под конкретную задачу. <strong class="text-text">AI использую ежедневно</strong> (Claude Code, Cursor, RAG-пайплайны): это уже не игрушка, а реальное ускорение в пару раз.',
+        'Был <strong class="text-text">тимлидом небольшой команды</strong> и активно <strong class="text-text">провожу технические собеседования</strong> с кандидатами в компанию — на стороне найма закрыл уже несколько десятков интервью. Оцениваю архитектурное мышление, code review, фундамент по Node.js, SQL и system design; декомпозирую задачи и разруливаю блокеры в команде.',
+        'Параллельно делаю свои продукты: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">СПИН</a> — сервис мониторинга цен на новостройки Москвы с алертами в Telegram, и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> — SaaS для составления строительных смет. Активно <strong class="text-text">менторю</strong>: эксперт и лектор в <strong class="text-text">Школе 21 (Сбер)</strong>, консультирую на Solvery, GetMentor, EasyOffer, пишу на Хабре и vc.ru. За плечами 30+ платных и 50+ бесплатных консультаций — реально кайфую, когда ребята закрывают первые офферы.',
+        'По мелочи: английский — <strong class="text-text">B2</strong>, готов к удалёнке и переезду. Удобнее всего написать в <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Telegram</a>. Резюме — на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>, портал моих проектов — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
       ],
     },
     expertise: {
@@ -301,7 +304,6 @@ export const translations: Record<Lang, Translation> = {
     },
     footer: {
       rights: "Все права защищены.",
-      madeWith: "Сделано с",
     },
     a11y: {
       mainNav: "Основная навигация",
@@ -325,6 +327,7 @@ export const translations: Record<Lang, Translation> = {
       experience: "Experience",
       projects: "Projects",
       ai: "AI",
+      coding: "Algorithms",
       publications: "Publications",
       mentoring: "Mentoring",
       services: "Services",
@@ -351,12 +354,14 @@ export const translations: Record<Lang, Translation> = {
     },
     about: {
       title: "About Me",
-      subtitle: "A brief overview of my approach and experience",
+      subtitle: "A few words in my own voice — without the corporate filler",
       paragraphs: [
-        'Fullstack Developer with <strong class="text-text">5 years of commercial experience</strong>. I specialize in <strong class="text-text">backend development</strong> (Node.js, Go) and <strong class="text-text">DevOps</strong> (Kubernetes, Docker, CI/CD). Focus — <strong class="text-accent">80% backend</strong>.',
-        'I have worked in <strong class="text-text">fintech</strong> (payment systems, cryptocurrency, billing) and <strong class="text-text">real estate analytics</strong> (the #1 platform in Russia) handling up to 50,000 daily visitors. I have designed microservice architectures, implemented Event-Driven approaches, and set up monitoring and distributed tracing.',
-        'I also work with <strong class="text-text">Telegram Bots</strong>, <strong class="text-text">Telegram Mini App</strong>, <strong class="text-text">React Native</strong>, and <strong class="text-text">Electron</strong>. I actively leverage <strong class="text-text">AI in development</strong>: building RAG pipelines, working with LLMs, Claude Code, and Cursor. I run my own project portal — <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
-        'Founder of <strong class="text-text">two products of my own</strong>: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SPIN</a> (Moscow new-build price tracker) and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> (SaaS for construction estimates), author of open-source projects. I value Agile practices, business outcomes, and clean scalable code. English — <strong class="text-text">B2</strong>. CV on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>.',
+        'Hi, I\'m <strong class="text-text">Eugene</strong>. I\'ve been writing high-load <strong class="text-text">Node.js</strong> services for five years now — about <strong class="text-accent">~80% backend</strong>, with the rest split between frontend (React, Vue), DevOps, and AI automations. These days I\'m at <a href="https://bnmap.pro" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">bnmap.pro</a>, the #1 real estate analytics platform in Russia: we keep <strong class="text-text">200K+ daily visits</strong> and <strong class="text-text">2,000 rps</strong> running in production.',
+        'Before that I spent 2 years in <strong class="text-text">fintech</strong> as an outsourced engineer for a major bigtech (Forward LLC): wallet and payment gateway (cards, crypto, fiat, online registers), an outbox pattern on Kafka, migrating the client from REST to GraphQL Federation. With a team of 3 we took the product through review until it was registered as a <strong class="text-text">Central Bank financial platform operator</strong>. Earlier still — system integration at <strong class="text-text">Systems-fd</strong>, where I doubled as frontend, backend, and devops in a one-person band.',
+        'What matters to me in the craft: clear architecture without unnecessary magic, strict TypeScript with zod contracts, integration tests that catch bugs before production, and observability via OpenTelemetry. Microservices, Kafka, Redis, gRPC — not as a resume checklist, but as tools picked for the problem at hand. <strong class="text-text">AI is a daily driver</strong> (Claude Code, Cursor, RAG pipelines): it\'s no longer a toy, it\'s a real 2× speed-up.',
+        'I\'ve led <strong class="text-text">a small engineering team</strong> and regularly <strong class="text-text">run technical interviews</strong> as part of the hiring side — dozens of them under my belt by now. I evaluate architectural thinking, code review, the Node.js / SQL fundamentals and system design, break tasks down, and unblock teammates day to day.',
+        'On the side I build my own products: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SPIN</a> — a Moscow new-build price tracker with Telegram alerts, and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> — a SaaS for construction estimates. I also <strong class="text-text">mentor</strong>: expert and lecturer at <strong class="text-text">School 21 (Sber)</strong>, one-on-ones on Solvery, GetMentor, EasyOffer, plus articles on Habr and vc.ru. Over 30 paid and 50+ free sessions so far — I genuinely enjoy watching folks land their first offers.',
+        'A few practicalities: English is <strong class="text-text">B2</strong>, I\'m open to remote and relocation. The fastest way to reach me is <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Telegram</a>. CV on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>, projects portal at <a href="https://webappmaster.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">webappmaster.ru</a>.',
       ],
     },
     expertise: {
@@ -443,7 +448,6 @@ export const translations: Record<Lang, Translation> = {
     },
     footer: {
       rights: "All rights reserved.",
-      madeWith: "Built with",
     },
     a11y: {
       mainNav: "Main navigation",
