@@ -270,7 +270,7 @@ const tr = t(lang);
 - **Тело:** Inter 400–500
 - **Код:** JetBrains Mono 400–500
 
-Шрифты подключены через Google Fonts с `display=swap` и `preconnect`.
+Шрифты self-hosted в `public/fonts/`: Inter variable (ось `wght` 100–900, по файлу на latin и cyrillic) и JetBrains Mono 400/500; `font-display: swap`, preload латиницы (и кириллицы на RU).
 
 ### Анимации
 
@@ -397,11 +397,12 @@ const tr = t(lang);
 
 | Настройка | Описание |
 |-----------|----------|
-| Gzip | text, css, json, js, xml, svg — сжатие от 256 байт |
-| Кеширование | Статические ассеты (css, js, img, fonts) — `1 year, immutable` |
-| Security headers | X-Frame-Options, X-Content-Type-Options, Referrer-Policy, X-XSS-Protection |
-| SPA fallback | `try_files $uri $uri/ /index.html` |
-| Hidden files | Запрет доступа к файлам, начинающимся с `.` |
+| Gzip | text, css, json, js, xml, svg, manifest — сжатие от 256 байт |
+| Кеширование | `/_astro/*` (хешированные) — `1 year, immutable`; `/fonts/*` — 30 дней; прочая статика без хеша (og-image, фавиконки) — 1 день; HTML/txt — `no-cache` |
+| Security headers | CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy — в `nginx-security-headers.conf`, подключается через `include` в каждый location (nginx не наследует `add_header` уровня server) |
+| Редиректы | `absolute_redirect off` — `/en` → `/en/` относительным редиректом, без ухода на http за Traefik |
+| 404 | `error_page 404 /404.html` — кастомная страница с кодом 404 (в т.ч. на `/404`), `noindex` |
+| Hidden files | Запрет доступа к файлам, начинающимся с `.` (кроме `/.well-known/`) |
 
 ---
 
@@ -413,7 +414,7 @@ const tr = t(lang);
 | CSS | ~31 KB (Tailwind v4 с tree-shaking) |
 | HTML (RU) | ~76 KB |
 | HTML (EN) | ~72 KB |
-| Шрифты | Google Fonts с preconnect + display=swap |
+| Шрифты | Self-hosted Inter variable (2 файла, ~67 KB) + JetBrains Mono, preload + display=swap |
 | Gzip | Настроен в nginx |
 | Cache | 1 год для статики (immutable) |
 

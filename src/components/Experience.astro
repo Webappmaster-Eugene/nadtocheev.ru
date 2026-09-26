@@ -16,7 +16,7 @@ const experience = getExperience(lang);
     </div>
 
     <div class="relative mx-auto max-w-4xl pl-8 sm:pl-10">
-      <div class="timeline-line" id="timeline-line" aria-hidden="true" style="height: 0;"></div>
+      <div class="timeline-line" id="timeline-line" aria-hidden="true"></div>
 
       {experience.map((job, index) => (
         <article class="reveal relative mb-10 last:mb-0">
@@ -71,15 +71,12 @@ const experience = getExperience(lang);
   <!-- Timeline progressive reveal -->
   <script is:inline>
     (function () {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        var line = document.getElementById("timeline-line");
-        if (line) line.style.height = "100%";
-        return;
-      }
+      /* По умолчанию (без JS и при reduced motion) линия на всю высоту - см. .timeline-line */
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       var container = document.querySelector("#experience .relative");
       var timelineLine = document.getElementById("timeline-line");
       if (!container || !timelineLine) return;
-      window.addEventListener("scroll", function () {
+      function update() {
         var rect = container.getBoundingClientRect();
         var containerTop = rect.top;
         var containerHeight = rect.height;
@@ -95,7 +92,9 @@ const experience = getExperience(lang);
         var visible = Math.min(viewportHeight - containerTop, containerHeight);
         var percent = Math.max(0, Math.min(100, (visible / containerHeight) * 100));
         timelineLine.style.height = percent + "%";
-      }, { passive: true });
+      }
+      update();
+      window.addEventListener("scroll", update, { passive: true });
     })();
   </script>
 </section>

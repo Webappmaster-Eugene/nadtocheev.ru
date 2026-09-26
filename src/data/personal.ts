@@ -2,6 +2,8 @@
  * Личные данные и контакты.
  * Единственное место для редактирования контактной информации.
  */
+import { experienceYears } from "./career.ts";
+
 export const personal = {
   name: {
     first: { ru: "Евгений", en: "Evgeny" },
@@ -35,7 +37,6 @@ export const personal = {
   mentoring: {
     solvery: "https://solvery.io/ru/mentor/28861",
     getmentor: "https://getmentor.dev/mentor/evgeniy-nadtocheev-5227",
-    easyoffer: "https://easyoffer.ru/mentors/captain_galera",
     hcareers: "https://h.careers/",
     school21Post: "https://t.me/ingacademy_magas/614",
     purpleschool: "https://purpleschool.ru",
@@ -44,7 +45,6 @@ export const personal = {
   /* Фриланс */
   freelance: {
     a24: "https://a24.biz/authors/2121425/",
-    vsesdal: "https://vsesdal.com/cabinet/executor/1836368",
   },
 
   /* Стартапы (собственные продукты) */
@@ -59,7 +59,7 @@ export const personal = {
 
 /** Ключевые метрики для hero-секции */
 export const heroMetrics = [
-  { value: "5" },
+  { value: String(experienceYears) },
   { value: "200K+" },
   { value: "2000" },
   { value: "10+" },

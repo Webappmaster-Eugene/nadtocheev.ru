@@ -49,7 +49,7 @@ const publicationsRu: PublicationsData = {
   },
   articles: [
     {
-      title: "Критическое осмысление фриланса - гайд с высоты опыта 6 лет",
+      title: "Рациональный подход к фрилансу. Критикуешь? Предлагай",
       source: "Хабр",
       year: "2025",
       url: "https://habr.com/ru/articles/913984/",
@@ -57,18 +57,18 @@ const publicationsRu: PublicationsData = {
         "Подробный разбор фриланса как карьерного пути: что работает, что нет, на чём строится длинная игра - с цифрами и кейсами.",
     },
     {
-      title: "Опыт создания коммерческого приложения аренды авто в Дубае",
+      title: "Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)",
       source: "Хабр",
       year: "2023",
       url: "https://habr.com/p/727810/",
       summary:
-        "Кейс продуктовой разработки MVP в международном проекте: архитектура, интеграции, выводы по запуску.",
+        "Кейс MVP мобильного приложения аренды спорткаров в Дубае на Bubble: архитектура, интеграции, выводы по запуску и где no-code упирается в потолок.",
     },
     {
-      title: "Кейс - Uber для портных: подготовка и запуск MVP",
+      title: "Uber для портных: как подготовить и запустить MVP на Bubble.io",
       source: "vc.ru",
       year: "2023",
-      url: "https://vc.ru/u/1301474-evgeniy-ivanov/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubble-io",
+      url: "https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio",
       summary:
         "Запуск MVP-маркетплейса услуг: путь от идеи до первых пользователей и метрик роста.",
     },
@@ -106,7 +106,7 @@ const publicationsEn: PublicationsData = {
   },
   articles: [
     {
-      title: "A critical take on freelancing - a guide built on 6 years of experience",
+      title: "A rational approach to freelancing: if you criticize, propose",
       source: "Habr",
       year: "2025",
       url: "https://habr.com/ru/articles/913984/",
@@ -114,18 +114,18 @@ const publicationsEn: PublicationsData = {
         "An in-depth look at freelancing as a career path: what works, what does not, and how to play the long game - with numbers and real cases.",
     },
     {
-      title: "Building a commercial car rental app in Dubai",
+      title: "What it takes to build on Bubble (+ thoughts on combining code and no-code)",
       source: "Habr",
       year: "2023",
       url: "https://habr.com/p/727810/",
       summary:
-        "A product development case study for an international MVP: architecture, integrations, and launch takeaways.",
+        "Case study of a Dubai sports car rental app MVP built on Bubble: architecture, integrations, launch takeaways, and where no-code hits its limits.",
     },
     {
-      title: "Uber for tailors: preparing and launching an MVP",
+      title: "Uber for tailors: how to prepare and launch an MVP on Bubble.io",
       source: "vc.ru",
       year: "2023",
-      url: "https://vc.ru/u/1301474-evgeniy-ivanov/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubble-io",
+      url: "https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio",
       summary:
         "Launching a services marketplace MVP: from idea to first users and growth metrics.",
     },

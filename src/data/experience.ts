@@ -3,13 +3,16 @@
  * Источник: CV (резюме hh.ru) - Надточеев Е. В.
  */
 import type { Lang } from "../i18n/translations.ts";
+import { formatDuration, type YearMonth } from "./career.ts";
 
 export interface WorkExperience {
   company: string;
   url?: string;
   role: string;
   period: string;
-  duration: string;
+  /** Начало и конец периода; без end - по настоящее время. Длительность считается при сборке */
+  start: YearMonth;
+  end?: YearMonth;
   industry: string;
   backendFocus: string;
   highlights: string[];
@@ -26,7 +29,7 @@ const experienceRu: WorkExperience[] = [
     url: "bnmap.pro",
     role: "Fullstack-разработчик (Node.js/React)",
     period: "Ноябрь 2024 - настоящее время",
-    duration: "1 год 8 месяцев",
+    start: "2024-11",
     industry: "B2B-аналитика недвижимости - топ-1 сервис в РФ",
     backendFocus: "80/20 backend",
     highlights: [
@@ -54,7 +57,8 @@ const experienceRu: WorkExperience[] = [
     url: "forvard.me",
     role: "Fullstack-разработчик (Node.js/React)",
     period: "Ноябрь 2022 - Ноябрь 2024",
-    duration: "2 года 1 месяц",
+    start: "2022-11",
+    end: "2024-11",
     industry: "Финтех (аутсорс) - крупный бигтех, ОФП ЦБ РФ",
     backendFocus: "70/30 backend",
     highlights: [
@@ -82,7 +86,8 @@ const experienceRu: WorkExperience[] = [
     url: "systems-fd.com",
     role: "Fullstack-разработчик",
     period: "Август 2021 - Ноябрь 2022",
-    duration: "1 год 4 месяца",
+    start: "2021-08",
+    end: "2022-11",
     industry: "Системная интеграция, ИТ-консалтинг, финтех, маркетинг",
     backendFocus: "50/50 frontend/backend",
     highlights: [
@@ -112,7 +117,7 @@ const experienceEn: WorkExperience[] = [
     url: "bnmap.pro",
     role: "Fullstack Developer (Node.js/React)",
     period: "November 2024 - present",
-    duration: "1 year 8 months",
+    start: "2024-11",
     industry: "B2B Real Estate Analytics - #1 platform in Russia",
     backendFocus: "80/20 backend",
     highlights: [
@@ -140,7 +145,8 @@ const experienceEn: WorkExperience[] = [
     url: "forvard.me",
     role: "Fullstack Developer (Node.js/React)",
     period: "November 2022 - November 2024",
-    duration: "2 years 1 month",
+    start: "2022-11",
+    end: "2024-11",
     industry: "Fintech (outsourced) - major bigtech, Russian Central Bank registered financial platform operator",
     backendFocus: "70/30 backend",
     highlights: [
@@ -168,7 +174,8 @@ const experienceEn: WorkExperience[] = [
     url: "systems-fd.com",
     role: "Fullstack Developer",
     period: "August 2021 - November 2022",
-    duration: "1 year 4 months",
+    start: "2021-08",
+    end: "2022-11",
     industry: "System Integration, IT consulting, fintech, marketing",
     backendFocus: "50/50 frontend/backend",
     highlights: [
@@ -192,6 +199,9 @@ const experienceEn: WorkExperience[] = [
   },
 ];
 
-export function getExperience(lang: Lang): WorkExperience[] {
-  return lang === "ru" ? experienceRu : experienceEn;
+export function getExperience(lang: Lang): (WorkExperience & { duration: string })[] {
+  return (lang === "ru" ? experienceRu : experienceEn).map((job) => ({
+    ...job,
+    duration: formatDuration(job.start, job.end, lang),
+  }));
 }

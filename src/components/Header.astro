@@ -58,7 +58,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
       </button>
       <a
         href={switchLangUrl}
-        class="rounded-lg border border-border px-2.5 py-1.5 text-xs font-bold text-text-muted transition-all hover:border-accent hover:text-accent"
+        class="inline-flex items-center justify-center rounded-lg border border-border px-2.5 py-1.5 text-xs font-bold text-text-muted transition-all hover:border-accent hover:text-accent"
         aria-label={tr.nav.switchLangLabel}
       >
         {tr.nav.switchLang}
@@ -196,8 +196,11 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
       localStorage.setItem("theme", next);
       applyTheme(next);
     });
+  })();
 
-    /* Active section highlighting */
+  /* Active section highlighting: скрипт стоит в шапке, до <main>,
+     поэтому секции ищем после разбора всего документа */
+  document.addEventListener("DOMContentLoaded", function () {
     var sections = document.querySelectorAll("section[id]");
     var navLinks = document.querySelectorAll(".nav-link");
     if (sections.length && navLinks.length) {
@@ -206,6 +209,11 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               var id = entry.target.getAttribute("id");
+              /* Секции без пункта меню (hero, faq) подсветку не сбрасывают */
+              var hasLink = Array.prototype.some.call(navLinks, function (link) {
+                return link.getAttribute("href") === "#" + id;
+              });
+              if (!hasLink) return;
               navLinks.forEach(function (link) {
                 if (link.getAttribute("href") === "#" + id) {
                   link.classList.add("nav-link--active");
@@ -220,5 +228,5 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
       );
       sections.forEach(function (s) { sectionObserver.observe(s); });
     }
-  })();
+  });
 </script>

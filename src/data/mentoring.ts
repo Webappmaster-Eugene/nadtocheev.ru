@@ -31,7 +31,7 @@ const mentoringRu: MentoringData = {
     paidConsultations: "30+",
     freeConsultations: "50+",
     teachingYears: "2",
-    platforms: "5+",
+    platforms: "5",
   },
   statsLabels: {
     paidConsultations: "платных консультаций",
@@ -61,11 +61,6 @@ const mentoringRu: MentoringData = {
       description: "Карьерные консультации и менторство",
     },
     {
-      name: "EasyOffer",
-      url: "https://easyoffer.ru/mentors/captain_galera",
-      description: "Подготовка к собеседованиям",
-    },
-    {
       name: "H.Careers",
       url: "https://h.careers/",
       description: "Менторская площадка",
@@ -84,7 +79,7 @@ const mentoringEn: MentoringData = {
     paidConsultations: "30+",
     freeConsultations: "50+",
     teachingYears: "2",
-    platforms: "5+",
+    platforms: "5",
   },
   statsLabels: {
     paidConsultations: "paid consultations",
@@ -112,11 +107,6 @@ const mentoringEn: MentoringData = {
       name: "GetMentor",
       url: "https://getmentor.dev/mentor/evgeniy-nadtocheev-5227",
       description: "Career consulting & mentoring",
-    },
-    {
-      name: "EasyOffer",
-      url: "https://easyoffer.ru/mentors/captain_galera",
-      description: "Interview preparation",
     },
     {
       name: "H.Careers",

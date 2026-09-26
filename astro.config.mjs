@@ -8,13 +8,14 @@ export default defineConfig({
   trailingSlash: "ignore",
   compressHTML: true,
   build: {
-    inlineStylesheets: "auto",
+    // CSS (~11 KB gzip) инлайнится в HTML: убирает render-blocking запрос, страниц всего две
+    inlineStylesheets: "always",
   },
   integrations: [
     sitemap({
       changefreq: "monthly",
       priority: 0.8,
-      lastmod: new Date("2026-06-09"),
+      lastmod: new Date(), // дата сборки = дата деплоя
       i18n: {
         defaultLocale: "ru",
         locales: {

@@ -5,17 +5,25 @@ interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const tr = t(lang);
 
-const codeSnippet = `<span class="text-purple">const</span> <span class="text-text">pipeline</span> = <span class="text-accent">createRAG</span>({
-  <span class="text-green">embeddings</span>: <span class="text-orange">"openai"</span>,
-  <span class="text-green">vectorDB</span>: <span class="text-orange">"pinecone"</span>,
-  <span class="text-green">llm</span>: <span class="text-orange">"claude-3"</span>,
-  <span class="text-green">chunking</span>: <span class="text-orange">"semantic"</span>,
+/* Отражает реальный стек из опыта: собственный RAG на pgvector (Drizzle) + стриминг ответа по SSE.
+   Без "<" в тексте кода - анимация печати трактует "<" как начало тега */
+const codeSnippet = `<span class="text-purple">const</span> <span class="text-text">context</span> = <span class="text-purple">await</span> db
+  .<span class="text-accent">select</span>({ <span class="text-green">content</span>: docs.content })
+  .<span class="text-accent">from</span>(docs)
+  .<span class="text-accent">orderBy</span>(<span class="text-accent">cosineDistance</span>(
+    docs.embedding,
+    <span class="text-purple">await</span> <span class="text-accent">embed</span>(query),
+  ))
+  .<span class="text-accent">limit</span>(<span class="text-orange">5</span>);
+
+<span class="text-purple">const</span> <span class="text-text">stream</span> = llm.<span class="text-accent">stream</span>({
+  <span class="text-green">context</span>,
+  <span class="text-green">question</span>: query,
 });
 
-<span class="text-purple">const</span> <span class="text-text">answer</span> = <span class="text-purple">await</span> pipeline
-  .<span class="text-accent">retrieve</span>(<span class="text-text">query</span>)
-  .<span class="text-accent">augment</span>(<span class="text-text">context</span>)
-  .<span class="text-accent">generate</span>();`;
+<span class="text-purple">for await</span> (<span class="text-purple">const</span> <span class="text-text">token</span> <span class="text-purple">of</span> stream) {
+  reply.<span class="text-accent">sse</span>({ <span class="text-green">data</span>: token });
+}`;
 
 const features = [
   { title: tr.ai.feature1Title, desc: tr.ai.feature1Desc, icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />` },
@@ -36,7 +44,7 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
     <div class="reveal mx-auto max-w-4xl">
       <div class="card border-l-4 border-l-purple">
         <div class="grid gap-8 md:grid-cols-2">
-          <div class="space-y-5">
+          <div class="min-w-0 space-y-5">
             <h3 class="text-xl font-bold">
               {tr.ai.heading.split(" ").slice(0, -1).join(" ")}{" "}
               <span class="text-purple">{tr.ai.heading.split(" ").at(-1)}</span>
@@ -57,13 +65,13 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
             </div>
           </div>
 
-          <div class="flex flex-col justify-center space-y-3">
+          <div class="flex min-w-0 flex-col justify-center space-y-3">
             <div class="rounded-xl border border-border bg-bg p-4">
               <div class="mb-3 flex items-center gap-2">
                 <div class="h-3 w-3 rounded-full bg-red/80"></div>
                 <div class="h-3 w-3 rounded-full bg-orange/80"></div>
                 <div class="h-3 w-3 rounded-full bg-green/80"></div>
-                <span class="ml-2 font-mono text-xs text-text-dim">ai-workflow.ts</span>
+                <span class="ml-2 font-mono text-xs text-text-dim">rag-chat.ts</span>
               </div>
               <figure role="group" aria-label={lang === "ru" ? "Пример кода RAG-пайплайна на TypeScript" : "RAG pipeline code example in TypeScript"}>
                 <pre class="overflow-x-auto font-mono text-xs leading-relaxed"><code id="ai-code-block" data-language="typescript" set:html={codeSnippet} /></pre>

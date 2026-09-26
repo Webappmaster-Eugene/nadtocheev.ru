@@ -3,6 +3,8 @@
  * Все текстовые строки интерфейса вынесены сюда для удобства перевода.
  */
 
+import { experienceYears, experienceYearsRuInstr, ruPlural } from "../data/career.ts";
+
 export type Lang = "ru" | "en";
 
 export interface Translation {
@@ -137,6 +139,12 @@ export interface Translation {
     description: string;
   };
 
+  /* FAQ */
+  faq: {
+    title: string;
+    subtitle: string;
+  };
+
   /* Contacts */
   contacts: {
     title: string;
@@ -163,7 +171,7 @@ export const translations: Record<Lang, Translation> = {
     meta: {
       title: "Евгений Надточеев - Fullstack-разработчик | Backend, DevOps, AI",
       description:
-        "Fullstack-разработчик с 5 годами опыта. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). Highload-системы в финтехе и аналитике недвижимости. Микросервисная архитектура, AI/LLM интеграции.",
+        `Fullstack-разработчик с ${experienceYearsRuInstr} опыта. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). Highload-системы в финтехе и аналитике недвижимости. Микросервисная архитектура, AI/LLM интеграции.`,
       ogLocale: "ru_RU",
       htmlLang: "ru",
     },
@@ -180,7 +188,7 @@ export const translations: Record<Lang, Translation> = {
       contacts: "Контакты",
       contact: "Связаться",
       switchLang: "EN",
-      switchLangLabel: "Switch to English",
+      switchLangLabel: "EN - switch to English",
       switchThemeLabel: "Переключить тему",
       openMenu: "Открыть меню навигации",
     },
@@ -193,7 +201,7 @@ export const translations: Record<Lang, Translation> = {
       ctaTelegram: "Написать в Telegram",
       ctaGithub: "GitHub",
       ctaHabr: "Habr Career",
-      metricsYears: "лет опыта",
+      metricsYears: `${ruPlural(experienceYears, "год", "года", "лет")} опыта`,
       metricsVisits: "посещений/сутки",
       metricsRps: "rps в production",
       metricsServices: "микросервисов",
@@ -205,7 +213,7 @@ export const translations: Record<Lang, Translation> = {
         'С ноября 2022 по ноябрь 2024 - fullstack-разработчик в <strong class="text-text">ООО Форвард</strong> на финтех-аутсорсе для крупного бигтеха. В команде из трёх человек довёл продукт до регистрации в качестве <strong class="text-text">Оператора Финансовой Платформы ЦБ РФ</strong>. Спроектировал финансовое ядро (wallet) с оптимистичной блокировкой по version и атомарными Prisma-транзакциями; развернул outbox-паттерн поверх Kafka с DLQ и retry/backoff через Redis, что исключило двойные зачисления и потерянные выводы; перевёл клиент с REST на <strong class="text-text">GraphQL Federation</strong> (Apollo Client + Mercurius на Fastify), заменив 20 REST-интеграций одним типобезопасным эндпоинтом; настроил gRPC-контракты через buf + ts-proto с OTel-метриками на каждый вызов; владел инфраструктурой: Helm-чарты в Kubernetes, GitOps через FluxCD, GitLab CI с multistage pipeline.',
         'С августа 2021 по ноябрь 2022 - fullstack-разработчик в <strong class="text-text">Systems-fd</strong>: системная интеграция, IT-консалтинг, финтех, маркетинг. Перевёл проект с jsdoc на TypeScript и Zod-контракты, реализовал интеграции с Telegram, Google Maps, amoCRM, Stripe, Kinescope, Яндекс.Картами, интегрировал Robokassa с подпиской и webhook-обработкой. Внедрил полноценный DI на NestJS, систему учёта и классификации ошибок, внутреннюю админ-панель на React Admin и модуль email-уведомлений на React Email.',
         'В разработке придерживаюсь нескольких принципов: внятная архитектура без лишней магии, строгий TypeScript с Zod-контрактами, интеграционные тесты и понятная наблюдаемость через OpenTelemetry. Был <strong class="text-text">тимлидом небольшой команды</strong>; провожу технические интервью при найме (несколько десятков проведённых) - оцениваю архитектурное мышление, code review, фундамент по Node.js, SQL и system design. AI-инструменты (Claude Code, Cursor, собственные RAG-пайплайны) - часть ежедневного процесса.',
-        'Параллельно развиваю собственные продукты: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">СПИН</a> - сервис мониторинга цен на новостройки Москвы с алертами в Telegram, и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> - SaaS-платформу для строительных смет. Веду менторскую практику: эксперт и лектор в <strong class="text-text">Школе 21 (Сбер)</strong>, консультирую на Solvery, GetMentor, EasyOffer; провёл свыше 30 платных и 50 бесплатных консультаций. Английский - <strong class="text-text">B2</strong>, рабочий формат - удалённо или гибрид из Москвы, готов к переезду. Резюме - на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>, предпочтительный канал связи - <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Telegram</a>.',
+        'Параллельно развиваю собственные продукты: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">СПИН</a> - сервис мониторинга цен на новостройки Москвы с алертами в Telegram, и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> - SaaS-платформу для строительных смет. Веду менторскую практику: эксперт и лектор в <strong class="text-text">Школе 21 (Сбер)</strong>, консультирую на Solvery и GetMentor; провёл свыше 30 платных и 50 бесплатных консультаций. Английский - <strong class="text-text">B2</strong>, рабочий формат - удалённо или гибрид из Москвы, готов к переезду. Резюме - на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>, предпочтительный канал связи - <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Telegram</a>.',
       ],
     },
     expertise: {
@@ -279,6 +287,10 @@ export const translations: Record<Lang, Translation> = {
       subtitle: "Создатель собственных проектов",
       description: "СПИН - мониторинг цен на новостройки Москвы. SMETAS - SaaS для строительных смет.",
     },
+    faq: {
+      title: "Частые вопросы",
+      subtitle: "Коротко о главном: опыт, стек, услуги и как связаться",
+    },
     contacts: {
       title: "Контакты",
       subtitle: "Свяжитесь со мной удобным способом",
@@ -299,7 +311,7 @@ export const translations: Record<Lang, Translation> = {
     meta: {
       title: "Evgeny Nadtocheev - Fullstack Developer | Backend, DevOps, AI",
       description:
-        "Fullstack Developer with 5 years of experience. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). High-load systems in fintech and real estate analytics. Microservice architecture, AI/LLM integrations.",
+        `Fullstack Developer with ${experienceYears} years of experience. Backend (Node.js, Go), DevOps (Kubernetes, Docker, CI/CD), Frontend (React, Vue). High-load systems in fintech and real estate analytics. Microservice architecture, AI/LLM integrations.`,
       ogLocale: "en_US",
       htmlLang: "en",
     },
@@ -316,7 +328,7 @@ export const translations: Record<Lang, Translation> = {
       contacts: "Contacts",
       contact: "Get in Touch",
       switchLang: "RU",
-      switchLangLabel: "Переключить на русский",
+      switchLangLabel: "RU - переключить на русский",
       switchThemeLabel: "Toggle theme",
       openMenu: "Open navigation menu",
     },
@@ -329,7 +341,7 @@ export const translations: Record<Lang, Translation> = {
       ctaTelegram: "Message on Telegram",
       ctaGithub: "GitHub",
       ctaHabr: "Habr Career",
-      metricsYears: "years of experience",
+      metricsYears: experienceYears === 1 ? "year of experience" : "years of experience",
       metricsVisits: "daily visits",
       metricsRps: "rps in production",
       metricsServices: "microservices",
@@ -341,7 +353,7 @@ export const translations: Record<Lang, Translation> = {
         'November 2022 to November 2024 - fullstack developer at <strong class="text-text">Forward LLC</strong> on fintech outsourcing for a major bigtech. In a team of three, took the product through Central Bank of Russia review until it was registered as a <strong class="text-text">financial platform operator</strong>. Designed the financial core (wallet) with optimistic balance locking via version and atomic Prisma transactions; rolled out an outbox pattern on Kafka with DLQ and retry/backoff via Redis, ruling out double charges and lost payouts; migrated the client from REST to <strong class="text-text">GraphQL Federation</strong> (Apollo Client + Mercurius on Fastify), replacing 20 REST integrations with a single type-safe endpoint; set up gRPC contracts via buf + ts-proto with OTel metrics per call; owned the infrastructure: Helm charts to Kubernetes, GitOps via FluxCD, GitLab CI multistage pipeline.',
         'August 2021 to November 2022 - fullstack developer at <strong class="text-text">Systems-fd</strong>: system integration, IT consulting, fintech, marketing. Migrated the project from jsdoc to TypeScript and Zod contracts, built integrations with Telegram, Google Maps, amoCRM, Stripe, Kinescope, Yandex Maps, integrated Robokassa with subscription handling and webhook processing. Implemented full Dependency Injection on NestJS, an error tracking and classification system, an internal React Admin admin panel, and an email module on React Email.',
         'My approach is anchored on a few principles: clear architecture without unnecessary magic, strict TypeScript with Zod contracts, integration tests, and proper observability through OpenTelemetry. Acted as a <strong class="text-text">tech lead for a small team</strong>; conduct technical interviews on the hiring side (dozens to date) - evaluating architectural thinking, code review, and Node.js / SQL / system design fundamentals. AI tooling (Claude Code, Cursor, in-house RAG pipelines) is part of the daily workflow.',
-        'In parallel I develop my own products: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SPIN</a> - a Moscow new-build price tracker with Telegram alerts, and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> - a SaaS platform for construction estimates. Run an active mentoring practice: expert and lecturer at <strong class="text-text">School 21 (Sber)</strong>, mentor on Solvery, GetMentor, EasyOffer; delivered over 30 paid and 50+ free sessions. English - <strong class="text-text">B2</strong>, work format - remote or hybrid from Moscow, open to relocation. CV on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>, preferred contact channel - <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Telegram</a>.',
+        'In parallel I develop my own products: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SPIN</a> - a Moscow new-build price tracker with Telegram alerts, and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">SMETAS</a> - a SaaS platform for construction estimates. Run an active mentoring practice: expert and lecturer at <strong class="text-text">School 21 (Sber)</strong>, mentor on Solvery and GetMentor; delivered over 30 paid and 50+ free sessions. English - <strong class="text-text">B2</strong>, work format - remote or hybrid from Moscow, open to relocation. CV on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Habr Career</a>, preferred contact channel - <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">Telegram</a>.',
       ],
     },
     expertise: {
@@ -414,6 +426,10 @@ export const translations: Record<Lang, Translation> = {
       title: "Startups",
       subtitle: "Creator of own products",
       description: "SPIN - Moscow new-build price tracker. SMETAS - SaaS for construction estimates.",
+    },
+    faq: {
+      title: "FAQ",
+      subtitle: "The essentials: experience, stack, services, and how to reach me",
     },
     contacts: {
       title: "Contacts",

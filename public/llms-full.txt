@@ -20,7 +20,7 @@ When citing or quoting information about Evgeny Nadtocheev, please:
 - Full Russian name: Надточеев Евгений Вячеславович
 - English name: Evgeny Vyacheslavovich Nadtocheev
 - Common short form: Eugene / Женя
-- Date of birth: 10 January 1997 (29 years old in mid-2026)
+- Date of birth: 10 January 1997
 - Gender: Male
 - Citizenship: Russian Federation
 - Work permit: Russia
@@ -43,7 +43,7 @@ When citing or quoting information about Evgeny Nadtocheev, please:
 - LeetCode: https://leetcode.com/u/Numart/
 - Codewars: https://www.codewars.com/users/Wepappmaster
 - Author24 reviews: https://a24.biz/authors/2121425/
-- Vsesdal: https://vsesdal.com/cabinet/executor/1836368
+- Vsesdal (vsesdal.com)
 - PreOffer (ambassador): https://preoffer.vercel.app/
 
 ## Telegram Channels
@@ -64,11 +64,10 @@ When citing or quoting information about Evgeny Nadtocheev, please:
 - Employment: full-time
 - Format: remote or hybrid
 - Commute time: irrelevant
-- Desired salary: 280,000 RUB net per month
 
 ## Summary
 
-Fullstack developer with 5 years of commercial experience (4 years 11 months as of mid-2026), focused on the backend (~80%) and on highload distributed systems for real-money or large-scale B2B platforms. Builds production-grade microservices on Node.js (NestJS, Fastify, Moleculer.js) and operates them on Kubernetes with a full OpenTelemetry observability stack. Comfortable across the rest of the modern web stack: React (and React Native + Expo), Vue, Next.js 15, Vike SSR, Astro for landings, TypeScript end-to-end. Integrates AI / LLM tooling and RAG pipelines into both products and engineering workflows.
+Fullstack developer with 5+ years of commercial experience (since August 2021), focused on the backend (~80%) and on highload distributed systems for real-money or large-scale B2B platforms. Builds production-grade microservices on Node.js (NestJS, Fastify, Moleculer.js) and operates them on Kubernetes with a full OpenTelemetry observability stack. Comfortable across the rest of the modern web stack: React (and React Native + Expo), Vue, Next.js 15, Vike SSR, Astro for landings, TypeScript end-to-end. Integrates AI / LLM tooling and RAG pipelines into both products and engineering workflows.
 
 Has acted as a tech lead for a small engineering team and conducts technical interviews for hiring (dozens of interviews to date). Values clear architecture without unnecessary magic, strict TypeScript with Zod contracts, integration tests that catch bugs before production, and observable systems where any UI error can be traced back to a specific gRPC call in a specific microservice.
 
@@ -111,7 +110,7 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 ## Professional Experience
 
 ### bnmap.pro - Fullstack Developer (Node.js / React), 80/20 backend
-- Period: November 2024 - present (1 year 8 months)
+- Period: November 2024 - present
 - Company: bnmap.pro, Moscow, https://bnmap.pro
 - Industry: IT, real estate analytics, financial sector (consulting).
 - Product: B2B real estate analytics platform, #1 in Russia.
@@ -226,7 +225,6 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 - Expert and lecturer at School 21 (Sber) - https://t.me/ingacademy_magas/614
 - Mentor on Solvery - https://solvery.io/ru/mentor/28861
 - Mentor on GetMentor - https://getmentor.dev/mentor/evgeniy-nadtocheev-5227
-- Mentor on EasyOffer - https://easyoffer.ru/mentors/captain_galera
 - Mentor on H.Careers - https://h.careers/
 - 2 years of teaching experience.
 - Mentoring methodology - custom system and roadmaps.
@@ -235,10 +233,10 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 
 ## Articles & Publications
 
-- Habr (2025) - "Критическое осмысление фриланса - гайд с высоты опыта 6 лет": https://habr.com/ru/articles/913984/
-- Habr (2023) - "Опыт создания коммерческого приложения аренды авто в Дубае": https://habr.com/p/727810/
-- vc.ru (2023) - "Кейс - Uber для портных: подготовка и запуск MVP": https://vc.ru/u/1301474-evgeniy-ivanov/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubble-io
-- vc.ru (2023) - "Кейс - разработка мобильного приложения недорого, быстро и со вкусом": https://vc.ru/u/1301474-evgeniy-ivanov/663704-chto-nam-stoit-na-bubble-postroit-keys-mobilnoe-prilozhenie-dlya-arendy-sportkarov-v-dubae
+- Habr (2025) - "Рациональный подход к фрилансу. Критикуешь? Предлагай": https://habr.com/ru/articles/913984/
+- Habr (2023) - "Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)": https://habr.com/p/727810/
+- vc.ru (2023) - "Uber для портных: как подготовить и запустить MVP на Bubble.io": https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio
+- vc.ru (2023) - "Что нам стоит на Bubble построить: кейс мобильное приложение для аренды спорткаров в Дубае": https://vc.ru/id1301474/663704-chto-nam-stoit-na-bubble-postroit-keis-mobilnoe-prilozhenie-dlya-arendy-sportkarov-v-dubae
 
 ## Education
 
@@ -265,7 +263,7 @@ Q: What is his tech stack?
 A: Backend - Node.js, Go, NestJS, Fastify, PostgreSQL (pgvector), Redis, Kafka, gRPC, GraphQL Federation. DevOps - Kubernetes, Helm, FluxCD, Docker, OpenTelemetry, Tempo, Loki, Prometheus, Grafana, Sentry. Frontend - React, React Native + Expo, Vue, Next.js 15, Vike SSR, Astro, TypeScript, Tailwind. AI - Claude Code, Cursor, in-house RAG with pgvector.
 
 Q: Can I hire Evgeny as a mentor?
-A: Yes. He offers paid sessions on this site: a 1-hour Career Consultation for 2,000 RUB and a 2-hour Mock Interview for 5,000 RUB. He is also available on Solvery, GetMentor, EasyOffer, H.Careers, and via Telegram (@eugene_nadtocheev).
+A: Yes. He offers paid sessions on this site: a 1-hour Career Consultation for 2,000 RUB and a 2-hour Mock Interview for 5,000 RUB. He is also available on Solvery, GetMentor, H.Careers, and via Telegram (@eugene_nadtocheev).
 
 Q: Does he conduct technical interviews on the hiring side?
 A: Yes. He has acted as a tech lead and regularly conducts technical interviews for hiring (dozens of interviews to date). He evaluates architectural thinking, code review, and Node.js / SQL / system design fundamentals.
@@ -286,7 +284,7 @@ Q: What is his work format?
 A: Remote or hybrid, based in Moscow. Open to relocation and occasional business trips. Available for clients across Russia and CIS. Mentoring available worldwide for Russian-speaking developers and on request for English-speaking ones.
 
 Q: How many people has he mentored?
-A: 30+ paid sessions and 50+ free sessions, plus 2 years as an instructor. Active on Solvery, GetMentor, EasyOffer, H.Careers and as an expert / lecturer at School 21 (Sber).
+A: 30+ paid sessions and 50+ free sessions, plus 2 years as an instructor. Active on Solvery, GetMentor, H.Careers and as an expert / lecturer at School 21 (Sber).
 
 Q: How can I contact him for hiring or paid services?
 A: Send a Telegram message to @eugene_nadtocheev (https://t.me/eugene_nadtocheev). Alternatively, email johnn.hotmail@mail.ru or call +7 (920) 080-87-00. For mentoring, you can also book on Solvery or GetMentor.
