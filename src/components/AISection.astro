@@ -95,6 +95,9 @@ const tags = ["LLM", "RAG", "Claude Code", "Cursor", "Vector DB", "Embeddings", 
       var codeEl = document.getElementById("ai-code-block");
       if (!codeEl) return;
       var fullHTML = codeEl.innerHTML;
+      /* Резервируем итоговую высоту: иначе блок растёт во время печати и сдвигает страницу (CLS, промах якорей) */
+      var pre = codeEl.parentElement;
+      pre.style.minHeight = pre.offsetHeight + "px";
       codeEl.innerHTML = "";
       var typed = false;
 
