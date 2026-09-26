@@ -26,7 +26,9 @@ const tr = t(lang);
 
 const title = Astro.props.title ?? tr.meta.title;
 const description = Astro.props.description ?? tr.meta.description;
-const ogImage = Astro.props.ogImage ?? "/og-image.png";
+/** OG-картинка по языку: на EN имя латиницей (генерируются scripts/generate-icons.mjs) */
+const ogImage = Astro.props.ogImage ?? (lang === "en" ? "/og-image-en.png" : "/og-image.png");
+const ogImageURL = new URL(ogImage, Astro.site).href;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ruURL = new URL("/", Astro.site);
@@ -53,7 +55,7 @@ const jsonLd = {
       mainEntityOfPage: canonicalURL.href,
       email: `mailto:${personal.email}`,
       telephone: personal.phone,
-      image: { "@type": "ImageObject", url: `${personal.website}/og-image.png`, width: 1200, height: 630 },
+      image: { "@type": "ImageObject", url: ogImageURL, width: 1200, height: 630 },
       sameAs: [
         personal.github,
         personal.habr,
@@ -204,7 +206,7 @@ const jsonLd = {
       about: { "@id": `${personal.website}/#person` },
       mainEntity: { "@id": `${personal.website}/#person` },
       author: { "@id": `${personal.website}/#person` },
-      primaryImageOfPage: { "@type": "ImageObject", url: `${personal.website}/og-image.png` },
+      primaryImageOfPage: { "@type": "ImageObject", url: ogImageURL },
       speakable: {
         "@type": "SpeakableSpecification",
         cssSelector: ["#hero", "#about", "#services", "#faq", "#contacts"],
@@ -363,8 +365,8 @@ const jsonLd = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
-    <meta property="og:image:secure_url" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:secure_url" content={ogImageURL} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content={lang === "ru"
       ? `${personal.name.full.ru} - Fullstack-разработчик`
@@ -387,7 +389,7 @@ const jsonLd = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image" content={ogImageURL} />
     <meta name="twitter:image:alt" content={lang === "ru"
       ? `${personal.name.full.ru} - Fullstack-разработчик`
       : `${personal.name.full.en} - Fullstack Developer`} />
@@ -422,7 +424,10 @@ const jsonLd = {
     <script is:inline>
       (function() {
         document.documentElement.classList.add("js");
-        var theme = localStorage.getItem("theme") || "dark";
+        /* Сохранённая тема, иначе системная (prefers-color-scheme) */
+        var theme = null;
+        try { theme = localStorage.getItem("theme"); } catch (e) {}
+        if (!theme) theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
         if (theme === "light") {
           document.documentElement.classList.add("light");
           var m = document.getElementById("meta-theme-color");
@@ -518,6 +523,40 @@ const jsonLd = {
         );
         targets.forEach(function (el) { observer.observe(el); });
       });
+    </script>
+
+    <!-- Анимированные счётчики (.counter[data-target]: "5", "200K+", "30+") во всех секциях -->
+    <script is:inline>
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var counters = document.querySelectorAll(".counter[data-target]");
+        if (!counters.length) return;
+        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+        function animate(el) {
+          var raw = el.getAttribute("data-target") || "";
+          var match = raw.match(/^(\d+)(.*)$/);
+          if (!match) return;
+          var target = parseInt(match[1], 10);
+          var suffix = match[2];
+          var start = performance.now();
+          function step(now) {
+            var progress = Math.min((now - start) / 1500, 1);
+            el.textContent = Math.round(easeOutCubic(progress) * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          el.textContent = "0" + suffix;
+          requestAnimationFrame(step);
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animate(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.3 });
+        counters.forEach(function (el) { observer.observe(el); });
+      })();
     </script>
 
     <!-- Scroll progress bar -->

@@ -44,45 +44,54 @@ docker compose down
 ## Структура проекта
 
 ```
-visitka/
+app/
 ├── src/
 │   ├── pages/
 │   │   ├── index.astro                # Русская версия (/)
-│   │   └── en/
-│   │       └── index.astro            # Английская версия (/en/)
+│   │   ├── en/index.astro             # Английская версия (/en/)
+│   │   └── 404.astro                  # Своя 404 (noindex)
 │   ├── layouts/
-│   │   └── Layout.astro               # Базовый layout: SEO meta, OG, hreflang, JSON-LD, шрифты
+│   │   └── Layout.astro               # SEO meta, OG, hreflang, JSON-LD @graph, общие inline-скрипты
 │   ├── components/
-│   │   ├── Header.astro               # Фиксированная навигация + переключатель языка + мобильное меню
-│   │   ├── Hero.astro                 # Имя, tagline, метрики, CTA-кнопки, animated badge
-│   │   ├── About.astro                # Секция «Обо мне»
-│   │   ├── Expertise.astro            # 4 карточки направлений экспертизы
-│   │   ├── TechStack.astro            # Полный стек по категориям (8 групп)
-│   │   ├── Experience.astro           # Timeline карьеры с метриками и стеком
-│   │   ├── Projects.astro             # 3 ключевых проекта
-│   │   ├── AISection.astro            # AI & Automation — акцентная секция с code snippet
-│   │   ├── Contacts.astro             # Все каналы связи (Telegram, телефон, email, GitHub, Habr, YouTube)
-│   │   └── Footer.astro               # Копирайт
+│   │   ├── Header.astro               # Навигация, тема, язык, мобильное меню, подсветка секции
+│   │   ├── Hero.astro                 # Имя, роль, tagline, CTA, метрики-счётчики
+│   │   ├── About.astro                # «Обо мне»
+│   │   ├── Expertise.astro            # 6 карточек направлений экспертизы
+│   │   ├── Experience.astro           # Timeline опыта; на мобильных - «Показать всё»
+│   │   ├── Projects.astro             # 3 ключевых проекта + собственные продукты (стартапы)
+│   │   ├── AISection.astro            # AI & Automation, анимированный пример кода
+│   │   ├── CodingChallenges.astro     # LeetCode, Codewars
+│   │   ├── Publications.astro         # Статьи и выступления
+│   │   ├── Mentoring.astro            # Менторство, площадки, каналы, фриланс
+│   │   ├── Services.astro             # Платные услуги
+│   │   ├── FAQ.astro                  # Частые вопросы (видимые + JSON-LD FAQPage)
+│   │   ├── Contacts.astro             # Каналы связи
+│   │   └── Footer.astro
 │   ├── data/                          # ← ДАННЫЕ: редактируйте здесь при обновлении резюме
-│   │   ├── personal.ts                # ФИО, контакты, ссылки (общие для обоих языков)
+│   │   ├── personal.ts                # ФИО, контакты, ссылки, метрики hero
+│   │   ├── career.ts                  # Стаж и длительности - считаются при сборке
 │   │   ├── experience.ts              # Опыт работы (ru + en)
-│   │   ├── projects.ts                # Ключевые проекты (ru + en)
-│   │   └── skills.ts                  # Экспертиза и технологический стек (ru + en)
-│   ├── i18n/
-│   │   └── translations.ts            # Все UI-строки: секции, навигация, мета-теги (ru + en)
-│   └── styles/
-│       └── global.css                 # Tailwind v4, design tokens, анимации, utility-классы
+│   │   ├── projects.ts                # Ключевые проекты и стартапы (ru + en)
+│   │   ├── skills.ts                  # Экспертиза (ru + en)
+│   │   ├── publications.ts            # Статьи и выступления
+│   │   ├── mentoring.ts               # Менторство
+│   │   ├── services.ts                # Услуги и цены
+│   │   └── faq.ts                     # FAQ
+│   ├── i18n/translations.ts           # UI-строки, meta title/description (ru + en)
+│   └── styles/global.css              # Tailwind v4, @font-face, токены, светлая тема, анимации
 ├── public/
-│   ├── favicon.svg                    # SVG-фавикон
-│   ├── robots.txt                     # SEO: Allow all + sitemap
-│   └── llms.txt                       # Структурированное описание для нейросетей
-├── astro.config.mjs                   # Astro: site URL, Tailwind, Sitemap
-├── tsconfig.json                      # TypeScript strict
-├── package.json                       # Зависимости и скрипты
-├── docker-compose.yml                 # Docker Compose для Dokploy
-├── Dockerfile                         # Multi-stage build: node:22-alpine → nginx:alpine
-├── nginx.conf                         # Gzip, кеширование, security headers
-└── .dockerignore                      # Исключения для Docker-контекста
+│   ├── fonts/                         # Inter variable + JetBrains Mono (self-hosted, OFL)
+│   ├── og-image.png, og-image-en.png  # OG-картинки RU/EN (scripts/generate-icons.mjs)
+│   ├── robots.txt, llms.txt, llms-full.txt, humans.txt, site.webmanifest, .well-known/
+│   └── favicon*.{svg,ico,png}, apple-touch-icon.png
+├── scripts/generate-icons.mjs         # Фавиконки и OG-картинки (--og-only)
+├── astro.config.mjs                   # site URL, Tailwind, Sitemap, инлайн CSS
+├── Dockerfile                         # node:22-alpine → nginx:alpine
+├── nginx.conf                         # Редиректы, 404, gzip, кеширование
+├── nginx-security-headers.conf        # Security-заголовки (include в каждый location)
+└── docker-compose.yml                 # Для Dokploy
+```
+
 ```
 
 ---
@@ -121,16 +130,25 @@ export const personal = {
 **Как добавить новое место работы:**
 1. Добавьте объект в начало массива `experienceRu` (новое место — первое)
 2. Добавьте аналогичный объект в `experienceEn`
-3. Заполните все поля: `company`, `role`, `period`, `duration`, `industry`, `backendFocus`, `highlights`, `stack`
+3. Заполните все поля: `company`, `role`, `period`, `start`, `end` (без `end` - «по настоящее время»), `industry`, `backendFocus`, `highlights`, `stack`
+
+Длительность («1 год 11 месяцев») и «N лет опыта» в hero, meta и FAQ вычисляются при сборке в `src/data/career.ts` - вручную их не пишите. На мобильных в карточке видны первые 4 достижения, остальное - по кнопке «Показать всё».
 
 ### Файл `src/data/projects.ts` — Проекты
 
-Аналогично опыту: два массива (`projectsRu`, `projectsEn`), функция `getProjects(lang)`.
+Аналогично опыту: два массива (`projectsRu`, `projectsEn`), функция `getProjects(lang)`. Там же стартапы для блока «Собственные продукты»: `getStartups(lang)`.
+
+### Файл `src/data/faq.ts` — FAQ
+
+Один источник для видимого блока «Частые вопросы» и JSON-LD `FAQPage` (Google требует, чтобы разметка совпадала с видимым контентом). URL в ответах становятся ссылками автоматически.
+
+### Синхронизация с `public/llms.txt` и `llms-full.txt`
+
+Эти файлы для нейропоиска пишутся вручную. После изменения фактов (стек, опыт, услуги, ссылки) обновите их тоже - поищите старую формулировку по `src/` и `public/`.
 
 ### Файл `src/data/skills.ts` — Навыки и стек
 
-- `getExpertise(lang)` — 4 категории экспертизы (Backend, DevOps, Frontend, AI) с описаниями на обоих языках
-- `techStackGroups` — 8 групп технологий (одинаковые для обоих языков, т.к. названия технологий не переводятся)
+- `getExpertise(lang)` — 6 категорий экспертизы (Backend, Архитектура, DevOps, Frontend, Telegram, AI) с описаниями на обоих языках
 
 ### Файл `src/i18n/translations.ts` — UI-строки
 
@@ -210,7 +228,7 @@ const tr = t(lang);
 Тип `og:type="profile"` (оптимально для персональных сайтов):
 - `og:locale` + `og:locale:alternate` — для мультиязычности
 - `profile:first_name`, `profile:last_name` — для OG profile
-- `og:image` (1200x630) — требуется `public/og-image.png`
+- `og:image` (1200x630) — `public/og-image.png` для RU, `public/og-image-en.png` для EN (генерируются `node scripts/generate-icons.mjs --og-only`)
 
 ### Twitter Cards
 
@@ -218,13 +236,9 @@ const tr = t(lang);
 
 ### JSON-LD Structured Data
 
-Три связанных сущности через `@id`:
+Граф сущностей через `@id`: **Person** (контакты, sameAs, knowsAbout, образование, предложения услуг), **WebSite**, **ProfilePage** (даты публикации/изменения - изменение берётся из даты сборки), **BreadcrumbList**, **Organization**, два **Service** (консультация, мок-собеседование), **FAQPage** (из `faq.ts`, совпадает с видимым FAQ), два **SoftwareApplication** (стартапы).
 
-1. **Person** — имя, должность, email, телефон, sameAs (все соцсети), knowsAbout (19 технологий), knowsLanguage (ru, en с proficiencyLevel), address, nationality
-2. **WebSite** — url, name, description, publisher → Person
-3. **ProfilePage** — url, inLanguage, about → Person, isPartOf → WebSite
-
-Это позволяет Google, Яндексу и нейросетям (ChatGPT, Claude, Perplexity) структурированно извлекать информацию о владельце сайта.
+Правило: в разметке только то, что есть на странице. Не добавлять SearchAction (поиска нет), Course, Article чужих статей, зарплату.
 
 ### Sitemap
 
@@ -236,7 +250,7 @@ const tr = t(lang);
 
 ### llms.txt
 
-Файл `public/llms.txt` — машиночитаемое описание сайта для нейросетей (аналог robots.txt для LLM). Содержит:
+Файл `public/llms.txt` — машиночитаемое описание сайта для нейросетей (формат llmstxt.org: ссылки в перечнях - markdown `[название](url)`). Подробная версия - `public/llms-full.txt`. Содержит:
 - Контактную информацию
 - Описание экспертизы
 - Весь опыт работы
@@ -276,14 +290,14 @@ const tr = t(lang);
 
 | Класс | Эффект | Где используется |
 |-------|--------|-----------------|
-| `.animate-fade-in` | Плавное появление (opacity 0→1) | Hero badge, заголовок |
-| `.animate-slide-up` | Появление снизу (translateY + opacity) | Hero subtitle, CTA, метрики |
-| `.gradient-text` | Переливающийся градиент на тексте | Фамилия в hero, заголовки секций |
-| `.reveal` | Scroll-triggered появление снизу | Каждая секция |
+| `.animate-fade-in` | Плавное появление (opacity 0→1) | Hero badge |
+| `.animate-slide-up` | Появление снизу (translateY + opacity) | Hero CTA |
+| `.gradient-text` | Градиент на тексте | Фамилия в hero |
+| `.reveal` | Scroll-triggered появление снизу (только при классе `.js` на `<html>` - без JS контент виден) | Каждая секция |
 | `.stagger-children` | Последовательное появление дочерних элементов | Карточки, списки |
 | `.timeline-dot--active` | Пульсирующее свечение | Текущая позиция в timeline |
 
-Все анимации **автоматически отключаются** при `prefers-reduced-motion: reduce`.
+Все анимации **автоматически отключаются** при `prefers-reduced-motion: reduce`. Имя, роль, tagline и метрики hero - без анимации появления: это кандидаты в LCP. Блобы hero на телефонах статичны.
 
 ### UI-компоненты
 
@@ -300,58 +314,22 @@ const tr = t(lang);
 
 ## Секции сайта
 
-### 1. Header
-Фиксированный в верхней части экрана (`position: fixed`) с `backdrop-blur`. Содержит:
-- Лого (фамилия с акцентной точкой)
-- Навигационные ссылки (якоря на секции)
-- Переключатель языка (EN/RU)
-- CTA-кнопка «Связаться» → Telegram
-- Мобильное меню (hamburger, скрыто на `md:`)
+Порядок на странице (id секции = якорь в меню):
 
-### 2. Hero
-Главный экран с фоновым градиентным glow. Содержит:
-- Пульсирующий зелёный индикатор «Открыт к предложениям»
-- ФИО с gradient-text на фамилии
-- Должность и специализация
-- Tagline (1 предложение)
-- Две CTA-кнопки: Telegram (primary) и GitHub (outline)
-- 4 метрики: годы опыта, посещения, rps, микросервисы
-
-### 3. About
-Текстовый блок «Обо мне» — 4 параграфа с `<strong>` акцентами. Ключевые факты: 5+ лет, backend-фокус 80%, финтех, аналитика, AI, стартапы, управление командами.
-
-### 4. Expertise
-4 карточки с цветными левыми бордерами:
-- Backend & Microservices (синий)
-- DevOps & Infrastructure (зелёный)
-- Frontend (оранжевый)
-- AI & Automation (фиолетовый)
-
-Каждая содержит SVG-иконку, описание и набор skill-badges.
-
-### 5. Tech Stack
-8 компактных карточек по категориям: Languages, Backend, Databases, Message Brokers, Frontend, DevOps, Monitoring, Architecture. Технологии в виде hoverable-тегов.
-
-### 6. Experience
-Вертикальный timeline с gradient-линией и пульсирующей точкой на текущей позиции. 4 позиции с:
-- Компания, роль, период, длительность
-- Индустрия и % backend
-- 4–6 bullet-points с достижениями (с чекмарками)
-- Стек в цветных бейджах: backend (синий), frontend (фиолетовый), devops (зелёный)
-
-### 7. Projects
-3 карточки ключевых проектов: аналитика недвижимости, финтех-платформа, AI-инструменты. Каждая содержит описание, метрики (2x2 grid) и стек.
-
-### 8. AI & Automation
-Акцентная секция с фиолетовым left-border. Двухколоночный layout:
-- Левая: описание + 3 feature-блока (RAG, IDE-ассистенты, Vector DB)
-- Правая: стилизованный code snippet (имитация IDE) + теги
-
-### 9. Contacts
-Список карточек-ссылок на все каналы связи. Telegram отмечен как предпочитаемый. Телефон и email — отдельные кликабельные карточки (`tel:`, `mailto:`). Внешние ссылки открываются в новой вкладке, внутренние (tel, mailto) — нет.
-
-### 10. Footer
-Копирайт + информация о технологиях сборки.
+1. **Header** — фиксированная шапка: лого, навигация (на `lg+`), переключатель темы (по умолчанию системная), EN/RU (сохраняет текущий раздел), CTA в Telegram, мобильное меню; подсветка активной секции
+2. **Hero** (`#hero`) — статус, имя, роль, tagline, CTA (Telegram, GitHub, Habr Career), 4 метрики-счётчика (стаж считается при сборке)
+3. **About** (`#about`) — 5 абзацев: три места работы, принципы, продукты и менторство
+4. **Expertise** (`#expertise`) — 6 карточек направлений со skill-badges
+5. **Experience** (`#experience`) — timeline 3 мест работы: роль, период, длительность (авто), достижения, стек
+6. **Projects** (`#projects`) — 3 ключевых проекта с метриками и стеком + «Собственные продукты» (СПИН, SMETAS)
+7. **AI & Automation** (`#ai`) — описание, 3 фичи, анимированный пример кода RAG (pgvector + Drizzle + SSE)
+8. **Coding** (`#coding`) — LeetCode, Codewars
+9. **Publications** (`#publications`) — статистика, статьи (Хабр, vc.ru), выступления
+10. **Mentoring** (`#mentoring`) — статистика, площадки, что делаю, Telegram-каналы, амбассадорство, фриланс
+11. **Services** (`#services`) — 2 платные услуги с ценой и составом, запись в Telegram
+12. **FAQ** (`#faq`) — 12 вопросов-аккордеонов (в меню нет)
+13. **Contacts** (`#contacts`) — Telegram (предпочтительно), телефон, email, GitHub, Habr Career, статьи, webappmaster.ru
+14. **Footer** — копирайт
 
 ---
 
@@ -383,11 +361,9 @@ const tr = t(lang);
 
 ### Что нужно сделать после первого деплоя
 
-1. **OG-изображение**: создать `public/og-image.png` (1200x630 px) и пересобрать
-2. **Фото**: добавить `public/photo.jpg` — оно указано в JSON-LD `image`
-3. **Yandex.Webmaster**: раскомментировать `<meta name="yandex-verification">` в `Layout.astro` и вставить ID
-4. **Google Search Console**: аналогично для `google-site-verification`
-5. **Яндекс.Метрика / Google Analytics**: добавить скрипт при необходимости
+1. **Yandex.Webmaster**: раскомментировать `<meta name="yandex-verification">` в `Layout.astro` и вставить ID
+2. **Google Search Console**: аналогично для `google-site-verification`
+3. **Яндекс.Метрика / Google Analytics**: добавить скрипт при необходимости
 
 ---
 
@@ -410,13 +386,13 @@ const tr = t(lang);
 
 | Метрика | Значение |
 |---------|----------|
-| JS-бандлы | 0 файлов (inline scripts ~30 строк) |
-| CSS | ~31 KB (Tailwind v4 с tree-shaking) |
-| HTML (RU) | ~76 KB |
-| HTML (EN) | ~72 KB |
+| JS-бандлы | 0 файлов, только inline-скрипты |
+| CSS | ~45 KB (~9 KB gzip), инлайнится в HTML - нет render-blocking запросов |
+| HTML (RU / EN) | ~222 / ~205 KB (~45 / ~41 KB gzip) |
 | Шрифты | Self-hosted Inter variable (2 файла, ~67 KB) + JetBrains Mono, preload + display=swap |
 | Gzip | Настроен в nginx |
-| Cache | 1 год для статики (immutable) |
+| Cache | `/_astro/*` - 1 год immutable; шрифты - 30 дней; прочая статика - 1 день; HTML - `no-cache` |
+| Lighthouse (mobile / desktop) | 97–99 / 100; Accessibility, Best Practices, SEO - 100 |
 
 ---
 
@@ -430,6 +406,9 @@ const tr = t(lang);
 - Семантическая разметка: `<header>`, `<main>`, `<footer>`, `<nav>`, `<section>`
 - `<html lang="ru">` / `<html lang="en">` — для screen readers
 - `::selection` стилизован для лучшей читаемости
+- Ссылка «Перейти к содержимому» первым Tab; фокус-кольцо `:focus-visible`
+- Без JS контент виден (reveal-анимации включаются только под `.js`)
+- Кнопка EN/RU: aria-label содержит видимый текст; «Показать всё» в опыте - `aria-expanded` / `aria-controls`
 
 ---
 

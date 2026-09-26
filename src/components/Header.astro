@@ -57,6 +57,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
         </svg>
       </button>
       <a
+        id="lang-switch"
         href={switchLangUrl}
         class="inline-flex items-center justify-center rounded-lg border border-border px-2.5 py-1.5 text-xs font-bold text-text-muted transition-all hover:border-accent hover:text-accent"
         aria-label={tr.nav.switchLangLabel}
@@ -175,26 +176,33 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
     var iconLight = document.getElementById("theme-icon-light");
     if (!themeBtn || !iconDark || !iconLight) return;
 
+    var metaTheme = document.getElementById("meta-theme-color");
+
     function applyTheme(theme) {
-      if (theme === "light") {
-        document.documentElement.classList.add("light");
-        iconDark.classList.add("hidden");
-        iconLight.classList.remove("hidden");
-      } else {
-        document.documentElement.classList.remove("light");
-        iconDark.classList.remove("hidden");
-        iconLight.classList.add("hidden");
-      }
+      var light = theme === "light";
+      document.documentElement.classList.toggle("light", light);
+      iconDark.classList.toggle("hidden", light);
+      iconLight.classList.toggle("hidden", !light);
+      if (metaTheme) metaTheme.setAttribute("content", light ? "#f8fafc" : "#0a0a0b");
     }
 
-    var saved = localStorage.getItem("theme") || "dark";
-    applyTheme(saved);
+    function savedTheme() {
+      try { return localStorage.getItem("theme"); } catch (e) { return null; }
+    }
+
+    /* Начальную тему уже выбрал inline-скрипт в <head> (сохранённая или системная) - только синхронизируем иконки */
+    applyTheme(document.documentElement.classList.contains("light") ? "light" : "dark");
 
     themeBtn.addEventListener("click", function () {
-      var current = document.documentElement.classList.contains("light") ? "light" : "dark";
-      var next = current === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", next);
+      var next = document.documentElement.classList.contains("light") ? "dark" : "light";
+      try { localStorage.setItem("theme", next); } catch (e) {}
       applyTheme(next);
+    });
+
+    /* Пока пользователь не выбрал тему сам, следуем за системной */
+    var systemLight = window.matchMedia("(prefers-color-scheme: light)");
+    systemLight.addEventListener("change", function (e) {
+      if (!savedTheme()) applyTheme(e.matches ? "light" : "dark");
     });
   })();
 
@@ -203,12 +211,24 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
   document.addEventListener("DOMContentLoaded", function () {
     var sections = document.querySelectorAll("section[id]");
     var navLinks = document.querySelectorAll(".nav-link");
+    var currentSection = "";
+
+    /* Смена языка сохраняет раздел: id секций одинаковы в обеих версиях */
+    var langSwitch = document.getElementById("lang-switch");
+    if (langSwitch) {
+      langSwitch.addEventListener("click", function () {
+        var id = location.hash.slice(1) || currentSection;
+        if (id && id !== "hero") langSwitch.setAttribute("href", langSwitch.getAttribute("href").split("#")[0] + "#" + id);
+      });
+    }
+
     if (sections.length && navLinks.length) {
       var sectionObserver = new IntersectionObserver(
         function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               var id = entry.target.getAttribute("id");
+              currentSection = id;
               /* Секции без пункта меню (hero, faq) подсветку не сбрасывают */
               var hasLink = Array.prototype.some.call(navLinks, function (link) {
                 return link.getAttribute("href") === "#" + id;

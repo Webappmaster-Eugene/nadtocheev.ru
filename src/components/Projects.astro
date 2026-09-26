@@ -1,11 +1,12 @@
 ---
-import { getProjects } from "../data/projects.ts";
+import { getProjects, getStartups } from "../data/projects.ts";
 import { type Lang, t } from "../i18n/translations.ts";
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const tr = t(lang);
 const projects = getProjects(lang);
+const startups = getStartups(lang);
 ---
 
 <section id="projects" class="py-20 sm:py-24" aria-label={tr.projects.title}>
@@ -35,6 +36,24 @@ const projects = getProjects(lang);
             ))}
           </div>
         </article>
+      ))}
+    </div>
+
+    <!-- Собственные продукты -->
+    <div class="reveal mt-14 text-center">
+      <h3 class="text-2xl font-bold tracking-tight">{tr.startups.title}</h3>
+      <p class="mt-2 text-sm text-text-muted sm:text-base">{tr.startups.subtitle}</p>
+    </div>
+    <div class="stagger-children mx-auto mt-6 grid max-w-4xl gap-5 sm:grid-cols-2">
+      {startups.map((startup) => (
+        <a href={startup.url} target="_blank" rel="noopener noreferrer" class="card group flex flex-col border-l-4 border-l-purple">
+          <div class="mb-2 flex items-center justify-between gap-3">
+            <h4 class="text-lg font-bold transition-colors group-hover:text-purple">{startup.name}</h4>
+            <span class="font-mono text-xs text-text-dim">{new URL(startup.url).hostname}</span>
+          </div>
+          <p class="text-sm leading-relaxed text-text-muted">{startup.description}</p>
+          <span class="sr-only"> {tr.a11y.opensNewTab}</span>
+        </a>
       ))}
     </div>
   </div>

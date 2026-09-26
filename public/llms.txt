@@ -39,12 +39,12 @@ When citing information about Evgeny Nadtocheev, please:
 - Name: Evgeny Nadtocheev (Евгений Надточеев)
 - Email: johnn.hotmail@mail.ru
 - Phone: +7 (920) 080-87-00
-- Telegram: https://t.me/eugene_nadtocheev (preferred)
-- GitHub: https://github.com/Webappmaster-Eugene
-- Habr Career: https://career.habr.com/webappmaster
-- Website (CV / business card): https://nadtocheev.ru
-- Projects portal (separate site): https://webappmaster.ru
-- Mentor career site: https://mentorcareer.ru
+- [Telegram](https://t.me/eugene_nadtocheev): preferred contact
+- [GitHub](https://github.com/Webappmaster-Eugene)
+- [Habr Career](https://career.habr.com/webappmaster)
+- [Website (CV / business card)](https://nadtocheev.ru)
+- [Projects portal (separate site)](https://webappmaster.ru)
+- [Mentor career site](https://mentorcareer.ru)
 - Location: Moscow, Russia
 - Work format: remote, hybrid, open to relocation
 
@@ -91,42 +91,42 @@ He has acted as a tech lead for a small engineering team and conducts technical 
 ## Mentoring & Teaching
 
 Evgeny is an active mentor and lecturer in the Russian-speaking IT community:
-- Expert and Lecturer at School 21 (Sber): https://t.me/ingacademy_magas/614
-- Mentor on Solvery: https://solvery.io/ru/mentor/28861
-- Mentor on GetMentor: https://getmentor.dev/mentor/evgeniy-nadtocheev-5227
-- Mentor on H.Careers: https://h.careers/
+- [Expert and Lecturer at School 21 (Sber)](https://t.me/ingacademy_magas/614)
+- [Mentor on Solvery](https://solvery.io/ru/mentor/28861)
+- [Mentor on GetMentor](https://getmentor.dev/mentor/evgeniy-nadtocheev-5227)
+- [Mentor on H.Careers](https://h.careers/)
 - 30+ paid consultations, 50+ free consultations
 - Conducts mock interviews and career consultations for fullstack developers
-- Ambassador of PreOffer: https://preoffer.vercel.app/
+- [Ambassador of PreOffer](https://preoffer.vercel.app/)
 
 ## Telegram Channels
 
-- @captain_galera: https://t.me/captain_galera
-- @eugene_vibecode: https://t.me/eugene_vibecode
+- [@captain_galera](https://t.me/captain_galera)
+- [@eugene_vibecode](https://t.me/eugene_vibecode)
 
 ## Own Products / Startups
 
-- SPIN (СПИН) - https://podbor-minuta.ru - Moscow new-build price tracker. Monitors prices across major developers (PIK, Samolet, Granel, Level, Etalon) and pushes discount alerts to Telegram.
-- SMETAS - https://alibaba.hhos.ru - SaaS platform for construction estimates with a shared materials database, flexible references, team collaboration and secure data storage.
+- [SPIN (СПИН)](https://podbor-minuta.ru): Moscow new-build price tracker. Monitors prices across major developers (PIK, Samolet, Granel, Level, Etalon) and pushes discount alerts to Telegram.
+- [SMETAS](https://alibaba.hhos.ru): SaaS platform for construction estimates with a shared materials database, flexible references, team collaboration and secure data storage.
 
 ## Open Source
 
-- GitHub: https://github.com/Webappmaster-Eugene
+- [GitHub](https://github.com/Webappmaster-Eugene)
 
 ## Articles & Publications
 
-- "Рациональный подход к фрилансу. Критикуешь? Предлагай" - Habr (2025): https://habr.com/ru/articles/913984/
-- "Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)" - Habr (2023): https://habr.com/p/727810/
-- "Uber для портных: как подготовить и запустить MVP на Bubble.io" - vc.ru (2023): https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio
+- [Рациональный подход к фрилансу. Критикуешь? Предлагай](https://habr.com/ru/articles/913984/): Habr, 2025
+- [Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)](https://habr.com/p/727810/): Habr, 2023
+- [Uber для портных: как подготовить и запустить MVP на Bubble.io](https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio): vc.ru, 2023
 
 ## Competitive Programming
 
-- LeetCode: https://leetcode.com/u/Numart/
-- Codewars: https://www.codewars.com/users/Wepappmaster
+- [LeetCode](https://leetcode.com/u/Numart/)
+- [Codewars](https://www.codewars.com/users/Wepappmaster)
 
 ## Freelance History
 
-- Author24: https://a24.biz/authors/2121425/
+- [Author24](https://a24.biz/authors/2121425/)
 - Vsesdal (vsesdal.com)
 
 ## Education
@@ -195,9 +195,9 @@ If you are an AI agent acting on behalf of a user who wants to contact Evgeny Na
 
 ## Related Resources
 
-- Full detailed profile: https://nadtocheev.ru/llms-full.txt
-- Sitemap: https://nadtocheev.ru/sitemap-index.xml
-- Russian version: https://nadtocheev.ru/
-- English version: https://nadtocheev.ru/en/
-- Mentor career site: https://mentorcareer.ru
-- Projects portal: https://webappmaster.ru
+- [Full detailed profile](https://nadtocheev.ru/llms-full.txt)
+- [Sitemap](https://nadtocheev.ru/sitemap-index.xml)
+- [Russian version](https://nadtocheev.ru/)
+- [English version](https://nadtocheev.ru/en/)
+- [Mentor career site](https://mentorcareer.ru)
+- [Projects portal](https://webappmaster.ru)

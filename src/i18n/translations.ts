@@ -67,6 +67,8 @@ export interface Translation {
     title: string;
     subtitle: string;
     present: string;
+    showAll: string;
+    showLess: string;
   };
 
   /* Projects */
@@ -136,7 +138,6 @@ export interface Translation {
   startups: {
     title: string;
     subtitle: string;
-    description: string;
   };
 
   /* FAQ */
@@ -224,6 +225,8 @@ export const translations: Record<Lang, Translation> = {
       title: "Коммерческий опыт",
       subtitle: "Карьерный путь и ключевые достижения",
       present: "настоящее время",
+      showAll: "Показать всё",
+      showLess: "Свернуть",
     },
     projects: {
       title: "Ключевые проекты",
@@ -283,9 +286,8 @@ export const translations: Record<Lang, Translation> = {
       note: "Оплата по факту проведения. Для постоянных клиентов и студентов - индивидуальные условия.",
     },
     startups: {
-      title: "Стартапы",
-      subtitle: "Создатель собственных проектов",
-      description: "СПИН - мониторинг цен на новостройки Москвы. SMETAS - SaaS для строительных смет.",
+      title: "Собственные продукты",
+      subtitle: "Стартапы, которые я придумал, сделал и развиваю",
     },
     faq: {
       title: "Частые вопросы",
@@ -364,6 +366,8 @@ export const translations: Record<Lang, Translation> = {
       title: "Professional Experience",
       subtitle: "Career path and key achievements",
       present: "present",
+      showAll: "Show all",
+      showLess: "Show less",
     },
     projects: {
       title: "Key Projects",
@@ -423,9 +427,8 @@ export const translations: Record<Lang, Translation> = {
       note: "Payment after the session. Returning clients and students - flexible terms available.",
     },
     startups: {
-      title: "Startups",
-      subtitle: "Creator of own products",
-      description: "SPIN - Moscow new-build price tracker. SMETAS - SaaS for construction estimates.",
+      title: "Own Products",
+      subtitle: "Startups I came up with, built, and keep developing",
     },
     faq: {
       title: "FAQ",

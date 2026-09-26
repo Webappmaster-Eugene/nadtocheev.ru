@@ -8,11 +8,13 @@ const { lang } = Astro.props;
 const tr = t(lang);
 const services = getServices(lang);
 
-const accentClasses: Record<string, { bg: string; text: string; border: string; ring: string }> = {
-  accent: { bg: "bg-accent/10", text: "text-accent", border: "hover:border-accent/40", ring: "shadow-accent/20" },
-  purple: { bg: "bg-purple/10", text: "text-purple", border: "hover:border-purple/40", ring: "shadow-purple/20" },
-  green:  { bg: "bg-green/10",  text: "text-green",  border: "hover:border-green/40",  ring: "shadow-green/20"  },
-  orange: { bg: "bg-orange/10", text: "text-orange", border: "hover:border-orange/40", ring: "shadow-orange/20" },
+/* Цвет hover-рамки и тени задаётся переменной --card-accent (см. .card[data-accent] в global.css):
+   hover:-утилиты Tailwind не перебивают общий .card:hover, который лежит вне CSS-слоёв */
+const accentClasses: Record<string, { bg: string; text: string }> = {
+  accent: { bg: "bg-accent/10", text: "text-accent" },
+  purple: { bg: "bg-purple/10", text: "text-purple" },
+  green:  { bg: "bg-green/10",  text: "text-green" },
+  orange: { bg: "bg-orange/10", text: "text-orange" },
 };
 ---
 
@@ -32,7 +34,7 @@ const accentClasses: Record<string, { bg: string; text: string; border: string; 
         {services.items.map((service) => {
           const a = accentClasses[service.accent] ?? accentClasses.accent;
           return (
-            <div class={`card flex flex-col transition-all ${a.border} hover:shadow-lg hover:${a.ring}`}>
+            <div class="card flex flex-col" data-accent style={`--card-accent: var(--color-${service.accent})`}>
               <!-- Header: icon + name -->
               <div class="mb-4 flex items-start gap-3">
                 <div class={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${a.bg}`}>
@@ -47,9 +49,8 @@ const accentClasses: Record<string, { bg: string; text: string; border: string; 
                     </svg>
                   )}
                 </div>
-                <div class="min-w-0 flex-1">
+                <div class="min-w-0 flex-1 self-center">
                   <h3 class="text-lg font-bold leading-tight sm:text-xl">{service.name}</h3>
-                  <p class="mt-1 text-xs font-medium text-text-dim">{service.duration}</p>
                 </div>
               </div>
 

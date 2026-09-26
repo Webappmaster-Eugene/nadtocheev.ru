@@ -1,6 +1,7 @@
 /**
- * Генерация PNG-иконок из favicon.svg и OG-изображения.
- * Запуск: node scripts/generate-icons.mjs
+ * Генерация PNG-иконок из favicon.svg и OG-изображений (RU и EN).
+ * Запуск: node scripts/generate-icons.mjs            - всё
+ *         node scripts/generate-icons.mjs --og-only  - только og-image.png и og-image-en.png
  * После генерации скрипт можно удалить, PNG файлы закоммитить в public/.
  */
 import sharp from "sharp";
@@ -35,7 +36,13 @@ async function generateFavicons() {
   console.log("✓ favicon-512.png (512×512)");
 }
 
-async function generateOgImage() {
+/** OG-картинки по языкам: на EN-версии имя латиницей */
+const OG_VARIANTS = [
+  { file: "og-image.png", name: "Евгений Надточеев" },
+  { file: "og-image-en.png", name: "Evgeny Nadtocheev" },
+];
+
+async function generateOgImage({ file, name }) {
   const width = 1200;
   const height = 630;
 
@@ -54,7 +61,7 @@ async function generateOgImage() {
     <circle cx="150" cy="210" r="8" fill="#3b82f6"/>
 
     <!-- Name -->
-    <text x="190" y="240" font-family="system-ui, sans-serif" font-weight="800" font-size="42" fill="#fafafa">Евгений Надточеев</text>
+    <text x="190" y="240" font-family="system-ui, sans-serif" font-weight="800" font-size="42" fill="#fafafa">${name}</text>
 
     <!-- Role -->
     <text x="190" y="275" font-family="system-ui, sans-serif" font-weight="500" font-size="22" fill="#3b82f6">Fullstack Developer — Backend, DevOps, AI</text>
@@ -73,10 +80,10 @@ async function generateOgImage() {
 
   await sharp(Buffer.from(svgImage))
     .png()
-    .toFile(resolve(publicDir, "og-image.png"));
-  console.log("✓ og-image.png (1200×630)");
+    .toFile(resolve(publicDir, file));
+  console.log(`✓ ${file} (1200×630)`);
 }
 
-await generateFavicons();
-await generateOgImage();
+if (!process.argv.includes("--og-only")) await generateFavicons();
+for (const variant of OG_VARIANTS) await generateOgImage(variant);
 console.log("\nDone! All icons generated in public/");

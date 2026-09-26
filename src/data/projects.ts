@@ -3,6 +3,7 @@
  * Срез синьорных достижений из коммерческого опыта (источник: CV).
  */
 import type { Lang } from "../i18n/translations.ts";
+import { personal } from "./personal.ts";
 
 export interface Project {
   title: string;
@@ -16,9 +17,9 @@ const projectsRu: Project[] = [
   {
     title: "B2B-аналитика недвижимости (топ-1 в РФ)",
     description:
-      "Развиваю микросервисы highload-платформы (40K+ DAU, 2000 rps): построил полный observability-стек (OTel Collector + Tempo + Loki + Prometheus + Grafana, 4 дашборда / 64 панели с алертами в Telegram), перевёл proxy/scraper/notification/admin/cms с Express на Fastify (latency × 2), реализовал Vike+React SSR-витрину с ролевым paywall и собственным ИИ-чатом на RAG со стримингом ответов, развернул pgvector для embeddings.",
+      "Развиваю микросервисы highload-платформы (40K+ DAU, 2000 rps): построил полный observability-стек (OTel Collector + Tempo + Loki + Prometheus + Grafana, 4 дашборда / 64 панели с алертами в Telegram), перевёл proxy/scraper/notification/admin/cms с Express на Fastify (latency ↓ 2×), реализовал Vike+React SSR-витрину с ролевым paywall и собственным ИИ-чатом на RAG со стримингом ответов, развернул pgvector для embeddings.",
     role: "Fullstack-разработчик (Node.js/React), 80% backend",
-    metrics: ["40K+ DAU / 200K+ посещений в сутки", "2000 rps в проде, латенси × 2 после миграции на Fastify", "Vike SSR + Astro лендинги + Expo-приложение", "Распределённый cron на BullMQ + Circuit Breaker"],
+    metrics: ["40K+ DAU / 200K+ посещений в сутки", "2000 rps в проде, latency ↓ 2× после миграции на Fastify", "Vike SSR + Astro лендинги + Expo-приложение", "Распределённый cron на BullMQ + Circuit Breaker"],
     stack: ["NestJS", "Moleculer.js", "Fastify", "PostgreSQL (pgvector)", "Drizzle ORM", "Redis", "RabbitMQ", "BullMQ", "Vike", "Astro", "Pixi.js", "Kubernetes", "OpenTelemetry"],
   },
   {
@@ -43,9 +44,9 @@ const projectsEn: Project[] = [
   {
     title: "B2B Real Estate Analytics (#1 in Russia)",
     description:
-      "Build and operate microservices for a high-load platform (40K+ DAU, 2,000 rps): set up the full observability stack (OTel Collector + Tempo + Loki + Prometheus + Grafana, 4 dashboards / 64 panels with Telegram alerts), migrated proxy/scraper/notification/admin/cms from Express to Fastify (latency × 2), built a Vike+React SSR storefront with role-based paywall and an in-house RAG-powered AI chat with streamed responses, rolled out pgvector for embeddings.",
+      "Build and operate microservices for a high-load platform (40K+ DAU, 2,000 rps): set up the full observability stack (OTel Collector + Tempo + Loki + Prometheus + Grafana, 4 dashboards / 64 panels with Telegram alerts), migrated proxy/scraper/notification/admin/cms from Express to Fastify (latency ↓ 2×), built a Vike+React SSR storefront with role-based paywall and an in-house RAG-powered AI chat with streamed responses, rolled out pgvector for embeddings.",
     role: "Fullstack Developer (Node.js/React), 80% backend",
-    metrics: ["40K+ DAU / 200K+ daily visits", "2,000 rps in prod, latency × 2 after Fastify migration", "Vike SSR + Astro landings + Expo app", "Distributed cron on BullMQ + Circuit Breaker"],
+    metrics: ["40K+ DAU / 200K+ daily visits", "2,000 rps in prod, latency ↓ 2× after Fastify migration", "Vike SSR + Astro landings + Expo app", "Distributed cron on BullMQ + Circuit Breaker"],
     stack: ["NestJS", "Moleculer.js", "Fastify", "PostgreSQL (pgvector)", "Drizzle ORM", "Redis", "RabbitMQ", "BullMQ", "Vike", "Astro", "Pixi.js", "Kubernetes", "OpenTelemetry"],
   },
   {
@@ -65,6 +66,43 @@ const projectsEn: Project[] = [
     stack: ["OpenTelemetry", "Tempo", "Loki", "Prometheus", "Grafana", "Sentry", "GitHub Actions", "Dokploy", "Docker Swarm", "k6", "Zod", "Pino", "Vitest"],
   },
 ];
+
+/** Собственные продукты (стартапы) - отдельный блок в разделе «Проекты» */
+export interface Startup {
+  name: string;
+  url: string;
+  description: string;
+}
+
+const startupsRu: Startup[] = [
+  {
+    name: "СПИН",
+    url: personal.startups.spin,
+    description: "Мониторинг цен на новостройки Москвы: отслеживает крупных застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) и присылает скидки в Telegram.",
+  },
+  {
+    name: "SMETAS",
+    url: personal.startups.smetas,
+    description: "SaaS для строительных смет: единая база материалов, гибкие справочники, командная работа и безопасное хранение данных.",
+  },
+];
+
+const startupsEn: Startup[] = [
+  {
+    name: "SPIN",
+    url: personal.startups.spin,
+    description: "Moscow new-build price tracker: monitors major developers (PIK, Samolet, Granel, Level, Etalon) and pushes discount alerts to Telegram.",
+  },
+  {
+    name: "SMETAS",
+    url: personal.startups.smetas,
+    description: "SaaS for construction estimates: shared materials database, flexible references, team collaboration, and secure data storage.",
+  },
+];
+
+export function getStartups(lang: Lang): Startup[] {
+  return lang === "ru" ? startupsRu : startupsEn;
+}
 
 export function getProjects(lang: Lang): Project[] {
   return lang === "ru" ? projectsRu : projectsEn;

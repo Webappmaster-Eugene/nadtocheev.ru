@@ -381,11 +381,11 @@ html.light .bg-bg {
   font-size: 0.9rem;
 }
 
+/* На узких экранах «#» выходил за край (заголовок по центру, иконка справа от него),
+   а копирование ссылки на раздел - функция для мыши */
 @media (max-width: 640px) {
   .section-anchor {
-    font-size: 1.1rem;
-    opacity: 0.35;
-    left: calc(100% + 0.2rem);
+    display: none;
   }
 }
 
@@ -582,6 +582,22 @@ html.light .bg-bg {
   }
 }
 
+/* На телефонах блобы статичны: бесконечная анимация размытых слоёв 700px грузит GPU,
+   а радиальный градиент и так мягкий - хватает меньшего blur */
+@media (max-width: 639px) {
+  .hero-blob {
+    animation: none;
+    will-change: auto;
+    filter: blur(60px);
+  }
+  .hero-blob--1 {
+    transform: translateX(-50%);
+  }
+  .hero-blob--2 {
+    transform: translateX(-40%);
+  }
+}
+
 /* ===== Badge Pop-in ===== */
 .stagger-children.visible .badge {
   animation: pop-in 0.4s ease-out both;
@@ -755,6 +771,27 @@ html, body {
   #scroll-progress {
     display: none;
   }
+}
+
+/* ===== Опыт работы: сворачивание на узких экранах =====
+   Без JS и на широких экранах видно всё; текст остаётся в DOM для поисковиков */
+.exp-toggle {
+  display: none;
+}
+@media (max-width: 767px) {
+  .js .exp-toggle {
+    display: inline-flex;
+  }
+  .js #experience article:not(.is-expanded) .exp-extra {
+    display: none;
+  }
+}
+
+/* ===== Карточки с акцентным hover (услуги) =====
+   Селектор с html - чтобы по специфичности не уступать html.light .card:hover */
+html .card[data-accent]:hover {
+  border-color: color-mix(in srgb, var(--card-accent) 45%, transparent);
+  box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--card-accent) 40%, transparent);
 }
 
 /* ===== Screen Reader Only ===== */
