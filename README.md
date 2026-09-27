@@ -409,6 +409,27 @@ const tr = t(lang);
 - Ссылка «Перейти к содержимому» первым Tab; фокус-кольцо `:focus-visible`
 - Без JS контент виден (reveal-анимации включаются только под `.js`)
 - Кнопка EN/RU: aria-label содержит видимый текст; «Показать всё» в опыте - `aria-expanded` / `aria-controls`
+- Контраст мелкого текста ≥ 4.5:1 в обеих темах: для текста - `text-accent-light`, `text-accent` только для крупных цифр и фонов кнопок; ссылки внутри текста подчёркнуты. Проверяет axe в `e2e/specs/a11y.spec.ts` после прокрутки (Lighthouse видит только первый экран)
+
+---
+
+## Тесты
+
+| Уровень | Где | Что проверяет | Команда |
+|---|---|---|---|
+| Контент | `tests/unit/` (vitest) | стаж и длительности (`career.ts`), полнота и отсутствие плейсхолдеров, RU/EN одинаковы по структуре и цифрам, FAQ согласован с услугами/контактами/статьями, мета-длины, `llms.txt` / `llms-full.txt` совпадают с данными, версии тестовой инфраструктуры | `npm run test:unit` |
+| Сборка | `tests/dist/` (vitest) | готовый HTML: title/description/canonical/hreflang/OG, JSON-LD (типы, @id, цены, FAQPage = видимый FAQ), порядок секций, заголовки, id, якоря, внутренние ссылки и ассеты, внешние ссылки `noopener`, sitemap, robots, 404, бюджет размера | `npm run build:test && npm run test:dist` |
+| nginx | `tests/nginx/` (vitest + Docker) | продовый конфиг: коды, `/en` → `/en/`, 404, скрытые файлы, security-заголовки и CSP на всех ответах, Cache-Control, MIME, gzip | `npm run test:nginx` (`NGINX_MODE=image` - полный образ, `NGINX_URL=https://nadtocheev.ru` - прод) |
+| E2E | `e2e/specs/` (Playwright) | адаптив на 7 ширинах, меню и якоря, подсветка раздела, язык с сохранением раздела, тема, счётчики, печать кода, таймлайн, FAQ, сворачивание опыта, no-JS, reduced motion, axe WCAG 2.2 AA в обеих темах, фокус, CLS при медленных шрифтах, сторонние запросы, 404 | `npm run test:e2e` (`E2E_BASE_URL=...` - внешний адрес) |
+| Скриншоты | `e2e/visual/` (Playwright) | каждая секция на 375 и 1440, RU/EN, тёмная/светлая тема, шапка, меню, раскрытые блоки, 404 | `npm run test:visual` |
+| Внешние ссылки | `scripts/check-links.mjs` | HTTP-коды и «мягкие 404» чужих профилей и статей | `npm run check:links` |
+
+- `npm test` - unit + сборка + dist + e2e; `npm run test:all` - ещё nginx и скриншоты.
+- Сборка для тестов - `npm run build:test` с `SITE_BUILD_DATE=2026-09-27`: стаж, длительности, даты и год в футере не зависят от дня запуска. В проде переменная не задаётся.
+- Скриншоты сравниваются только в Linux: `npm run test:visual` запускает их в Docker-образе Playwright той же версии, что в CI. После намеренной правки дизайна - `npm run test:visual:update`, затем просмотреть новые PNG в `e2e/visual/__screenshots__/` перед коммитом.
+- Правка контента, которая меняет факты (стаж, цены, статьи, площадки), требует синхронной правки `public/llms*.txt` - иначе упадёт `tests/unit/llms.test.ts`.
+- Отчёт Playwright: `npm run test:report`.
+- CI (`.github/workflows/ci.yml`) гоняет всё на каждый push/PR; `monitor.yml` по понедельникам проверяет внешние ссылки и прод (nginx + e2e по https://nadtocheev.ru).
 
 ---
 
@@ -420,6 +441,9 @@ const tr = t(lang);
 | `npm run dev` | Dev-сервер с hot-reload → `localhost:4321` |
 | `npm run build` | Продакшн-сборка → `dist/` |
 | `npm run preview` | Предпросмотр сборки → `localhost:4321` |
+| `npm run check` | Проверка типов (`astro check`) |
+| `npm test` | Контент, сборка, e2e (см. «Тесты») |
+| `npm run test:all` | Все тесты, включая nginx в Docker и скриншоты |
 | `docker build -t visitka .` | Сборка Docker-образа |
 | `docker compose up -d` | Запуск через docker-compose |
 | `docker compose down` | Остановка |

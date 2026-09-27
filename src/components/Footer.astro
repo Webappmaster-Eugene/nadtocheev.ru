@@ -1,11 +1,12 @@
 ---
 import { personal } from "../data/personal.ts";
+import { BUILD_DATE } from "../data/build-date.ts";
 import { type Lang, t } from "../i18n/translations.ts";
 
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const tr = t(lang);
-const currentYear = new Date().getFullYear();
+const currentYear = BUILD_DATE.getFullYear();
 ---
 
 <footer class="border-t border-white/5 py-8">

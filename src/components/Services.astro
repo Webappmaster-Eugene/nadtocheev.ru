@@ -11,7 +11,7 @@ const services = getServices(lang);
 /* Цвет hover-рамки и тени задаётся переменной --card-accent (см. .card[data-accent] в global.css):
    hover:-утилиты Tailwind не перебивают общий .card:hover, который лежит вне CSS-слоёв */
 const accentClasses: Record<string, { bg: string; text: string }> = {
-  accent: { bg: "bg-accent/10", text: "text-accent" },
+  accent: { bg: "bg-accent/10", text: "text-accent-light" },
   purple: { bg: "bg-purple/10", text: "text-purple" },
   green:  { bg: "bg-green/10",  text: "text-green" },
   orange: { bg: "bg-orange/10", text: "text-orange" },

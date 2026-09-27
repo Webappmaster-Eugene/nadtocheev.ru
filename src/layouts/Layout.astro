@@ -6,6 +6,7 @@
 import "../styles/global.css";
 import { personal } from "../data/personal.ts";
 import { getFaq } from "../data/faq.ts";
+import { BUILD_DATE } from "../data/build-date.ts";
 import { type Lang, t } from "../i18n/translations.ts";
 
 interface Props {
@@ -20,7 +21,7 @@ interface Props {
 const { lang, noindex = false } = Astro.props;
 
 /** Дата сборки = дата последнего обновления контента (сайт статический, пересобирается при каждом деплое) */
-const buildDate = new Date();
+const buildDate = BUILD_DATE;
 const modifiedISO = buildDate.toISOString();
 const tr = t(lang);
 

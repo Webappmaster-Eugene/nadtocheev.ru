@@ -8,21 +8,21 @@ const tr = t(lang);
 /* Отражает реальный стек из опыта: собственный RAG на pgvector (Drizzle) + стриминг ответа по SSE.
    Без "<" в тексте кода - анимация печати трактует "<" как начало тега */
 const codeSnippet = `<span class="text-purple">const</span> <span class="text-text">context</span> = <span class="text-purple">await</span> db
-  .<span class="text-accent">select</span>({ <span class="text-green">content</span>: docs.content })
-  .<span class="text-accent">from</span>(docs)
-  .<span class="text-accent">orderBy</span>(<span class="text-accent">cosineDistance</span>(
+  .<span class="text-accent-light">select</span>({ <span class="text-green">content</span>: docs.content })
+  .<span class="text-accent-light">from</span>(docs)
+  .<span class="text-accent-light">orderBy</span>(<span class="text-accent-light">cosineDistance</span>(
     docs.embedding,
-    <span class="text-purple">await</span> <span class="text-accent">embed</span>(query),
+    <span class="text-purple">await</span> <span class="text-accent-light">embed</span>(query),
   ))
-  .<span class="text-accent">limit</span>(<span class="text-orange">5</span>);
+  .<span class="text-accent-light">limit</span>(<span class="text-orange">5</span>);
 
-<span class="text-purple">const</span> <span class="text-text">stream</span> = llm.<span class="text-accent">stream</span>({
+<span class="text-purple">const</span> <span class="text-text">stream</span> = llm.<span class="text-accent-light">stream</span>({
   <span class="text-green">context</span>,
   <span class="text-green">question</span>: query,
 });
 
 <span class="text-purple">for await</span> (<span class="text-purple">const</span> <span class="text-text">token</span> <span class="text-purple">of</span> stream) {
-  reply.<span class="text-accent">sse</span>({ <span class="text-green">data</span>: token });
+  reply.<span class="text-accent-light">sse</span>({ <span class="text-green">data</span>: token });
 }`;
 
 const features = [

@@ -98,7 +98,7 @@
   --color-accent: #2563eb;
   --color-accent-light: #3b82f6;
   --color-accent-dark: #1d4ed8;
-  --color-purple: #8b5cf6;
+  --color-purple: #a78bfa;
   --color-green: #22c55e;
   --color-orange: #f59e0b;
   --color-red: #ef4444;
@@ -191,14 +191,15 @@ html.light {
   --color-text: #0f172a;
   --color-text-muted: #475569;
   --color-text-dim: #64748b;
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-accent-dark: #1d4ed8;
+  /* Контраст мелкого текста >= 4.5:1 на белом и на тонированных бейджах (WCAG AA, проверяет e2e/specs/a11y) */
+  --color-accent: #1d4ed8;
+  --color-accent-light: #1d4ed8;
+  --color-accent-dark: #1e40af;
   --color-purple: #7c3aed;
-  --color-green: #16a34a;
-  --color-orange: #d97706;
+  --color-green: #15803d;
+  --color-orange: #b45309;
   --color-red: #dc2626;
-  --color-cyan: #0891b2;
+  --color-cyan: #0e7490;
 }
 
 html.light ::selection {

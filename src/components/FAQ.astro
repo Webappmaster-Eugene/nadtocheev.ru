@@ -32,7 +32,7 @@ const toParts = (text: string) =>
           <p class="px-5 pb-5 text-sm leading-relaxed text-text-muted">
             {toParts(item.a).map((part) =>
               part.isUrl ? (
-                <a href={part.text} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">{part.text.replace(/^https?:\/\//, "").replace(/\/$/, "")}<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+                <a href={part.text} target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">{part.text.replace(/^https?:\/\//, "").replace(/\/$/, "")}<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
               ) : (
                 part.text
               )

@@ -1,0 +1,47 @@
+# Мониторинг по расписанию: живость внешних ссылок и продовый сайт (заголовки, 404, кэш, e2e).
+# Не блокирует PR: падает, когда что-то сломалось снаружи (удалили профиль, упал прод).
+name: Monitor
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # понедельник 09:00 МСК
+  workflow_dispatch:
+
+jobs:
+  links:
+    name: Внешние ссылки
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run check:links
+
+  prod:
+    name: Прод nadtocheev.ru
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: nginx на проде
+        run: npm run test:nginx
+        env:
+          NGINX_URL: https://nadtocheev.ru
+      - run: npx playwright install --with-deps chromium
+      - name: E2E на проде
+        run: npx playwright test --project=e2e
+        env:
+          E2E_BASE_URL: https://nadtocheev.ru
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: prod-report
+          path: playwright-report/
+          retention-days: 14

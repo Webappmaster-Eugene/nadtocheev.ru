@@ -1,0 +1,90 @@
+# Проверки на каждый push и PR: типы, контент, сборка, продовый nginx, e2e, скриншоты.
+# Деплой делает Dokploy по push в main независимо от CI - смотри статус до мержа.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SITE_BUILD_DATE: "2026-09-27"
+
+jobs:
+  checks:
+    name: Типы, контент, сборка, nginx
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Типы (astro check)
+        run: npm run check
+      - name: Контент, i18n, llms.txt
+        run: npm run test:unit
+      - name: Сборка с фиксированной датой
+        run: npm run build:test
+      - name: Готовая сборка - SEO, JSON-LD, ссылки, sitemap
+        run: npm run test:dist
+      - name: Продовый Docker-образ - коды, заголовки, кэш, gzip
+        run: npm run test:nginx
+        env:
+          NGINX_MODE: image
+
+  e2e:
+    name: E2E и доступность
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build:test
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+
+  visual:
+    name: Скриншоты
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Версия образа = версия @playwright/test (проверяет tests/unit/tooling.test.ts)
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --ipc=host
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:test
+      - run: npx playwright test --project=visual
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: visual-diff
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

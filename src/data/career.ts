@@ -3,14 +3,13 @@
  * поэтому длительности и «N лет опыта» не устаревают вручную.
  */
 import type { Lang } from "../i18n/translations.ts";
+import { BUILD_DATE } from "./build-date.ts";
 
 /** Месяц в формате "YYYY-MM" */
 export type YearMonth = `${number}-${number}`;
 
 /** Начало коммерческого опыта (Systems-fd) */
 export const CAREER_START: YearMonth = "2021-08";
-
-const BUILD_DATE = new Date();
 
 function toMonthIndex(ym: YearMonth): number {
   const [y, m] = ym.split("-").map(Number);

@@ -1,7 +1,10 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import sitemap from "@astrojs/sitemap";
+import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
+
+/** Дата сборки; SITE_BUILD_DATE фиксирует её для тестов (см. src/data/build-date.ts) */
+const buildDate = process.env.SITE_BUILD_DATE ? new Date(process.env.SITE_BUILD_DATE) : new Date();
 
 export default defineConfig({
   site: "https://nadtocheev.ru",
@@ -15,7 +18,7 @@ export default defineConfig({
     sitemap({
       changefreq: "monthly",
       priority: 0.8,
-      lastmod: new Date(), // дата сборки = дата деплоя
+      lastmod: buildDate, // дата сборки = дата деплоя
       i18n: {
         defaultLocale: "ru",
         locales: {
@@ -28,10 +31,10 @@ export default defineConfig({
         const url = new URL(item.url);
         if (url.pathname === "/" || url.pathname === "") {
           item.priority = 1.0;
-          item.changefreq = "weekly";
+          item.changefreq = ChangeFreqEnum.WEEKLY;
         } else if (url.pathname === "/en/" || url.pathname === "/en") {
           item.priority = 0.9;
-          item.changefreq = "weekly";
+          item.changefreq = ChangeFreqEnum.WEEKLY;
         }
         return item;
       },
