@@ -42,7 +42,7 @@ const distFile = (p: string) => {
 
 beforeAll(() => {
   if (!fs.existsSync(path.join(DIST, "index.html"))) throw new Error("Нет dist/ - сначала npm run build:test");
-  const mod = meta(load("index.html"), 'meta[property="article:modified_time"]') ?? "";
+  const mod = meta(load("index.html"), 'meta[property="og:updated_time"]') ?? "";
   if (!mod.startsWith(TEST_BUILD_DATE)) throw new Error(`dist/ собран не с SITE_BUILD_DATE=${TEST_BUILD_DATE} (${mod}) - npm run build:test`);
 });
 
@@ -90,6 +90,7 @@ describe.each(PAGES)("$file", ({ lang, file, url }) => {
 
     it("даты изменения - дата сборки", () => {
       expect(meta(doc, 'meta[property="og:updated_time"]')).toMatch(new RegExp(`^${TEST_BUILD_DATE}`));
+      expect(doc.querySelectorAll('meta[property^="article:"]')).toHaveLength(0);
     });
 
     it("шрифты: preload существующих файлов, кириллица только для RU", () => {
@@ -117,7 +118,7 @@ describe.each(PAGES)("$file", ({ lang, file, url }) => {
 
     it("ровно разрешённые типы, без удалённых ProfessionalService/Course/Article/SearchAction", () => {
       expect(graph.map((n) => n["@type"]).sort()).toEqual(
-        ["BreadcrumbList", "FAQPage", "Organization", "Person", "ProfilePage", "Service", "Service", "SoftwareApplication", "SoftwareApplication", "WebSite"].sort(),
+        ["FAQPage", "Person", "ProfilePage", "Service", "Service", "CreativeWork", "CreativeWork", "WebSite"].sort(),
       );
       const json = JSON.stringify(graph);
       expect(json).not.toMatch(/ProfessionalService|SearchAction|"Course"|"Article"|estimatedSalary|priceRange|easyoffer/i);
@@ -169,12 +170,13 @@ describe.each(PAGES)("$file", ({ lang, file, url }) => {
       expect(visible.map((v) => v.a)).toEqual(ld.map((x: any) => x.a.replace(/\s+/g, " ")));
     });
 
-    it("BreadcrumbList ведёт на существующие секции", () => {
-      const [bc] = byType("BreadcrumbList");
-      for (const item of bc.itemListElement.slice(1)) {
-        const id = new URL(item.item).hash.slice(1);
-        expect(doc.getElementById(id), id).toBeTruthy();
-      }
+    it("нет ложной иерархии якорей, организации владельца и неподтверждённых бесплатных цен", () => {
+      expect(byType("BreadcrumbList")).toEqual([]);
+      expect(byType("Organization")).toEqual([]);
+      expect(byType("Person")[0].sameAs).not.toContain(personal.startups.spin);
+      expect(byType("Person")[0].sameAs).not.toContain(personal.mentoring.hcareers);
+      expect(byType("ProfilePage")[0]).not.toHaveProperty("datePublished");
+      for (const work of byType("CreativeWork")) expect(work).not.toHaveProperty("offers");
     });
   });
 
@@ -291,25 +293,25 @@ describe("sitemap и robots", () => {
     expect(index).toContain(`<loc>${SITE}/sitemap-0.xml</loc>`);
   });
 
-  it("в sitemap ровно / и /en/, без 404", () => {
+  it("в sitemap главная и две услуги на RU/EN, без 404", () => {
     const locs = [...map.matchAll(/<url><loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-    expect(locs.sort()).toEqual([`${SITE}/`, `${SITE}/en/`]);
+    expect(locs.sort()).toEqual(["/", "/en/", "/career-consultation/", "/mock-interview/", "/en/career-consultation/", "/en/mock-interview/"].map(p => SITE + p).sort());
     expect(map).not.toContain("404");
   });
 
   it("lastmod = дата сборки, hreflang-альтернативы", () => {
     const lastmods = [...map.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((m) => m[1]);
-    expect(lastmods.length).toBe(2);
+    expect(lastmods.length).toBe(6);
     for (const l of lastmods) expect(l).toMatch(new RegExp(`^${TEST_BUILD_DATE}`));
     expect(map).toContain(`hreflang="en" href="${SITE}/en/"`);
     expect(map).toContain(`hreflang="ru" href="${SITE}/"`);
   });
 
-  it("robots: sitemap, нет устаревших Host/Crawl-delay, у поисковиков свои Disallow utm", () => {
+  it("robots: sitemap, canonical доступен на URL с метками, Clean-param для Яндекса", () => {
     expect(robots).toContain(`Sitemap: ${SITE}/sitemap-index.xml`);
     expect(robots).not.toMatch(/^(Host|Crawl-delay):/im);
     const group = (bot: string) => robots.split(/\n(?=User-agent:)/).find((g) => g.startsWith(`User-agent: ${bot}\n`));
-    for (const bot of ["*", "Googlebot", "Bingbot"]) expect(group(bot), bot).toContain("Disallow: /*?*utm_");
+    for (const bot of ["*", "Googlebot", "Bingbot"]) expect(group(bot), bot).not.toMatch(/Disallow:.*\?/);
     // Яндекс склеивает UTM-дубли через Clean-param
     for (const bot of ["Yandex", "YandexBot"]) expect(group(bot), bot).toMatch(/Clean-param: utm_source.*utm_campaign/);
     expect(robots).not.toMatch(/Disallow: \/\s*$/m);

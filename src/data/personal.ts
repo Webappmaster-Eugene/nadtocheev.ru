@@ -44,7 +44,8 @@ export const personal = {
 
   /* Фриланс */
   freelance: {
-    a24: "https://a24.biz/authors/2121425/",
+    a24: "https://a24.biz/lk/authors/2121425/",
+    vsesdal: "https://vsesdal.com/user/1836368/evgeniy-webappmaster",
   },
 
   /* Стартапы (собственные продукты) */
@@ -52,9 +53,6 @@ export const personal = {
     spin: "https://podbor-minuta.ru/",
     smetas: "https://alibaba.hhos.ru/",
   },
-
-  /* Амбассадорство */
-  preoffer: "https://preoffer.vercel.app/",
 } as const;
 
 /** Ключевые метрики для hero-секции */

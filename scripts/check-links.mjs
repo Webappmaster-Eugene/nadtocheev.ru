@@ -59,7 +59,8 @@ async function checkOnce(url) {
     const title = body.match(/<title[^>]*>([^<]*)/i)?.[1]?.trim() ?? "";
     const soft = SOFT_404.find((r) => r.test(title));
     let verdict = "ok";
-    if (!res.ok) verdict = BOT_WALLED.some((r) => r.test(url)) ? "manual" : "broken";
+    if (res.status === 401) verdict = "restricted";
+    else if (!res.ok) verdict = BOT_WALLED.some((r) => r.test(url)) ? "manual" : "broken";
     else if (soft) verdict = "broken";
     else if (res.redirected && new URL(res.url).pathname !== new URL(url).pathname) verdict = "redirect";
     return { url, status: res.status, final: res.redirected ? res.url : "", title: title.slice(0, 80), verdict };
@@ -77,13 +78,13 @@ for (let i = 0; i < urls.length; i += 6) results.push(...(await Promise.all(urls
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify(results.map((r) => ({ ...r, files: [...found.get(r.url)] })), null, 2));
 } else {
-  const icon = { ok: "✓", redirect: "→", manual: "?", broken: "✗" };
+  const icon = { ok: "✓", redirect: "→", manual: "?", restricted: "!", broken: "✗" };
   for (const r of results) {
     console.log(`${icon[r.verdict]} ${String(r.status).padEnd(3)} ${r.url}${r.final ? `  → ${r.final}` : ""}${r.verdict !== "ok" && r.title ? `  [${r.title}]` : ""}`);
-    if (r.verdict === "broken") console.log(`      в файлах: ${[...found.get(r.url)].join(", ")}`);
+    if (["broken", "restricted"].includes(r.verdict)) console.log(`      в файлах: ${[...found.get(r.url)].join(", ")}`);
   }
   const count = (v) => results.filter((r) => r.verdict === v).length;
-  console.log(`\nВсего ${results.length}: ok ${count("ok")}, редиректы ${count("redirect")}, вручную ${count("manual")}, битые ${count("broken")}`);
+  console.log(`\nВсего ${results.length}: ok ${count("ok")}, редиректы ${count("redirect")}, вручную ${count("manual")}, ограничен доступ ${count("restricted")}, битые ${count("broken")}`);
   console.log("Заголовок страницы проверяй глазами: ссылка может быть живой, но вести не на тот профиль/статью.");
 }
-process.exit(results.some((r) => r.verdict === "broken") ? 1 : 0);
+process.exit(results.some((r) => ["broken", "restricted"].includes(r.verdict)) ? 1 : 0);

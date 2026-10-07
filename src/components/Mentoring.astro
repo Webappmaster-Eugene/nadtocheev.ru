@@ -71,7 +71,7 @@ const mentoring = getMentoring(lang);
           </div>
         </div>
 
-        <!-- Activities + Channels + Ambassador -->
+        <!-- Activities + Channels + Freelance -->
         <div class="space-y-5">
           <!-- Activities -->
           <div class="card">
@@ -98,25 +98,13 @@ const mentoring = getMentoring(lang);
             </div>
           </div>
 
-          <!-- Ambassador -->
-          <div class="card">
-            <h3 class="mb-2 text-sm font-bold">{tr.mentoring.ambassadorTitle}</h3>
-            <a href={personal.preoffer} target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 text-sm text-text-muted transition-colors hover:text-accent">
-              <span>{tr.mentoring.ambassadorDesc}</span>
-              <svg class="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              <span class="sr-only"> {tr.a11y.opensNewTab}</span>
-            </a>
-          </div>
-
           <!-- Freelance -->
           <div class="card">
             <h3 class="mb-2 text-sm font-bold">{tr.mentoring.freelanceTitle}</h3>
             <p class="text-sm text-text-muted">
               {tr.mentoring.freelanceDesc}:
               <a href={personal.freelance.a24} target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">a24.biz<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>,
-              vsesdal.com
+              <a href={personal.freelance.vsesdal} target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">vsesdal.com<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
             </p>
           </div>
         </div>

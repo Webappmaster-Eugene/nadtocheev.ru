@@ -46,7 +46,7 @@ describe.each(Object.entries(FILES))("%s", (name, text) => {
   });
 
   it("контакты совпадают с personal", () => {
-    for (const v of [personal.email, personal.phone, personal.telegram, personal.github, personal.habr]) {
+    for (const v of [personal.email, personal.phone, personal.telegram, personal.github, personal.habr, personal.freelance.vsesdal]) {
       expect(text).toContain(v);
     }
   });
@@ -74,12 +74,12 @@ describe.each(Object.entries(FILES))("%s", (name, text) => {
 
   it("ссылки на сам сайт указывают на существующие страницы и файлы", () => {
     const own = [...text.matchAll(/https:\/\/nadtocheev\.ru(\/[^\s)#]*)?/g)].map((m) => m[1] ?? "/");
-    const GENERATED = ["/", "/en/", "/sitemap-index.xml", "/sitemap-0.xml"];
+    const GENERATED = ["/", "/en/", "/career-consultation/", "/mock-interview/", "/en/career-consultation/", "/en/mock-interview/", "/sitemap-index.xml", "/sitemap-0.xml"];
     const exists = (p: string) => GENERATED.includes(p) || fs.existsSync(new URL(`../../public${p}`, import.meta.url));
     for (const p of own) expect(exists(p), p).toBe(true);
   });
 
-  it("нет убранных фактов (EasyOffer, зарплата, ссылка на кабинет vsesdal)", () => {
-    expect(text).not.toMatch(/easyoffer|salary|280[ ,]?000|https?:\/\/(www\.)?vsesdal/i);
+  it("нет убранных фактов (EasyOffer, зарплата, PreOffer)", () => {
+    expect(text).not.toMatch(/easyoffer|salary|280[ ,]?000|pre[\s-]?offer|ambassador/i);
   });
 });

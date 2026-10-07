@@ -1,0 +1,40 @@
+# Generated paths and integration definitions are appended by codex:sync.
+approval_policy = "never"
+default_permissions = ":danger-full-access"
+model_reasoning_effort = "high"
+web_search = "live"
+project_doc_max_bytes = 65536
+model_context_window = 600000
+model_auto_compact_token_limit = 540000
+
+[features]
+hooks = true
+multi_agent = true
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+
+[permissions.nadtocheev]
+description = "Optional workspace sandbox with network access"
+extends = ":workspace"
+
+[permissions.nadtocheev.filesystem.":workspace_roots"]
+"." = "write"
+".git" = "write"
+"app/.git" = "write"
+".codex" = "write"
+".agents" = "write"
+
+[permissions.nadtocheev.network]
+enabled = true
+
+[permissions.nadtocheev-review]
+description = "Read-only review with network access"
+extends = ":read-only"
+
+[permissions.nadtocheev-review.network]
+enabled = true
+
+[shell_environment_policy]
+inherit = "all"

@@ -88,3 +88,33 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
+
+  performance:
+    name: SEO и скорость продового образа
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Собрать и запустить статический продовый образ
+        run: |
+          docker build -t nadt-performance .
+          docker run -d --name nadt-performance -p 8089:80 nadt-performance
+          for attempt in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://localhost:8089/; then break; fi
+            sleep 1
+          done
+      - run: npm run check:seo
+      - name: Lighthouse — все страницы и оба класса устройств
+        run: CHROME_PATH="$(node -p "require('@playwright/test').chromium.executablePath()")" npm run check:performance -- --all-pages
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: performance-report
+          path: test-results/
+          retention-days: 14

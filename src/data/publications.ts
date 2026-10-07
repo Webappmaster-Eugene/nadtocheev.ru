@@ -60,7 +60,7 @@ const publicationsRu: PublicationsData = {
       title: "Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)",
       source: "Хабр",
       year: "2023",
-      url: "https://habr.com/p/727810/",
+      url: "https://habr.com/ru/articles/727810/",
       summary:
         "Кейс MVP мобильного приложения аренды спорткаров в Дубае на Bubble: архитектура, интеграции, выводы по запуску и где no-code упирается в потолок.",
     },
@@ -117,7 +117,7 @@ const publicationsEn: PublicationsData = {
       title: "What it takes to build on Bubble (+ thoughts on combining code and no-code)",
       source: "Habr",
       year: "2023",
-      url: "https://habr.com/p/727810/",
+      url: "https://habr.com/ru/articles/727810/",
       summary:
         "Case study of a Dubai sports car rental app MVP built on Bubble: architecture, integrations, launch takeaways, and where no-code hits its limits.",
     },

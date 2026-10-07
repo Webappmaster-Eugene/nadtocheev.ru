@@ -21,6 +21,10 @@ const isFile = (p) => p.startsWith(ROOT) && fs.existsSync(p) && fs.statSync(p).i
 http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
   const rel = decodeURIComponent(url.pathname);
+  if (rel.endsWith("/index.html")) {
+    res.writeHead(301, { location: rel.slice(0, -10) + url.search }).end();
+    return;
+  }
   const abs = path.join(ROOT, rel);
   if (!rel.endsWith("/") && fs.existsSync(abs) && fs.statSync(abs).isDirectory()) {
     res.writeHead(301, { location: `${rel}/${url.search}` }).end();

@@ -17,7 +17,7 @@ npm install
 npm run dev        # → http://localhost:4321
 
 # Продакшн-сборка
-npm run build      # → dist/
+npm run build      # → dist/ (главная и две услуги на RU/EN + 404)
 
 # Предпросмотр сборки
 npm run preview    # → http://localhost:4321
@@ -325,7 +325,7 @@ const tr = t(lang);
 7. **AI & Automation** (`#ai`) — описание, 3 фичи, анимированный пример кода RAG (pgvector + Drizzle + SSE)
 8. **Coding** (`#coding`) — LeetCode, Codewars
 9. **Publications** (`#publications`) — статистика, статьи (Хабр, vc.ru), выступления
-10. **Mentoring** (`#mentoring`) — статистика, площадки, что делаю, Telegram-каналы, амбассадорство, фриланс
+10. **Mentoring** (`#mentoring`) — статистика, площадки, что делаю, Telegram-каналы, фриланс
 11. **Services** (`#services`) — 2 платные услуги с ценой и составом, запись в Telegram
 12. **FAQ** (`#faq`) — 12 вопросов-аккордеонов (в меню нет)
 13. **Contacts** (`#contacts`) — Telegram (предпочтительно), телефон, email, GitHub, Habr Career, статьи, webappmaster.ru
@@ -361,8 +361,8 @@ const tr = t(lang);
 
 ### Что нужно сделать после первого деплоя
 
-1. **Yandex.Webmaster**: раскомментировать `<meta name="yandex-verification">` в `Layout.astro` и вставить ID
-2. **Google Search Console**: аналогично для `google-site-verification`
+1. **Yandex.Webmaster**: задать `PUBLIC_YANDEX_VERIFICATION` при сборке и отправить sitemap в консоль
+2. **Google Search Console**: задать `PUBLIC_GOOGLE_SITE_VERIFICATION` при сборке и отправить sitemap в консоль
 3. **Яндекс.Метрика / Google Analytics**: добавить скрипт при необходимости
 
 ---
@@ -458,3 +458,12 @@ const tr = t(lang);
 | `@tailwindcss/vite` | ^4.2.1 | Tailwind CSS v4 (Vite plugin) |
 | `tailwindcss` | ^4.2.1 | CSS framework |
 | `@astrojs/sitemap` | ^3.7.1 | Автогенерация sitemap.xml |
+
+
+## SEO/GEO, аналитика и Web Vitals
+
+Подключение публичных ID/верификации, события контактов и записи, полевые Web Vitals,
+проверки ссылочной целостности/метаданных/Lighthouse/CrUX и интерпретация метрик описаны
+в [docs/search-quality.md](docs/search-quality.md). Страницы услуг используют цены и состав
+из того же источника, что главная. Без ID внешняя аналитика выключена. Проверки по расписанию
+сохраняют отчёты; подтверждение аккаунтов и накопление трафика нужны для фактических полевых данных.

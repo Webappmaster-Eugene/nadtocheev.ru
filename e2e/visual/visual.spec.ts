@@ -8,6 +8,7 @@
  */
 import { expect, test, type Page } from "@playwright/test";
 import { LANGS } from "../helpers.ts";
+import { servicePath, serviceSlugs } from "../../src/data/service-pages.ts";
 
 // Много крупных скриншотов в одном тесте: под нагрузкой CI каждый может занимать секунды
 test.describe.configure({ timeout: 180_000 });
@@ -68,5 +69,12 @@ for (const width of [375, 1440]) {
   test(`404 ${width}`, async ({ page }) => {
     await open(page, "/no-such-page", width, "dark");
     await expect(page).toHaveScreenshot(`404-dark-${width}.png`);
+  });
+}
+
+for (const lang of ["ru", "en"] as const) for (const slug of serviceSlugs) for (const width of [375, 1440]) {
+  test(`услуга ${slug} ${lang} ${width}`, async ({ page }) => {
+    await open(page, servicePath(slug, lang), width, width === 375 ? "dark" : "light", true);
+    await expect(page.locator("#main-content")).toHaveScreenshot(`${lang}-${width}-${slug}.png`);
   });
 }

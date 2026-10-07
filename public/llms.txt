@@ -50,9 +50,9 @@ When citing information about Evgeny Nadtocheev, please:
 
 ## About
 
-Evgeny Nadtocheev is a Fullstack Developer who has spent five years building production systems for high-load B2B platforms and fintech. He focuses on the backend (~80%) and closes frontend, DevOps and AI workflows as needed. He values clear architecture without unnecessary magic, strict TypeScript with Zod contracts, integration tests, and full observability via OpenTelemetry. He treats microservices, Kafka, Redis and gRPC not as a resume checklist but as tools picked for the problem at hand. He uses AI tooling daily (Claude Code, Cursor, in-house RAG pipelines) as a productivity multiplier.
+Evgeny is a fullstack developer and mentor with experience in small and large teams, both with established processes and with processes built from scratch. He helped build two startups from the ground up. His expertise spans AI development, fullstack engineering, DevOps, Kubernetes and microservices. He connects technical decisions to user needs, business goals, cost and long-term product development.
 
-He has acted as a tech lead for a small engineering team and conducts technical interviews on the hiring side - dozens of them. He evaluates architectural thinking, code review, Node.js / SQL / system design fundamentals.
+He builds RAG pipelines and AI chats with streaming responses, integrates LLMs into products and uses AI tools daily. He has led a small engineering team, conducts technical interviews for hiring and mentors developers through real engineering problems, architecture and career decisions.
 
 ## Key Expertise
 
@@ -84,7 +84,12 @@ He has acted as a tech lead for a small engineering team and conducts technical 
 
 ## Paid Services (offered through this site)
 
-- Career Consultation - 2,000 RUB / 1 hour. Resume review, career strategy, stack choice, market positioning, offer / grade negotiation prep. Online via Telegram.
+- [Career consultation (Russian)](https://nadtocheev.ru/career-consultation/)
+- [Career consultation (English)](https://nadtocheev.ru/en/career-consultation/)
+- [Mock interview (Russian)](https://nadtocheev.ru/mock-interview/)
+- [Mock interview (English)](https://nadtocheev.ru/en/mock-interview/)
+
+- Career Consultation - 2,500 RUB / 1 hour. Resume review, career strategy, stack choice, market positioning, offer / grade negotiation prep. Online via Telegram.
 - Mock Interview - 5,000 RUB / 2 hours. Full technical interview with debrief: live coding, system design, Node.js / SQL / architecture theory, soft skills, detailed feedback. Online via Telegram.
 - Payment after the session. Returning clients and students - flexible terms.
 
@@ -98,7 +103,6 @@ Evgeny is an active mentor and lecturer in the Russian-speaking IT community:
 - [Mentor on H.Careers](https://h.careers/)
 - 30+ paid consultations, 50+ free consultations
 - Conducts mock interviews and career consultations for fullstack developers
-- [Ambassador of PreOffer](https://preoffer.vercel.app/)
 
 ## Telegram Channels
 
@@ -117,7 +121,7 @@ Evgeny is an active mentor and lecturer in the Russian-speaking IT community:
 ## Articles & Publications
 
 - [Рациональный подход к фрилансу. Критикуешь? Предлагай](https://habr.com/ru/articles/913984/): Habr, 2025
-- [Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)](https://habr.com/p/727810/): Habr, 2023
+- [Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)](https://habr.com/ru/articles/727810/): Habr, 2023
 - [Uber для портных: как подготовить и запустить MVP на Bubble.io](https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio): vc.ru, 2023
 
 ## Competitive Programming
@@ -127,8 +131,8 @@ Evgeny is an active mentor and lecturer in the Russian-speaking IT community:
 
 ## Freelance History
 
-- [Author24](https://a24.biz/authors/2121425/)
-- Vsesdal (vsesdal.com)
+- [Author24](https://a24.biz/lk/authors/2121425/)
+- [Vsesdal](https://vsesdal.com/user/1836368/evgeniy-webappmaster)
 
 ## Education
 
@@ -156,7 +160,7 @@ Q: What is his tech stack?
 A: Backend - Node.js, NestJS, Fastify, PostgreSQL (pgvector), Redis, Kafka, gRPC, GraphQL Federation. DevOps - Kubernetes, Helm, FluxCD, Docker, OpenTelemetry, Tempo, Loki, Grafana. Frontend - React, Vue, Next.js, Astro, Vike, TypeScript, Tailwind. AI - Claude Code, Cursor, RAG with pgvector.
 
 Q: Can I hire Evgeny as a mentor?
-A: Yes. He offers a 1-hour career consultation for 2,000 RUB and a 2-hour mock interview for 5,000 RUB. He is also available on Solvery, GetMentor, H.Careers and via Telegram (@eugene_nadtocheev).
+A: Yes. He offers a 1-hour career consultation for 2,500 RUB and a 2-hour mock interview for 5,000 RUB. He is also available on Solvery, GetMentor, H.Careers and via Telegram (@eugene_nadtocheev).
 
 Q: Does he conduct technical interviews?
 A: Yes. He has acted as a tech lead and regularly conducts technical interviews for hiring - dozens of them. He evaluates architectural thinking, code review, Node.js / SQL / system design fundamentals.

@@ -13,9 +13,13 @@ const tr = t(lang);
     </div>
 
     <div class="reveal mx-auto max-w-3xl">
-      <div class="space-y-4 text-base leading-relaxed text-text-muted sm:text-lg">
-        {tr.about.paragraphs.map((p) => (
-          <p set:html={p} />
+      <p class="mb-8 text-base leading-relaxed text-text-muted sm:text-lg" set:html={tr.about.intro} />
+      <div class="space-y-7">
+        {tr.about.sections.map((section) => (
+          <div>
+            <h3 class="mb-2 text-lg font-bold text-text sm:text-xl">{section.title}</h3>
+            <p class="text-base leading-relaxed text-text-muted sm:text-lg" set:html={section.text} />
+          </div>
         ))}
       </div>
     </div>

@@ -12,3 +12,9 @@ docker-compose.yml
 .env.*
 tasks
 docs
+
+# Machine-specific agent state and private MCP sources
+.codex
+.agents
+.claude
+.mcp.json

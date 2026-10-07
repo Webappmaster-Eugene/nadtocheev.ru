@@ -4,8 +4,12 @@
  * шрифты, анимации, двуязычная поддержка.
  */
 import "../styles/global.css";
+import Metrics from "../components/Metrics.astro";
+import { siteMetrics } from "../lib/metrics-config.ts";
 import { personal } from "../data/personal.ts";
-import { getFaq } from "../data/faq.ts";
+import { getFaq, type FaqItem } from "../data/faq.ts";
+import { structuredData } from "../lib/structured-data.ts";
+import { servicePath, type ServiceSlug } from "../data/service-pages.ts";
 import { BUILD_DATE } from "../data/build-date.ts";
 import { type Lang, t } from "../i18n/translations.ts";
 
@@ -16,9 +20,11 @@ interface Props {
   ogImage?: string;
   /** noindex + без canonical/hreflang (для 404) */
   noindex?: boolean;
+  serviceSlug?: ServiceSlug;
+  faqItems?: FaqItem[];
 }
 
-const { lang, noindex = false } = Astro.props;
+const { lang, noindex = false, serviceSlug } = Astro.props;
 
 /** Дата сборки = дата последнего обновления контента (сайт статический, пересобирается при каждом деплое) */
 const buildDate = BUILD_DATE;
@@ -31,291 +37,13 @@ const description = Astro.props.description ?? tr.meta.description;
 const ogImage = Astro.props.ogImage ?? (lang === "en" ? "/og-image-en.png" : "/og-image.png");
 const ogImageURL = new URL(ogImage, Astro.site).href;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ruURL = new URL("/", Astro.site);
-const enURL = new URL("/en/", Astro.site);
+const canonicalURL = new URL(Astro.url.pathname.replace(/index\.html$/, "").replace(/\/en$/, "/en/"), Astro.site);
+const ruURL = new URL(serviceSlug ? servicePath(serviceSlug, "ru") : "/", Astro.site);
+const enURL = new URL(serviceSlug ? servicePath(serviceSlug, "en") : "/en/", Astro.site);
 
-const faqItems = getFaq(lang);
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${personal.website}/#person`,
-      name: personal.name.full[lang],
-      alternateName: lang === "ru" ? personal.name.full.en : personal.name.full.ru,
-      givenName: personal.name.first[lang],
-      familyName: personal.name.last[lang],
-      gender: "https://schema.org/Male",
-      jobTitle: lang === "ru"
-        ? "Fullstack-разработчик (Node.js, Go, React)"
-        : "Fullstack Developer (Node.js, Go, React)",
-      description: description,
-      url: personal.website,
-      mainEntityOfPage: canonicalURL.href,
-      email: `mailto:${personal.email}`,
-      telephone: personal.phone,
-      image: { "@type": "ImageObject", url: ogImageURL, width: 1200, height: 630 },
-      sameAs: [
-        personal.github,
-        personal.habr,
-        personal.telegram,
-        personal.habrArticles,
-        personal.websiteProjects,
-        personal.leetcode,
-        personal.codewars,
-        personal.telegramChannels.captainGalera,
-        personal.telegramChannels.eugeneVibecode,
-        personal.mentoring.solvery,
-        personal.mentoring.getmentor,
-        personal.mentoring.hcareers,
-        personal.startups.spin,
-        personal.startups.smetas,
-      ],
-      hasOccupation: {
-        "@type": "Occupation",
-        name: lang === "ru" ? "Fullstack-разработчик" : "Fullstack Developer",
-        occupationLocation: { "@type": "City", name: lang === "ru" ? "Москва" : "Moscow" },
-        skills: "Node.js, Go, TypeScript, NestJS, Fastify, PostgreSQL, Redis, Kafka, Kubernetes, Docker, React, Vue, Next.js, Astro, AI/LLM, RAG, OpenTelemetry, gRPC, GraphQL Federation",
-        occupationalCategory: "15-1252.00",
-        responsibilities: lang === "ru"
-          ? "Проектирование и разработка highload-микросервисов, observability, DevOps, frontend SSR-приложения, AI-интеграции, менторство и проведение технических собеседований."
-          : "Design and development of high-load microservices, observability, DevOps, frontend SSR apps, AI integrations, mentoring and conducting technical interviews.",
-      },
-      worksFor: {
-        "@type": "Organization",
-        name: "bnmap.pro",
-        url: "https://bnmap.pro",
-        industry: lang === "ru" ? "Аналитика недвижимости" : "Real Estate Analytics",
-      },
-      alumniOf: {
-        "@type": "CollegeOrUniversity",
-        name: lang === "ru"
-          ? "Академия Федеральной службы охраны Российской Федерации"
-          : "Academy of the Federal Guard Service of the Russian Federation",
-        address: { "@type": "PostalAddress", addressLocality: lang === "ru" ? "Орёл" : "Oryol", addressCountry: "RU" },
-      },
-      hasCredential: [
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "degree",
-          name: lang === "ru"
-            ? "Информационная безопасность телекоммуникационных систем; Автоматизированные системы обработки информации и управления"
-            : "Information Security of Telecommunication Systems; Automated Information Processing and Control Systems",
-          dateCreated: "2019",
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          credentialCategory: "certificate",
-          name: "English Level B2",
-          dateCreated: "2023",
-        },
-      ],
-      knowsAbout: [
-        "Node.js", "Go", "TypeScript", "Fullstack development",
-        "NestJS", "Fastify", "Express", "Moleculer.js", "BullMQ",
-        "React", "React Native", "Expo", "Vue.js", "Next.js", "Nuxt.js", "Vike", "Astro",
-        "Kubernetes", "Helm", "FluxCD", "Docker", "Docker Swarm", "Dokploy",
-        "PostgreSQL", "pgvector", "MySQL", "MongoDB", "Redis", "Drizzle ORM", "Prisma",
-        "Apache Kafka", "RabbitMQ", "gRPC", "GraphQL Federation", "Apollo Federation",
-        "Microservices", "Event-Driven Architecture", "DDD", "CQRS", "Outbox Pattern", "Circuit Breaker", "Saga",
-        "OpenTelemetry", "Prometheus", "Grafana", "Tempo", "Loki", "Sentry", "Observability",
-        "CI/CD", "GitHub Actions", "GitLab CI", "Self-hosted runners",
-        "AI", "LLM", "RAG", "Claude Code", "Cursor", "OpenAI API", "Vector Databases", "Embeddings",
-        "Telegram Bots", "Telegram Mini App", "grammY", "Telegraf",
-        "System Design", "High-load systems", "Distributed systems",
-        "Tech Lead", "Technical Interviews", "Mentoring", "Technical Education",
-        "Real Estate Analytics", "Fintech", "Payment Gateways", "Robokassa",
-      ],
-      knowsLanguage: [
-        { "@type": "Language", name: "Russian", alternateName: "ru" },
-        { "@type": "Language", name: "English", alternateName: "en", proficiencyLevel: "B2" },
-      ],
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: lang === "ru" ? "Москва" : "Moscow",
-        addressRegion: "RU-MOW",
-        addressCountry: "RU",
-      },
-      workLocation: { "@type": "Place", name: lang === "ru" ? "Удалённо / Москва (гибрид)" : "Remote / Moscow (hybrid)" },
-      nationality: { "@type": "Country", name: lang === "ru" ? "Россия" : "Russia" },
-      contactPoint: [
-        {
-          "@type": "ContactPoint",
-          contactType: lang === "ru" ? "Профессиональные запросы" : "Professional inquiries",
-          email: personal.email,
-          telephone: personal.phone,
-          url: personal.telegram,
-          availableLanguage: ["Russian", "English"],
-          areaServed: ["RU", "CIS", "Worldwide"],
-        },
-      ],
-      makesOffer: [
-        {
-          "@type": "Offer",
-          name: lang === "ru" ? "Карьерная консультация" : "Career Consultation",
-          description: lang === "ru"
-            ? "Часовая консультация: разбор резюме, карьерный трек, выбор стека, подготовка к переговорам об оффере"
-            : "1-hour consultation: resume review, career track, stack choice, offer negotiation prep",
-          price: "2000",
-          priceCurrency: "RUB",
-          eligibleDuration: { "@type": "QuantitativeValue", value: 1, unitCode: "HUR" },
-          availability: "https://schema.org/InStock",
-        },
-        {
-          "@type": "Offer",
-          name: lang === "ru" ? "Мок-собеседование" : "Mock Interview",
-          description: lang === "ru"
-            ? "Двухчасовое техническое интервью: live coding, system design, теория, soft skills, развёрнутый фидбек"
-            : "2-hour technical interview: live coding, system design, theory, soft skills, detailed feedback",
-          price: "5000",
-          priceCurrency: "RUB",
-          eligibleDuration: { "@type": "QuantitativeValue", value: 2, unitCode: "HUR" },
-          availability: "https://schema.org/InStock",
-        },
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${personal.website}/#website`,
-      url: personal.website,
-      name: personal.name.full[lang],
-      alternateName: personal.name.full[lang === "ru" ? "en" : "ru"],
-      description: description,
-      inLanguage: [tr.meta.htmlLang, lang === "ru" ? "en" : "ru"],
-      publisher: { "@id": `${personal.website}/#person` },
-      copyrightHolder: { "@id": `${personal.website}/#person` },
-      copyrightYear: buildDate.getFullYear(),
-      potentialAction: [
-        {
-          "@type": "ReadAction",
-          target: [personal.website, `${personal.website}/en/`],
-        },
-      ],
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": canonicalURL.href,
-      url: canonicalURL.href,
-      name: title,
-      description: description,
-      inLanguage: tr.meta.htmlLang,
-      datePublished: "2025-03-12T00:00:00+03:00",
-      dateModified: modifiedISO,
-      isPartOf: { "@id": `${personal.website}/#website` },
-      about: { "@id": `${personal.website}/#person` },
-      mainEntity: { "@id": `${personal.website}/#person` },
-      author: { "@id": `${personal.website}/#person` },
-      primaryImageOfPage: { "@type": "ImageObject", url: ogImageURL },
-      speakable: {
-        "@type": "SpeakableSpecification",
-        cssSelector: ["#hero", "#about", "#services", "#faq", "#contacts"],
-        xpath: ["/html/head/title", "/html/head/meta[@name='description']/@content"],
-      },
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${canonicalURL.href}#breadcrumb`,
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: lang === "ru" ? "Главная" : "Home", item: lang === "ru" ? personal.website : `${personal.website}/en/` },
-        { "@type": "ListItem", position: 2, name: lang === "ru" ? "Обо мне" : "About", item: `${canonicalURL.href}#about` },
-        { "@type": "ListItem", position: 3, name: lang === "ru" ? "Опыт" : "Experience", item: `${canonicalURL.href}#experience` },
-        { "@type": "ListItem", position: 4, name: lang === "ru" ? "Проекты" : "Projects", item: `${canonicalURL.href}#projects` },
-        { "@type": "ListItem", position: 5, name: lang === "ru" ? "Услуги" : "Services", item: `${canonicalURL.href}#services` },
-        { "@type": "ListItem", position: 6, name: lang === "ru" ? "Контакты" : "Contacts", item: `${canonicalURL.href}#contacts` },
-      ],
-    },
-    {
-      "@type": "Organization",
-      "@id": `${personal.website}/#organization`,
-      name: personal.name.full[lang],
-      url: personal.website,
-      logo: { "@type": "ImageObject", url: `${personal.website}/favicon-512.png`, width: 512, height: 512 },
-      founder: { "@id": `${personal.website}/#person` },
-      sameAs: [personal.github, personal.telegram, personal.habr],
-    },
-    {
-      "@type": "Service",
-      "@id": `${personal.website}/#service-consultation`,
-      name: lang === "ru" ? "Карьерная консультация по fullstack-разработке" : "Career Consultation for Fullstack Developers",
-      description: lang === "ru"
-        ? "Часовая консультация для разработчиков: разбор резюме, карьерный трек, выбор стека, подготовка к переговорам об оффере."
-        : "One-hour consultation for developers: resume review, career track, stack choice, offer negotiation prep.",
-      provider: { "@id": `${personal.website}/#person` },
-      serviceType: lang === "ru" ? "Карьерная консультация" : "Career Consulting",
-      audience: { "@type": "Audience", audienceType: lang === "ru" ? "Разработчики ПО (Junior/Middle/Senior)" : "Software Developers (Junior/Middle/Senior)" },
-      areaServed: [{ "@type": "Country", name: "Russia" }, { "@type": "Country", name: "Worldwide" }],
-      offers: {
-        "@type": "Offer",
-        price: "2000",
-        priceCurrency: "RUB",
-        availability: "https://schema.org/InStock",
-        eligibleDuration: { "@type": "QuantitativeValue", value: 1, unitCode: "HUR" },
-      },
-    },
-    {
-      "@type": "Service",
-      "@id": `${personal.website}/#service-mock-interview`,
-      name: lang === "ru" ? "Мок-собеседование для fullstack-разработчиков" : "Mock Interview for Fullstack Developers",
-      description: lang === "ru"
-        ? "Полноценное техническое интервью (2 часа): live coding, system design, теория по Node.js / БД / архитектуре, soft skills, развёрнутый фидбек."
-        : "Full technical interview (2 hours): live coding, system design, Node.js / DB / architecture theory, soft skills, detailed feedback.",
-      provider: { "@id": `${personal.website}/#person` },
-      serviceType: lang === "ru" ? "Мок-собеседование" : "Mock Interview",
-      audience: { "@type": "Audience", audienceType: lang === "ru" ? "Разработчики ПО (Junior/Middle/Senior)" : "Software Developers (Junior/Middle/Senior)" },
-      areaServed: [{ "@type": "Country", name: "Russia" }, { "@type": "Country", name: "Worldwide" }],
-      offers: {
-        "@type": "Offer",
-        price: "5000",
-        priceCurrency: "RUB",
-        availability: "https://schema.org/InStock",
-        eligibleDuration: { "@type": "QuantitativeValue", value: 2, unitCode: "HUR" },
-      },
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${canonicalURL.href}#faq`,
-      inLanguage: tr.meta.htmlLang,
-      mainEntity: faqItems.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a, author: { "@id": `${personal.website}/#person` } },
-      })),
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": `${personal.website}/#startup-spin`,
-      name: "СПИН",
-      alternateName: "SPIN",
-      applicationCategory: "BusinessApplication",
-      applicationSubCategory: lang === "ru" ? "Мониторинг цен на недвижимость" : "Real Estate Price Tracker",
-      operatingSystem: "Web, iOS, Android (Telegram)",
-      description: lang === "ru"
-        ? "Сервис мониторинга цен на новостройки Москвы с уведомлениями о скидках застройщиков (ПИК, Самолёт, Гранель, Level, Эталон) в Telegram."
-        : "Moscow new-build price tracker with Telegram alerts on discounts from major developers (PIK, Samolet, Granel, Level, Etalon).",
-      url: personal.startups.spin,
-      author: { "@id": `${personal.website}/#person` },
-      creator: { "@id": `${personal.website}/#person` },
-      offers: { "@type": "Offer", price: "0", priceCurrency: "RUB", availability: "https://schema.org/InStock" },
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": `${personal.website}/#startup-smetas`,
-      name: "SMETAS",
-      applicationCategory: "BusinessApplication",
-      applicationSubCategory: lang === "ru" ? "SaaS для строительных смет" : "SaaS for Construction Estimates",
-      operatingSystem: "Web",
-      description: lang === "ru"
-        ? "SaaS-платформа для составления строительных смет: единая база материалов, гибкие справочники, командная работа, безопасное хранение данных."
-        : "SaaS platform for construction estimates: shared materials database, flexible references, team collaboration, secure data storage.",
-      url: personal.startups.smetas,
-      author: { "@id": `${personal.website}/#person` },
-      creator: { "@id": `${personal.website}/#person` },
-      offers: { "@type": "Offer", price: "0", priceCurrency: "RUB", availability: "https://schema.org/InStock" },
-    },
-  ],
-};
+const faqItems = Astro.props.faqItems ?? getFaq(lang);
+const jsonLd = structuredData({ lang, title, description, path: canonicalURL.pathname,
+  image: ogImageURL, faq: faqItems, serviceSlug });
 ---
 
 <!doctype html>
@@ -344,25 +72,19 @@ const jsonLd = {
       </>
     )}
 
-    <!-- Keywords (всё ещё используются Яндексом) -->
-    <meta name="keywords" content={lang === "ru"
-      ? "fullstack разработчик, backend разработчик, Node.js, Go, NestJS, Fastify, React, Vue, Next.js, Astro, DevOps, Kubernetes, Docker, микросервисы, Event-Driven Architecture, GraphQL Federation, OpenTelemetry, Kafka, PostgreSQL, pgvector, Redis, gRPC, AI, LLM, RAG, Claude Code, Cursor, ментор, мок-собеседование, карьерная консультация, технический собес, Москва, highload, TypeScript, портфолио, тимлид, Евгений Надточеев, fullstack-разработчик Москва, найм senior разработчика"
-      : "fullstack developer, backend engineer, Node.js, Go, NestJS, Fastify, React, Vue, Next.js, Astro, DevOps, Kubernetes, Docker, microservices, Event-Driven, GraphQL Federation, OpenTelemetry, Kafka, PostgreSQL, pgvector, Redis, gRPC, AI, LLM, RAG, Claude Code, Cursor, mentor, mock interview, career consulting, technical interviewer, Moscow, high-load, TypeScript, portfolio, tech lead, Evgeny Nadtocheev, hire senior fullstack developer"} />
     {!noindex && (
       <>
         <link rel="canonical" href={canonicalURL} />
 
         <!-- hreflang - для мультиязычного SEO -->
         <link rel="alternate" hreflang="ru" href={ruURL} />
-        <link rel="alternate" hreflang="ru-RU" href={ruURL} />
         <link rel="alternate" hreflang="en" href={enURL} />
-        <link rel="alternate" hreflang="en-US" href={enURL} />
         <link rel="alternate" hreflang="x-default" href={ruURL} />
       </>
     )}
 
     <!-- Open Graph -->
-    <meta property="og:type" content="profile" />
+    <meta property="og:type" content={serviceSlug || noindex ? "website" : "profile"} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -381,9 +103,6 @@ const jsonLd = {
     <meta property="profile:last_name" content={personal.name.last[lang]} />
     <meta property="profile:gender" content="male" />
     <meta property="profile:username" content="webappmaster" />
-    <meta property="article:author" content={personal.website} />
-    <meta property="article:published_time" content="2025-03-12T00:00:00+03:00" />
-    <meta property="article:modified_time" content={modifiedISO} />
     <meta property="og:updated_time" content={modifiedISO} />
 
     <!-- Twitter Card -->
@@ -454,17 +173,9 @@ const jsonLd = {
     <link rel="preload" href="/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
     {lang === "ru" && <link rel="preload" href="/fonts/inter-cyrillic-var.woff2" as="font" type="font/woff2" crossorigin />}
 
-    <!-- GEO-теги (физическая локация, для Я.Карт / Google Maps / локального SEO) -->
-    <meta name="geo.region" content="RU-MOW" />
-    <meta name="geo.placename" content={lang === "ru" ? "Москва" : "Moscow"} />
-    <meta name="geo.position" content="55.7558;37.6173" />
-    <meta name="ICBM" content="55.7558, 37.6173" />
-
-    <!-- Verification для поисковых консолей (вставьте реальные ID) -->
-    <!-- <meta name="yandex-verification" content="ВСТАВИТЬ_ID_ИЗ_WEBMASTER_YANDEX" /> -->
-    <!-- <meta name="google-site-verification" content="ВСТАВИТЬ_ID_ИЗ_SEARCH_CONSOLE" /> -->
-    <!-- <meta name="msvalidate.01" content="ВСТАВИТЬ_ID_ИЗ_BING_WEBMASTER" /> -->
-    <!-- <meta name="mailru-verification" content="ВСТАВИТЬ_ID_ИЗ_MAIL_RU" /> -->
+    <!-- Public verification codes are configured at build time. -->
+    {siteMetrics.yandexVerification && <meta name="yandex-verification" content={siteMetrics.yandexVerification} />}
+    {siteMetrics.googleVerification && <meta name="google-site-verification" content={siteMetrics.googleVerification} />}
 
     <!-- llms.txt + AI discovery (GEO для LLM-движков) -->
     <link rel="llms.txt" href="/llms.txt" />
@@ -476,29 +187,6 @@ const jsonLd = {
     <meta name="telegram:channel" content="@captain_galera" />
     <meta name="telegram:contact" content="@eugene_nadtocheev" />
 
-    <!-- Аналитика: Яндекс.Метрика - вставить свой ID счётчика -->
-    <!--
-    <script is:inline>
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-      ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ecommerce:"dataLayer" });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    -->
-
-    <!-- Аналитика: Google Analytics 4 - вставить свой Measurement ID -->
-    <!--
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX", { anonymize_ip: true });
-    </script>
-    -->
   </head>
 
   <body class="min-h-screen bg-bg text-text antialiased">
@@ -617,7 +305,7 @@ const jsonLd = {
           a.className = "section-anchor";
           a.textContent = "#";
           a.setAttribute("aria-label", anchorAria + ": " + h2.textContent.trim());
-          a.addEventListener("click", function (e) {
+          a.addEventListener("click", function () {
             if (navigator.clipboard && window.location && window.location.href) {
               var url = window.location.origin + window.location.pathname + "#" + id;
               navigator.clipboard.writeText(url).then(function () {
@@ -644,5 +332,6 @@ const jsonLd = {
         });
       });
     </script>
+    {!noindex && <Metrics />}
   </body>
 </html>

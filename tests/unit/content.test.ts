@@ -53,8 +53,8 @@ describe.each(LANGS)("строки контента (%s)", (lang) => {
     expect(strings.filter((s) => / {2}/.test(s.value))).toEqual([]);
   });
 
-  it("нет убранных владельцем фактов (EasyOffer, зарплата, ссылка на кабинет vsesdal)", () => {
-    const re = /easyoffer|280[\s ,]?000|salary|зарплат|vsesdal\.com\/\S/i;
+  it("нет убранных владельцем фактов (EasyOffer, зарплата, PreOffer)", () => {
+    const re = /easyoffer|280[\s ,]?000|salary|зарплат|pre[\s-]?offer|амбассадор|ambassador/i;
     expect(strings.filter((s) => re.test(s.value))).toEqual([]);
   });
 });
@@ -84,8 +84,8 @@ describe("RU и EN совпадают по структуре", () => {
     expect(shape(en[key])).toEqual(shape(ru[key]));
   });
 
-  it("абзацы «Обо мне» - одинаковое число", () => {
-    expect(en.translations.about.paragraphs.length).toBe(ru.translations.about.paragraphs.length);
+  it("разделы «Обо мне» - одинаковое число", () => {
+    expect(en.translations.about.sections.length).toBe(ru.translations.about.sections.length);
   });
 
   it("опыт: те же компании, даты и число пунктов", () => {

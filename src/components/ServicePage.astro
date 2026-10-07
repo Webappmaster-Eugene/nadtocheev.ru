@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import FAQ from "./FAQ.astro";
+import { personal } from "../data/personal.ts";
+import { getServicePage, servicePath, serviceSlugs, type ServiceSlug } from "../data/service-pages.ts";
+import { type Lang, t } from "../i18n/translations.ts";
+interface Props { lang: Lang; slug: ServiceSlug; }
+const { lang, slug } = Astro.props;
+const page = getServicePage(slug, lang);
+const home = lang === "ru" ? "/" : "/en/";
+const isRu = lang === "ru";
+const otherSlug = serviceSlugs.find(s => s !== slug)!;
+const other = getServicePage(otherSlug, lang);
+const tr = t(lang);
+---
+<Layout lang={lang} title={page.title} description={page.description} serviceSlug={slug} faqItems={page.faq}>
+  <Header lang={lang} homeLinks switchLangUrl={servicePath(slug, isRu ? "en" : "ru")} />
+  <main id="main-content">
+  <article class="mx-auto max-w-3xl px-4 pt-28 pb-12 sm:px-6 sm:pt-36">
+    <nav aria-label={isRu ? "Хлебные крошки" : "Breadcrumbs"} class="mb-6 text-sm text-text-dim">
+      <ol class="flex flex-wrap gap-2"><li><a class="text-accent-light underline" href={home}>{isRu ? "Главная" : "Home"}</a></li><li aria-hidden="true">/</li><li aria-current="page">{page.service.name}</li></ol>
+    </nav>
+    <h1 class="mb-6 text-3xl font-extrabold tracking-tight sm:text-5xl">{page.heading}</h1>
+    <p class="mb-6 text-base leading-relaxed text-text-muted sm:text-lg">{page.intro}</p>
+    <p class="mb-6 text-xl font-bold"><span class="text-accent-light">{page.service.price}</span> / {page.service.duration}</p>
+    <a class="inline-flex rounded-xl bg-accent px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-dark" href={personal.telegram} target="_blank" rel="noopener noreferrer" data-track={slug === "career-consultation" ? "book_consultation" : "book_mock_interview"}>{isRu ? "Обсудить встречу в Telegram" : "Discuss a session on Telegram"}<span class="sr-only"> {tr.a11y.opensNewTab}</span></a>
+    <div class="mt-12 space-y-9 text-base leading-relaxed text-text-muted sm:text-lg">
+      <section id="audience"><h2 class="mb-3 text-xl font-bold text-text sm:text-2xl">{isRu ? "Кому подойдёт" : "Who this is for"}</h2><p>{page.audience}</p></section>
+      <section id="includes"><h2 class="mb-3 text-xl font-bold text-text sm:text-2xl">{isRu ? "Что входит в встречу" : "What is included"}</h2><ul class="list-disc space-y-2 pl-6">{page.service.includes.map(item => <li>{item}</li>)}</ul></section>
+      <section id="preparation"><h2 class="mb-3 text-xl font-bold text-text sm:text-2xl">{isRu ? "Как подготовиться" : "How to prepare"}</h2><p>{page.preparation}</p></section>
+      <section id="result"><h2 class="mb-3 text-xl font-bold text-text sm:text-2xl">{isRu ? "Результат встречи" : "What you take away"}</h2><p>{page.result}</p></section>
+      <section id="format"><h2 class="mb-3 text-xl font-bold text-text sm:text-2xl">{isRu ? "Формат и оплата" : "Format and payment"}</h2><p>{isRu ? "Встреча проходит онлайн, удобное время согласуем в Telegram. Оплата по факту проведения. Для постоянных клиентов и студентов — индивидуальные условия. Менторство доступно русскоязычным разработчикам по всему миру; встречу на английском можно обсудить отдельно (уровень B2)." : "Sessions take place online, with the time agreed on Telegram. Payment is after the session; returning clients and students can discuss flexible terms. Mentoring is available to Russian-speaking developers worldwide. English-language sessions can be discussed separately (B2 level)."}</p></section>
+      <section id="mentor"><h2 class="mb-3 text-xl font-bold text-text sm:text-2xl">{isRu ? "Кто проводит встречу" : "Your mentor"}</h2><p>{isRu ? "Евгений Надточеев — fullstack-разработчик и ментор, эксперт и лектор в Школе 21 (Сбер). Работал в финтехе, аналитике недвижимости и IT-консалтинге, был тимлидом небольшой команды и проводит технические интервью при найме. Провёл 30+ платных и 50+ бесплатных консультаций." : "Evgeny Nadtocheev is a fullstack developer and mentor, and an expert and lecturer at School 21 (Sber). He has worked in fintech, real estate analytics and IT consulting, led a small team and conducts technical interviews for hiring. He has delivered 30+ paid and 50+ free consultations."} <a class="text-accent-light underline" href={`${home}#experience`}>{isRu ? "Посмотреть опыт работы" : "View professional experience"}</a></p></section>
+    </div>
+  </article>
+  <FAQ lang={lang} items={page.faq} />
+  <div class="mx-auto max-w-3xl px-4 pb-16 sm:px-6"><a class="text-accent-light underline" href={other.path}>{other.heading}</a><p class="mt-4"><a class="text-accent-light underline" href={`${home}#services`}>{isRu ? "Все услуги и условия" : "All services and terms"}</a></p></div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

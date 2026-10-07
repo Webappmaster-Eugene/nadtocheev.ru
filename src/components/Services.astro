@@ -1,6 +1,7 @@
 ---
 import { personal } from "../data/personal.ts";
 import { getServices } from "../data/services.ts";
+import { servicePath, serviceSlugs } from "../data/service-pages.ts";
 import { type Lang, t } from "../i18n/translations.ts";
 
 interface Props { lang: Lang; }
@@ -31,7 +32,7 @@ const accentClasses: Record<string, { bg: string; text: string }> = {
       </p>
 
       <div class="grid gap-5 md:grid-cols-2">
-        {services.items.map((service) => {
+        {services.items.map((service, index) => {
           const a = accentClasses[service.accent] ?? accentClasses.accent;
           return (
             <div class="card flex flex-col" data-accent style={`--card-accent: var(--color-${service.accent})`}>
@@ -50,7 +51,7 @@ const accentClasses: Record<string, { bg: string; text: string }> = {
                   )}
                 </div>
                 <div class="min-w-0 flex-1 self-center">
-                  <h3 class="text-lg font-bold leading-tight sm:text-xl">{service.name}</h3>
+                  <h3 class="text-lg font-bold leading-tight sm:text-xl"><a href={servicePath(serviceSlugs[index], lang)} class="underline decoration-text/30 underline-offset-4 hover:text-accent-light">{service.name}</a></h3>
                 </div>
               </div>
 
@@ -84,6 +85,7 @@ const accentClasses: Record<string, { bg: string; text: string }> = {
 
               <!-- CTA -->
               <a
+                data-track={index === 0 ? "book_consultation" : "book_mock_interview"}
                 href={personal.telegram}
                 target="_blank"
                 rel="noopener noreferrer"

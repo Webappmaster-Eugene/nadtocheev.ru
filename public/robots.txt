@@ -3,25 +3,21 @@
 # Документация: https://www.robotstxt.org/
 
 # Бот, для которого есть своя группа User-agent, правила из "*" НЕ читает -
-# поэтому Disallow продублированы в группах основных поисковиков.
+# поэтому ограничения административных путей повторены.
+# URL с метками доступны роботу: canonical склеивает дубли в Google/Bing,
+# Clean-param — в Яндексе. Не блокируем чтение canonical через Disallow query.
 
 # --- Generic crawlers ---
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /*?*utm_
-Disallow: /*?*fbclid
-Disallow: /*?*gclid
 
 # --- Google ---
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /*?*utm_
-Disallow: /*?*fbclid
-Disallow: /*?*gclid
 
 User-agent: Googlebot-Image
 Allow: /
@@ -65,9 +61,6 @@ User-agent: Bingbot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Disallow: /*?*utm_
-Disallow: /*?*fbclid
-Disallow: /*?*gclid
 
 User-agent: msnbot
 Allow: /

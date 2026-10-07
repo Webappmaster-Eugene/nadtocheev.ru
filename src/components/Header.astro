@@ -2,8 +2,8 @@
 import { personal } from "../data/personal.ts";
 import { type Lang, t, getLangUrl } from "../i18n/translations.ts";
 
-interface Props { lang: Lang; }
-const { lang } = Astro.props;
+interface Props { lang: Lang; homeLinks?: boolean; switchLangUrl?: string; }
+const { lang, homeLinks = false } = Astro.props;
 const tr = t(lang);
 
 const navLinks = [
@@ -19,7 +19,8 @@ const navLinks = [
   { href: "#contacts", label: tr.nav.contacts },
 ];
 
-const switchLangUrl = lang === "ru" ? "/en/" : "/";
+const home = lang === "ru" ? "/" : "/en/";
+const switchLangUrl = Astro.props.switchLangUrl ?? (lang === "ru" ? "/en/" : "/");
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-bg/80 backdrop-blur-xl">
@@ -33,7 +34,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
     <ul class="hidden flex-nowrap items-center gap-0.5 lg:flex">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="nav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text">
+          <a href={homeLinks ? home + link.href : link.href} class="nav-link whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text">
             {link.label}
           </a>
         </li>
@@ -97,7 +98,7 @@ const switchLangUrl = lang === "ru" ? "/en/" : "/";
     <ul class="flex flex-col gap-1 px-4 py-3">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href} class="mobile-nav-link block rounded-lg px-3 py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text">
+          <a href={homeLinks ? home + link.href : link.href} class="mobile-nav-link block rounded-lg px-3 py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-white/5 hover:text-text">
             {link.label}
           </a>
         </li>

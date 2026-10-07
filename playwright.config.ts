@@ -18,7 +18,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  // Keep local browser checks bounded, especially beside Docker/Lighthouse.
+  workers: Number(process.env.E2E_WORKERS ?? 2),
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : [["list"], ["html", { open: "never" }]],
   timeout: 45_000,
   expect: {

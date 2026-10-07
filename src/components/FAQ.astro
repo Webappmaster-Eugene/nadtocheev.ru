@@ -1,11 +1,11 @@
 ---
-import { getFaq } from "../data/faq.ts";
+import { getFaq, type FaqItem } from "../data/faq.ts";
 import { type Lang, t } from "../i18n/translations.ts";
 
-interface Props { lang: Lang; }
+interface Props { lang: Lang; items?: FaqItem[]; }
 const { lang } = Astro.props;
 const tr = t(lang);
-const faq = getFaq(lang);
+const faq = Astro.props.items ?? getFaq(lang);
 
 /** Разбивает ответ на текст и ссылки: URL в ответах FAQ становятся кликабельными */
 const URL_RE = /(https?:\/\/[^\s),]*[^\s),.;:])/g; // без завершающей пунктуации предложения

@@ -8,10 +8,10 @@ const buildDate = process.env.SITE_BUILD_DATE ? new Date(process.env.SITE_BUILD_
 
 export default defineConfig({
   site: "https://nadtocheev.ru",
-  trailingSlash: "ignore",
+  trailingSlash: "always",
   compressHTML: true,
   build: {
-    // CSS (~11 KB gzip) инлайнится в HTML: убирает render-blocking запрос, страниц всего две
+    // CSS инлайнится в HTML: убирает render-blocking запрос на небольших статических страницах
     inlineStylesheets: "always",
   },
   integrations: [

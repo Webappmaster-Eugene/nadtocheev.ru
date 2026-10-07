@@ -23,7 +23,7 @@ const servicesRu: ServicesData = {
   items: [
     {
       name: "Карьерная консультация",
-      price: "2 000 ₽",
+      price: "2 500 ₽",
       duration: "1 час",
       description:
         "Разбор резюме, карьерный трек, выбор стека, подготовка к выходу на рынок и переговоры о грейде/оффере.",
@@ -59,7 +59,7 @@ const servicesEn: ServicesData = {
   items: [
     {
       name: "Career Consultation",
-      price: "2,000 ₽",
+      price: "2,500 ₽",
       duration: "1 hour",
       description:
         "Resume review, career track, stack choice, market positioning, and offer/grade negotiation prep.",

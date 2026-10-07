@@ -53,7 +53,8 @@ export interface Translation {
   /* About */
   about: {
     title: string;
-    paragraphs: string[];
+    intro: string;
+    sections: { title: string; text: string }[];
   };
 
   /* Expertise */
@@ -108,8 +109,6 @@ export interface Translation {
     activitiesTitle: string;
     channelsTitle: string;
     channelsDesc: string;
-    ambassadorTitle: string;
-    ambassadorDesc: string;
     freelanceTitle: string;
     freelanceDesc: string;
   };
@@ -210,12 +209,24 @@ export const translations: Record<Lang, Translation> = {
     },
     about: {
       title: "Обо мне",
-      paragraphs: [
-        'С ноября 2024 - fullstack-разработчик в <a href="https://bnmap.pro" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">bnmap.pro</a>, b2b-платформе аналитики недвижимости №1 в России. Поддерживаю микросервисную архитектуру под нагрузкой <strong class="text-text">40K+ DAU и 2000 rps</strong>. Ключевые вехи: построил полный observability-стек на OpenTelemetry + Tempo + Loki + Prometheus + Grafana (4 дашборда, 64 панели, алерты в Telegram); перевёл proxy/scraper/notification/admin/cms-сервисы с Express на Fastify со снижением latency в 2× по k6; спроектировал и реализовал <strong class="text-text">Vike+React SSR-витрину</strong> с ролевым paywall и собственным ИИ-чатом на RAG со стримингом ответов; внедрил pgvector в PostgreSQL под embeddings; поднял парсер 40 источников на Fastify+Playwright с обходом антибот-защиты; интегрировал Robokassa с подпиской 30 дней; внедрил Drizzle ORM с общим schema-пакетом и выделил shared-инфраструктуру (contracts, logger, telemetry) для всей монорепы.',
-        'С ноября 2022 по ноябрь 2024 - fullstack-разработчик в <strong class="text-text">ООО Форвард</strong> на финтех-аутсорсе для крупного бигтеха. В команде из трёх человек довёл продукт до регистрации в качестве <strong class="text-text">Оператора Финансовой Платформы ЦБ РФ</strong>. Спроектировал финансовое ядро (wallet) с оптимистичной блокировкой по version и атомарными Prisma-транзакциями; развернул outbox-паттерн поверх Kafka с DLQ и retry/backoff через Redis, что исключило двойные зачисления и потерянные выводы; перевёл клиент с REST на <strong class="text-text">GraphQL Federation</strong> (Apollo Client + Mercurius на Fastify), заменив 20 REST-интеграций одним типобезопасным эндпоинтом; настроил gRPC-контракты через buf + ts-proto с OTel-метриками на каждый вызов; владел инфраструктурой: Helm-чарты в Kubernetes, GitOps через FluxCD, GitLab CI с multistage pipeline.',
-        'С августа 2021 по ноябрь 2022 - fullstack-разработчик в <strong class="text-text">Systems-fd</strong>: системная интеграция, IT-консалтинг, финтех, маркетинг. Перевёл проект с jsdoc на TypeScript и Zod-контракты, реализовал интеграции с Telegram, Google Maps, amoCRM, Stripe, Kinescope, Яндекс.Картами, интегрировал Robokassa с подпиской и webhook-обработкой. Внедрил полноценный DI на NestJS, систему учёта и классификации ошибок, внутреннюю админ-панель на React Admin и модуль email-уведомлений на React Email.',
-        'В разработке придерживаюсь нескольких принципов: внятная архитектура без лишней магии, строгий TypeScript с Zod-контрактами, интеграционные тесты и понятная наблюдаемость через OpenTelemetry. Был <strong class="text-text">тимлидом небольшой команды</strong>; провожу технические интервью при найме (несколько десятков проведённых) - оцениваю архитектурное мышление, code review, фундамент по Node.js, SQL и system design. AI-инструменты (Claude Code, Cursor, собственные RAG-пайплайны) - часть ежедневного процесса.',
-        'Параллельно развиваю собственные продукты: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">СПИН</a> - сервис мониторинга цен на новостройки Москвы с алертами в Telegram, и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">SMETAS</a> - SaaS-платформу для строительных смет. Веду менторскую практику: эксперт и лектор в <strong class="text-text">Школе 21 (Сбер)</strong>, консультирую на Solvery и GetMentor; провёл свыше 30 платных и 50 бесплатных консультаций. Английский - <strong class="text-text">B2</strong>, рабочий формат - удалённо или гибрид из Москвы, готов к переезду. Резюме - на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>, предпочтительный канал связи - <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
+      intro: 'Я fullstack-разработчик и ментор с опытом работы в небольших и крупных командах: от проектов с выстроенными процессами до тех, где их нужно создавать с нуля. Участвовал в создании <strong class="text-text">двух стартапов с нуля</strong>. Моя экспертиза охватывает AI-разработку, fullstack, DevOps, Kubernetes и микросервисные системы. Работаю с <strong class="text-text">продуктовым подходом и пониманием бизнеса</strong>: связываю технические решения с задачами пользователей, целями продукта и его развитием.',
+      sections: [
+        {
+          title: "Техническая экспертиза",
+          text: 'Разрабатываю backend на Node.js и TypeScript, интерфейсы на React и Vue, проектирую микросервисы и интеграции. Работаю с высоконагруженными системами, Kubernetes, CI/CD и наблюдаемостью через OpenTelemetry. В AI-разработке создаю RAG-пайплайны и ИИ-чаты со стримингом ответов, интегрирую LLM в продукты и использую AI-инструменты в ежедневной работе. В основе моего подхода — понятная архитектура, строгая типизация и интеграционные тесты.',
+        },
+        {
+          title: "Продукт и бизнес",
+          text: 'Работал в финтехе, аналитике недвижимости, системной интеграции и IT-консалтинге. Умею смотреть на задачу целиком: от потребности пользователя и бизнес-логики до архитектуры, запуска и поддержки в проде. Развиваю собственные продукты: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">СПИН</a> — мониторинг цен на новостройки с уведомлениями в Telegram, и <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">SMETAS</a> — SaaS-платформу для строительных смет. Этот опыт помогает оценивать решения с точки зрения их пользы, стоимости и дальнейшего развития.',
+        },
+        {
+          title: "Команда и менторство",
+          text: 'Был тимлидом небольшой команды, провожу технические интервью при найме и помогаю разработчикам расти. Как ментор разбираю реальные рабочие задачи, архитектуру и карьерные шаги. Я эксперт и лектор в <strong class="text-text">Школе 21 (Сбер)</strong>, консультирую на Solvery и GetMentor. Провёл <strong class="text-text">30+ платных и 50+ бесплатных консультаций</strong>. Ценю ясную коммуникацию, обмен знаниями и ответственность за общий результат.',
+        },
+        {
+          title: "Как со мной работать",
+          text: 'Живу в Москве, работаю удалённо или в гибридном формате, готов к переезду. Английский — <strong class="text-text">B2</strong>. Резюме и подробный опыт — на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>. Обсудить работу, проект или менторство удобнее всего в <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
+        },
       ],
     },
     expertise: {
@@ -263,8 +274,6 @@ export const translations: Record<Lang, Translation> = {
       activitiesTitle: "Что я делаю",
       channelsTitle: "Telegram-каналы",
       channelsDesc: "Веду каналы о разработке и карьере",
-      ambassadorTitle: "Амбассадор",
-      ambassadorDesc: "Амбассадор платформы PreOffer",
       freelanceTitle: "Фриланс-опыт",
       freelanceDesc: "В прошлом - фрилансер на биржах",
     },
@@ -352,12 +361,24 @@ export const translations: Record<Lang, Translation> = {
     },
     about: {
       title: "About Me",
-      paragraphs: [
-        'Since November 2024 - fullstack developer at <a href="https://bnmap.pro" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">bnmap.pro</a>, the #1 B2B real estate analytics platform in Russia. Operating microservice architecture under <strong class="text-text">40K+ DAU and 2,000 rps</strong>. Key milestones: built the full observability stack on OpenTelemetry + Tempo + Loki + Prometheus + Grafana (4 dashboards, 64 panels, Telegram alerts); migrated proxy/scraper/notification/admin/cms services from Express to Fastify with 2× latency reduction on k6; designed and shipped a <strong class="text-text">Vike+React SSR storefront</strong> with role-based paywall and an in-house RAG-powered AI chat with streaming responses; rolled out pgvector in PostgreSQL for embeddings; set up a 40-source scraper on Fastify+Playwright with anti-bot bypass; integrated Robokassa with a 30-day subscription; adopted Drizzle ORM with a shared schema package and extracted shared infrastructure (contracts, logger, telemetry) for the whole monorepo.',
-        'November 2022 to November 2024 - fullstack developer at <strong class="text-text">Forward LLC</strong> on fintech outsourcing for a major bigtech. In a team of three, took the product through Central Bank of Russia review until it was registered as a <strong class="text-text">financial platform operator</strong>. Designed the financial core (wallet) with optimistic balance locking via version and atomic Prisma transactions; rolled out an outbox pattern on Kafka with DLQ and retry/backoff via Redis, ruling out double charges and lost payouts; migrated the client from REST to <strong class="text-text">GraphQL Federation</strong> (Apollo Client + Mercurius on Fastify), replacing 20 REST integrations with a single type-safe endpoint; set up gRPC contracts via buf + ts-proto with OTel metrics per call; owned the infrastructure: Helm charts to Kubernetes, GitOps via FluxCD, GitLab CI multistage pipeline.',
-        'August 2021 to November 2022 - fullstack developer at <strong class="text-text">Systems-fd</strong>: system integration, IT consulting, fintech, marketing. Migrated the project from jsdoc to TypeScript and Zod contracts, built integrations with Telegram, Google Maps, amoCRM, Stripe, Kinescope, Yandex Maps, integrated Robokassa with subscription handling and webhook processing. Implemented full Dependency Injection on NestJS, an error tracking and classification system, an internal React Admin admin panel, and an email module on React Email.',
-        'My approach is anchored on a few principles: clear architecture without unnecessary magic, strict TypeScript with Zod contracts, integration tests, and proper observability through OpenTelemetry. Acted as a <strong class="text-text">tech lead for a small team</strong>; conduct technical interviews on the hiring side (dozens to date) - evaluating architectural thinking, code review, and Node.js / SQL / system design fundamentals. AI tooling (Claude Code, Cursor, in-house RAG pipelines) is part of the daily workflow.',
-        'In parallel I develop my own products: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">SPIN</a> - a Moscow new-build price tracker with Telegram alerts, and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">SMETAS</a> - a SaaS platform for construction estimates. Run an active mentoring practice: expert and lecturer at <strong class="text-text">School 21 (Sber)</strong>, mentor on Solvery and GetMentor; delivered over 30 paid and 50+ free sessions. English - <strong class="text-text">B2</strong>, work format - remote or hybrid from Moscow, open to relocation. CV on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>, preferred contact channel - <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
+      intro: 'I am a fullstack developer and mentor with experience in small and large teams, from projects with established processes to those where processes need to be built from scratch. I helped build <strong class="text-text">two startups from the ground up</strong>. My expertise spans AI development, fullstack engineering, DevOps, Kubernetes and microservice systems. I bring a <strong class="text-text">product mindset and an understanding of business</strong>, connecting technical decisions to user needs, product goals and long-term development.',
+      sections: [
+        {
+          title: "Technical Expertise",
+          text: 'I build backends with Node.js and TypeScript, interfaces with React and Vue, and design microservices and integrations. I work with high-load systems, Kubernetes, CI/CD and observability through OpenTelemetry. In AI development, I build RAG pipelines and AI chats with streaming responses, integrate LLMs into products and use AI tools daily. My approach centres on clear architecture, strict typing and integration tests.',
+        },
+        {
+          title: "Product and Business",
+          text: 'I have worked in fintech, real estate analytics, system integration and IT consulting. I consider the whole problem, from user needs and business logic to architecture, launch and production support. I develop my own products: <a href="https://podbor-minuta.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">SPIN</a>, a new-build price tracker with Telegram alerts, and <a href="https://alibaba.hhos.ru" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">SMETAS</a>, a SaaS platform for construction estimates. This experience helps me assess decisions in terms of value, cost and future development.',
+        },
+        {
+          title: "Teamwork and Mentoring",
+          text: 'I have led a small engineering team, conduct technical interviews for hiring and help developers grow. As a mentor, I work through real engineering problems, architecture and career decisions. I am an expert and lecturer at <strong class="text-text">School 21 (Sber)</strong> and mentor on Solvery and GetMentor. I have delivered <strong class="text-text">30+ paid and 50+ free consultations</strong>. I value clear communication, sharing knowledge and taking responsibility for the team’s results.',
+        },
+        {
+          title: "Working Together",
+          text: 'I am based in Moscow, work remotely or in a hybrid format, and am open to relocation. My English level is <strong class="text-text">B2</strong>. Find my CV and detailed experience on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>. The easiest way to discuss a role, project or mentoring is through <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
+        },
       ],
     },
     expertise: {
@@ -405,8 +426,6 @@ export const translations: Record<Lang, Translation> = {
       activitiesTitle: "What I do",
       channelsTitle: "Telegram Channels",
       channelsDesc: "Running channels about development and career",
-      ambassadorTitle: "Ambassador",
-      ambassadorDesc: "Ambassador of the PreOffer platform",
       freelanceTitle: "Freelance Experience",
       freelanceDesc: "Former freelancer on exchanges",
     },

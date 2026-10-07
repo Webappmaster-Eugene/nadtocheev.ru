@@ -13,7 +13,9 @@ const APP = path.resolve(import.meta.dirname, "../..");
 const NAME = "nadt-test-nginx";
 const PORT = process.env.NGINX_PORT ?? "8088";
 
-const docker = (...args: string[]) => execFileSync("docker", args, { stdio: ["ignore", "pipe", "pipe"] }).toString().trim();
+const docker = (...args: string[]) => execFileSync("docker", args, {
+  stdio: ["ignore", "pipe", "pipe"], timeout: args[0] === "build" ? 300_000 : 30_000,
+}).toString().trim();
 
 declare module "vitest" {
   export interface ProvidedContext {
@@ -29,6 +31,9 @@ export default async function setup(project: TestProject) {
     project.provide("external", true);
     return;
   }
+
+  // Fail explicitly if Docker is unavailable instead of hanging before any tests run.
+  execFileSync("docker", ["info", "--format", "{{.ServerVersion}}"], { timeout: 10_000, stdio: "pipe" });
 
   try { docker("rm", "-f", NAME); } catch { /* контейнера не было */ }
   if (process.env.NGINX_MODE === "image") {

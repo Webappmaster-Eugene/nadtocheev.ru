@@ -1,0 +1,9 @@
+---
+import { siteMetrics } from "../lib/metrics-config.ts";
+import adapter from "../scripts/metrics.js?raw";
+import webVitalsURL from "web-vitals?url";
+const enabled = siteMetrics.yandexId || siteMetrics.googleId || siteMetrics.debug;
+// JSON is emitted inside a script; escape '<' to prevent accidental closing tags.
+const source = `(() => { const config = ${JSON.stringify(siteMetrics).replace(/</g, "\\u003c")}; const webVitalsURL = ${JSON.stringify(webVitalsURL)}; ${adapter}\n})();`;
+---
+{enabled && <script is:inline set:html={source} />}

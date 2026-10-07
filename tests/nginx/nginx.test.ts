@@ -59,9 +59,19 @@ describe("редиректы", () => {
     else expect(loc).toBe("/en/");
   });
 
-  it("/index.html и /en/index.html отдаются", async () => {
-    expect((await get("/index.html")).status).toBe(200);
-    expect((await get("/en/index.html")).status).toBe(200);
+  it.each([["/index.html", "/"], ["/en/index.html", "/en/"], ["/career-consultation/index.html?utm_source=test", "/career-consultation/?utm_source=test"]])("%s перенаправляется на canonical %s", async (from, to) => {
+    const response = await get(from);
+    expect(response.status).toBe(301);
+    expect(response.headers.get("location")).toBe(to);
+  });
+});
+
+describe("страницы услуг", () => {
+  it.each(["/career-consultation/", "/mock-interview/", "/en/career-consultation/", "/en/mock-interview/"])("%s — HTML 200 со своим canonical", async route => {
+    const response = await get(route);
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toContain("text/html");
+    expect(await response.text()).toContain(`href="https://nadtocheev.ru${route}"`);
   });
 });
 
@@ -96,13 +106,15 @@ describe("заголовки безопасности на всех типах �
     expectSecurity(res, p);
   });
 
-  it("CSP: без внешних источников, запрет object и чужих фреймов", async () => {
+  it("CSP: ограниченный список аналитики, запрет object и чужих фреймов", async () => {
     const csp = (await get("/")).headers.get("content-security-policy")!;
     expect(csp).toContain("default-src 'self'");
     expect(csp).toContain("object-src 'none'");
     expect(csp).toContain("frame-ancestors 'self'");
     expect(csp).toContain("base-uri 'self'");
-    expect(csp).not.toMatch(/https?:\/\/|\*/);
+    expect(csp).not.toContain("*");
+    const domains = [...csp.matchAll(/https?:\/\/([^ ;]+)/g)].map(m => m[1]);
+    for (const domain of domains) expect(["mc.yandex.ru", "mc.yandex.com", "www.googletagmanager.com", "www.google-analytics.com", "region1.google-analytics.com"]).toContain(domain);
   });
 
   it.runIf(!EXTERNAL)("версия nginx не раскрывается", async () => {

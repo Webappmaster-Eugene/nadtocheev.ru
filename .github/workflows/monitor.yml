@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: npm ci
       - run: npm run check:links
 
   prod:
@@ -45,3 +46,31 @@ jobs:
           name: prod-report
           path: playwright-report/
           retention-days: 14
+
+  search-quality:
+    name: SEO, Lighthouse и полевые Web Vitals
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Ссылочная целостность и метаданные на проде
+        run: npm run check:seo -- --url=https://nadtocheev.ru
+      - name: Lighthouse — mobile/desktop, RU/EN, все страницы
+        if: always()
+        run: npm run check:performance -- --url=https://nadtocheev.ru --all-pages
+      - name: CrUX — 28-дневные полевые показатели p75
+        if: always()
+        run: npm run check:crux
+        env:
+          CRUX_API_KEY: ${{ secrets.CRUX_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: search-quality-report
+          path: test-results/
+          retention-days: 90

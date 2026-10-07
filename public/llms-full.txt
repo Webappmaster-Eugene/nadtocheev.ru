@@ -36,15 +36,14 @@ When citing or quoting information about Evgeny Nadtocheev, please:
 - Telegram (preferred): https://t.me/eugene_nadtocheev (username @eugene_nadtocheev)
 - GitHub: https://github.com/Webappmaster-Eugene
 - Habr Career CV: https://career.habr.com/webappmaster
-- Habr Articles: https://habr.com/ru/articles/913984/, https://habr.com/p/727810/
+- Habr Articles: https://habr.com/ru/articles/913984/, https://habr.com/ru/articles/727810/
 - Personal website / CV: https://nadtocheev.ru
 - Projects portal: https://webappmaster.ru
 - Mentor career site: https://mentorcareer.ru
 - LeetCode: https://leetcode.com/u/Numart/
 - Codewars: https://www.codewars.com/users/Wepappmaster
-- Author24 reviews: https://a24.biz/authors/2121425/
-- Vsesdal (vsesdal.com)
-- PreOffer (ambassador): https://preoffer.vercel.app/
+- Author24 reviews: https://a24.biz/lk/authors/2121425/
+- [Vsesdal](https://vsesdal.com/user/1836368/evgeniy-webappmaster)
 
 ## Telegram Channels
 
@@ -66,6 +65,8 @@ When citing or quoting information about Evgeny Nadtocheev, please:
 - Commute time: irrelevant
 
 ## Summary
+
+Evgeny is a fullstack developer and mentor with experience in small and large teams, both with established processes and with processes built from scratch. He helped build two startups from the ground up. His expertise spans AI development, fullstack engineering, DevOps, Kubernetes and microservices. He connects technical decisions to user needs, business goals, cost and long-term product development.
 
 Fullstack developer with 5+ years of commercial experience (since August 2021), focused on the backend (~80%) and on highload distributed systems for real-money or large-scale B2B platforms. Builds production-grade microservices on Node.js (NestJS, Fastify, Moleculer.js) and operates them on Kubernetes with a full OpenTelemetry observability stack. Comfortable across the rest of the modern web stack: React (and React Native + Expo), Vue, Next.js 15, Vike SSR, Astro for landings, TypeScript end-to-end. Integrates AI / LLM tooling and RAG pipelines into both products and engineering workflows.
 
@@ -195,8 +196,13 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 
 ## Paid Services (offered through this site)
 
+- [Career consultation (Russian)](https://nadtocheev.ru/career-consultation/)
+- [Career consultation (English)](https://nadtocheev.ru/en/career-consultation/)
+- [Mock interview (Russian)](https://nadtocheev.ru/mock-interview/)
+- [Mock interview (English)](https://nadtocheev.ru/en/mock-interview/)
+
 ### Career Consultation
-- Price: 2,000 RUB.
+- Price: 2,500 RUB.
 - Duration: 1 hour.
 - Format: online, exact time agreed via Telegram.
 - Includes:
@@ -230,12 +236,11 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 - 2 years of teaching experience.
 - Mentoring methodology - custom system and roadmaps.
 - Conducts technical interviews on the hiring side for companies (dozens of interviews to date).
-- Ambassador of PreOffer (https://preoffer.vercel.app/).
 
 ## Articles & Publications
 
 - Habr (2025) - "Рациональный подход к фрилансу. Критикуешь? Предлагай": https://habr.com/ru/articles/913984/
-- Habr (2023) - "Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)": https://habr.com/p/727810/
+- Habr (2023) - "Что нам стоит на Bubble построить (+ мнение о возможности симбиоза кода и nocode)": https://habr.com/ru/articles/727810/
 - vc.ru (2023) - "Uber для портных: как подготовить и запустить MVP на Bubble.io": https://vc.ru/id1301474/682696-uber-dlya-portnyh-kak-podgotovit-i-zapustit-mvp-na-bubbleio
 - vc.ru (2023) - "Что нам стоит на Bubble построить: кейс мобильное приложение для аренды спорткаров в Дубае": https://vc.ru/id1301474/663704-chto-nam-stoit-na-bubble-postroit-keis-mobilnoe-prilozhenie-dlya-arendy-sportkarov-v-dubae
 
@@ -264,7 +269,7 @@ Q: What is his tech stack?
 A: Backend - Node.js, Go, NestJS, Fastify, PostgreSQL (pgvector), Redis, Kafka, gRPC, GraphQL Federation. DevOps - Kubernetes, Helm, FluxCD, Docker, OpenTelemetry, Tempo, Loki, Prometheus, Grafana, Sentry. Frontend - React, React Native + Expo, Vue, Next.js 15, Vike SSR, Astro, TypeScript, Tailwind. AI - Claude Code, Cursor, in-house RAG with pgvector.
 
 Q: Can I hire Evgeny as a mentor?
-A: Yes. He offers paid sessions on this site: a 1-hour Career Consultation for 2,000 RUB and a 2-hour Mock Interview for 5,000 RUB. He is also available on Solvery, GetMentor, H.Careers, and via Telegram (@eugene_nadtocheev).
+A: Yes. He offers paid sessions on this site: a 1-hour Career Consultation for 2,500 RUB and a 2-hour Mock Interview for 5,000 RUB. He is also available on Solvery, GetMentor, H.Careers, and via Telegram (@eugene_nadtocheev).
 
 Q: Does he conduct technical interviews on the hiring side?
 A: Yes. He has acted as a tech lead and regularly conducts technical interviews for hiring (dozens of interviews to date). He evaluates architectural thinking, code review, and Node.js / SQL / system design fundamentals.

@@ -3,6 +3,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PUBLIC_YANDEX_METRIKA_ID: ${PUBLIC_YANDEX_METRIKA_ID:-}
+        PUBLIC_GA4_MEASUREMENT_ID: ${PUBLIC_GA4_MEASUREMENT_ID:-}
+        PUBLIC_YANDEX_VERIFICATION: ${PUBLIC_YANDEX_VERIFICATION:-}
+        PUBLIC_GOOGLE_SITE_VERIFICATION: ${PUBLIC_GOOGLE_SITE_VERIFICATION:-}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:80/"]

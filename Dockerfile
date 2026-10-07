@@ -5,7 +5,15 @@ COPY package*.json ./
 RUN test -f package.json || (echo "ERROR: package.json not found — check build context" && exit 1)
 RUN npm ci
 COPY . .
-RUN npm run build
+# Public counter IDs and site verification; values are embedded into static HTML.
+ARG PUBLIC_YANDEX_METRIKA_ID
+ARG PUBLIC_GA4_MEASUREMENT_ID
+ARG PUBLIC_YANDEX_VERIFICATION
+ARG PUBLIC_GOOGLE_SITE_VERIFICATION
+RUN PUBLIC_YANDEX_METRIKA_ID="$PUBLIC_YANDEX_METRIKA_ID" \
+    PUBLIC_GA4_MEASUREMENT_ID="$PUBLIC_GA4_MEASUREMENT_ID" \
+    PUBLIC_YANDEX_VERIFICATION="$PUBLIC_YANDEX_VERIFICATION" \
+    PUBLIC_GOOGLE_SITE_VERIFICATION="$PUBLIC_GOOGLE_SITE_VERIFICATION" npm run build
 RUN test -f dist/index.html || (echo "ERROR: dist/index.html not found — build produced no output" && exit 1)
 
 # Stage 2: Serve with nginx

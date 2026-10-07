@@ -194,7 +194,7 @@ test.describe("контент разделов", () => {
   test("собственные продукты - в «Проектах», не в «Менторстве»", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#projects a[href*='podbor-minuta'], #projects a[href*='hhos.ru']")).toHaveCount(2);
-    await expect(page.locator("#mentoring a[href*='podbor-minuta'], #mentoring a[href*='webappmaster']")).toHaveCount(0);
+    await expect(page.locator("#mentoring a[href*='podbor-minuta.ru'], #mentoring a[href*='hhos.ru'], #mentoring a[href*='webappmaster.ru']")).toHaveCount(0);
   });
 
   test("CTA услуг ведут в Telegram", async ({ page }) => {
