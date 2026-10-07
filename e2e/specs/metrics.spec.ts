@@ -30,10 +30,14 @@ test("telemetry measures real Web Vitals, sanitizes URLs and tracks contact inte
   expect(requests.some(url => url.includes("googletagmanager"))).toBe(true);
 });
 
-test("Do Not Track disables all telemetry even with configured IDs", async ({ page }) => {
+test("Do Not Track disables all telemetry even with configured IDs", async ({ page, baseURL }) => {
   await page.addInitScript(() => Object.defineProperty(navigator, "doNotTrack", { get: () => "1" }));
+  const origin = new URL(baseURL!).origin;
   const requests: string[] = [];
-  page.on("request", request => { if (!request.url().includes("localhost")) requests.push(request.url()); });
+  page.on("request", request => {
+    const url = new URL(request.url());
+    if (/^https?:$/.test(url.protocol) && url.origin !== origin) requests.push(request.url());
+  });
   await page.goto("/");
   await page.addScriptTag({ content: `(() => { const config = ${JSON.stringify(config)}; const webVitalsURL = '/should-never-load.js'; ${source}\n})();` });
   expect(await page.evaluate(() => (window as any).__siteMetricsStarted)).toBeUndefined();
