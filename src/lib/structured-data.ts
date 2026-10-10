@@ -48,7 +48,7 @@ export function structuredData({ lang, title, description, path, image, faq, ser
         knowsAbout: [...new Set(getExpertise(lang).flatMap(category => category.skills))],
         knowsLanguage: ["Russian", "English"],
         worksFor: { "@type": "Organization", name: "bnmap.pro", url: "https://bnmap.pro" },
-        address: { "@type": "PostalAddress", addressLocality: lang === "ru" ? "Москва" : "Moscow", addressCountry: "RU" },
+        address: { "@type": "PostalAddress", addressLocality: lang === "ru" ? "Апрелевка" : "Aprelevka", addressRegion: lang === "ru" ? "Московская область" : "Moscow Oblast", addressCountry: "RU" },
       },
       {
         "@type": "WebSite", "@id": `${site}/#website`,

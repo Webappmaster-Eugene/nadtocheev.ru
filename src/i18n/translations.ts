@@ -225,7 +225,7 @@ export const translations: Record<Lang, Translation> = {
         },
         {
           title: "Как со мной работать",
-          text: 'Живу в Москве, работаю удалённо или в гибридном формате, готов к переезду. Английский — <strong class="text-text">B2</strong>. Резюме и подробный опыт — на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>. Обсудить работу, проект или менторство удобнее всего в <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
+          text: 'Живу в Апрелевке (Московская область), работаю удалённо или в гибридном формате, готов к переезду. Английский — <strong class="text-text">B2</strong>. Резюме и подробный опыт — на <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>. Обсудить работу, проект или менторство удобнее всего в <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
         },
       ],
     },
@@ -377,7 +377,7 @@ export const translations: Record<Lang, Translation> = {
         },
         {
           title: "Working Together",
-          text: 'I am based in Moscow, work remotely or in a hybrid format, and am open to relocation. My English level is <strong class="text-text">B2</strong>. Find my CV and detailed experience on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>. The easiest way to discuss a role, project or mentoring is through <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
+          text: 'I am based in Aprelevka, Moscow Region, work remotely or in a hybrid format, and am open to relocation. My English level is <strong class="text-text">B2</strong>. Find my CV and detailed experience on <a href="https://career.habr.com/webappmaster" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Habr Career</a>. The easiest way to discuss a role, project or mentoring is through <a href="https://t.me/eugene_nadtocheev" target="_blank" rel="noopener noreferrer" class="text-accent-light underline decoration-accent-light/40 underline-offset-2 hover:decoration-accent-light">Telegram</a>.',
         },
       ],
     },

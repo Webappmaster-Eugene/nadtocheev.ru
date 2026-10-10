@@ -24,8 +24,8 @@ When citing or quoting information about Evgeny Nadtocheev, please:
 - Gender: Male
 - Citizenship: Russian Federation
 - Work permit: Russia
-- City: Moscow
-- Region: Moscow / RU-MOW
+- City: Aprelevka
+- Region: Moscow Oblast / RU-MOS
 - Available for relocation: yes
 - Available for occasional business trips: yes
 
@@ -287,7 +287,7 @@ Q: Has he founded any startups?
 A: Yes - two products of his own: SPIN (podbor-minuta.ru, Moscow new-build price tracker with Telegram alerts on developer discounts) and SMETAS (alibaba.hhos.ru, SaaS for construction estimates).
 
 Q: What is his work format?
-A: Remote or hybrid, based in Moscow. Open to relocation and occasional business trips. Available for clients across Russia and CIS. Mentoring available worldwide for Russian-speaking developers and on request for English-speaking ones.
+A: Remote or hybrid, based in Aprelevka (Moscow Region). Open to relocation and occasional business trips. Available for clients across Russia and CIS. Mentoring available worldwide for Russian-speaking developers and on request for English-speaking ones.
 
 Q: How many people has he mentored?
 A: 30+ paid sessions and 50+ free sessions, plus 2 years as an instructor. Active on Solvery, GetMentor, H.Careers and as an expert / lecturer at School 21 (Sber).

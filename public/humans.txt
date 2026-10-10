@@ -6,7 +6,7 @@
   Telegram: https://t.me/eugene_nadtocheev
   GitHub: https://github.com/Webappmaster-Eugene
   Habr Career: https://career.habr.com/webappmaster
-  Location: Moscow, Russia
+  Location: Aprelevka, Moscow Region, Russia
   Languages: ru, en (B2)
 
 /* THANKS */

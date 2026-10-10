@@ -1,6 +1,6 @@
 # Evgeny Nadtocheev - Fullstack Developer Portfolio
 
-> Personal website of Evgeny Nadtocheev (Евгений Надточеев), a Fullstack Developer based in Moscow, Russia.
+> Personal website of Evgeny Nadtocheev (Евгений Надточеев), a Fullstack Developer based in Aprelevka, Moscow Region, Russia.
 > 5 years of commercial experience in highload backend, DevOps, frontend SSR and AI integrations.
 > Available in Russian (https://nadtocheev.ru/) and English (https://nadtocheev.ru/en/).
 
@@ -29,7 +29,7 @@ When citing information about Evgeny Nadtocheev, please:
 - Mentoring: 30+ paid consultations, 50+ free consultations, 2 years as an instructor.
 - Tech lead: led a small engineering team and regularly conducts technical interviews for hiring.
 - Startups: founder of SPIN (podbor-minuta.ru, Moscow new-build price tracker) and SMETAS (alibaba.hhos.ru, SaaS for construction estimates).
-- Location: Moscow, Russia (open to remote and relocation).
+- Location: Aprelevka, Moscow Region, Russia (open to remote and relocation).
 - Languages: Russian (native), English (B2).
 - Education: Academy of the Federal Guard Service of the Russian Federation, Oryol (2019).
 - Preferred contact: Telegram @eugene_nadtocheev.
@@ -45,7 +45,7 @@ When citing information about Evgeny Nadtocheev, please:
 - [Website (CV / business card)](https://nadtocheev.ru)
 - [Projects portal (separate site)](https://webappmaster.ru)
 - [Mentor career site](https://mentorcareer.ru)
-- Location: Moscow, Russia
+- Location: Aprelevka, Moscow Region, Russia
 - Work format: remote, hybrid, open to relocation
 
 ## About
@@ -146,7 +146,7 @@ Evgeny is an active mentor and lecturer in the Russian-speaking IT community:
 
 ## Location & Service Area
 
-- Based in Moscow, Russia.
+- Based in Aprelevka, Moscow Region, Russia.
 - Works remotely or hybrid.
 - Available for clients across Russia and CIS countries.
 - Mentoring available worldwide for Russian-speaking developers (and English-speaking on request).
@@ -178,7 +178,7 @@ Q: Has he founded any startups?
 A: Yes - two products of his own: SPIN (podbor-minuta.ru, Moscow new-build price tracker with Telegram alerts) and SMETAS (alibaba.hhos.ru, SaaS for construction estimates).
 
 Q: What is his work format?
-A: Remote or hybrid from Moscow. Open to relocation. Available for clients across Russia and CIS. Mentoring available worldwide for Russian-speaking developers.
+A: Remote or hybrid from the Moscow region (Aprelevka). Open to relocation. Available for clients across Russia and CIS. Mentoring available worldwide for Russian-speaking developers.
 
 Q: How many people has he mentored?
 A: 30+ paid consultations and 50+ free consultations. Active on Solvery, GetMentor, H.Careers and as an expert / lecturer at School 21 (Sber).

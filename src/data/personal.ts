@@ -10,7 +10,7 @@ export const personal = {
     last: { ru: "Надточеев", en: "Nadtocheev" },
     full: { ru: "Евгений Надточеев", en: "Evgeny Nadtocheev" },
   },
-  location: { ru: "Москва, Россия", en: "Moscow, Russia" },
+  location: { ru: "Апрелевка, Московская область", en: "Aprelevka, Moscow Region, Russia" },
 
   /* Контакты - для HR и рекрутеров */
   email: "johnn.hotmail@mail.ru",
