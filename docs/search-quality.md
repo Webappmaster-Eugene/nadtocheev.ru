@@ -41,7 +41,7 @@
 
 Lighthouse: Performance ≥90 mobile / ≥95 desktop; accessibility, best practices, SEO — 100. Полевые пороги CWV: LCP ≤2500 ms, INP ≤200 ms, CLS ≤0.1, оценка по p75. Лабораторный TBT не равен INP. `not-configured` / `no-data` в CrUX — отсутствие измерения, а не зелёные Web Vitals.
 
-Еженедельный workflow `monitor.yml` сохраняет SEO/Lighthouse/CrUX-артефакты 90 дней и сигнализирует провалом проверки. Он начинает использовать изменения после публикации кода в GitHub. Проверки не создают задачи на Kubernetes и не выполняют деплой. Локальный `tools/lighthouse.mjs` использует тот же runner и сохраняет результаты в `tools/.out/lighthouse/`.
+Проверки по проду запускаются вручную: `npm run check:seo -- --url=https://nadtocheev.ru`, `npm run check:performance -- --url=https://nadtocheev.ru --all-pages`, `npm run check:crux` (еженедельный workflow `monitor.yml` удалён по решению владельца). Проверки не создают задачи на Kubernetes и не выполняют деплой. Локальный `tools/lighthouse.mjs` использует тот же runner и сохраняет результаты в `tools/.out/lighthouse/`.
 
 ## Что смотреть в консолях
 

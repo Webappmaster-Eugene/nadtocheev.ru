@@ -429,7 +429,7 @@ const tr = t(lang);
 - Скриншоты сравниваются только в Linux: `npm run test:visual` запускает их в Docker-образе Playwright той же версии, что в CI. После намеренной правки дизайна - `npm run test:visual:update`, затем просмотреть новые PNG в `e2e/visual/__screenshots__/` перед коммитом.
 - Правка контента, которая меняет факты (стаж, цены, статьи, площадки), требует синхронной правки `public/llms*.txt` - иначе упадёт `tests/unit/llms.test.ts`.
 - Отчёт Playwright: `npm run test:report`.
-- CI (`.github/workflows/ci.yml`) гоняет всё на каждый push/PR; `monitor.yml` по понедельникам проверяет внешние ссылки и прод (nginx + e2e по https://nadtocheev.ru).
+- CI (`.github/workflows/ci.yml`) гоняет всё на каждый push/PR. Внешние ссылки и прод проверяются вручную: `npm run check:links`, `NGINX_URL=https://nadtocheev.ru npm run test:nginx`, `E2E_BASE_URL=https://nadtocheev.ru npx playwright test --project=e2e`.
 
 ---
 
