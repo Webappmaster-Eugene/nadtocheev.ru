@@ -15,10 +15,20 @@ concurrency:
 env:
   SITE_BUILD_DATE: "2026-09-27"
 
+# Раннеры свои: ci-visitka-1/2 в изолированной VM ci на домашнем сервере serverlink (с 20.10.2026).
+# PR из форков идут на ubuntu-latest (для публичного репозитория бесплатно), чтобы чужой код не
+# исполнялся на своих машинах; запуск для внешних участников требует одобрения в настройках репо.
+# Два прогона могут идти на одной VM одновременно: e2e и скриншоты — в контейнере Playwright со
+# своей сетью, а джобы с Docker на фиксированных портах (nginx 8088, производительность 8089)
+# выстроены в общую очередь visitka-host-docker.
+
 jobs:
   checks:
     name: Типы, контент, сборка, nginx
-    runs-on: ubuntu-latest
+    concurrency:
+      group: visitka-host-docker
+      cancel-in-progress: false
+    runs-on: ${{ fromJson((github.event.pull_request.head.repo.fork && '"ubuntu-latest"') || '["self-hosted","linux","x64","serverlink-ci"]') }}
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +52,11 @@ jobs:
 
   e2e:
     name: E2E и доступность
-    runs-on: ubuntu-latest
+    # Браузер и системные библиотеки уже в образе той же версии, что @playwright/test.
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --ipc=host
+    runs-on: ${{ fromJson((github.event.pull_request.head.repo.fork && '"ubuntu-latest"') || '["self-hosted","linux","x64","serverlink-ci"]') }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -51,7 +65,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
       - run: npm run build:test
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v4
@@ -65,7 +78,7 @@ jobs:
 
   visual:
     name: Скриншоты
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJson((github.event.pull_request.head.repo.fork && '"ubuntu-latest"') || '["self-hosted","linux","x64","serverlink-ci"]') }}
     timeout-minutes: 20
     # Версия образа = версия @playwright/test (проверяет tests/unit/tooling.test.ts)
     container:
@@ -91,7 +104,10 @@ jobs:
 
   performance:
     name: SEO и скорость продового образа
-    runs-on: ubuntu-latest
+    concurrency:
+      group: visitka-host-docker
+      cancel-in-progress: false
+    runs-on: ${{ fromJson((github.event.pull_request.head.repo.fork && '"ubuntu-latest"') || '["self-hosted","linux","x64","serverlink-ci"]') }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -104,6 +120,8 @@ jobs:
       - name: Собрать и запустить статический продовый образ
         run: |
           docker build -t nadt-performance .
+          # На своём раннере контейнер прошлого (отменённого) прогона мог остаться.
+          docker rm -f nadt-performance >/dev/null 2>&1 || true
           docker run -d --name nadt-performance -p 8089:80 nadt-performance
           for attempt in $(seq 1 30); do
             if curl -fsS -o /dev/null http://localhost:8089/; then break; fi
@@ -112,6 +130,9 @@ jobs:
       - run: npm run check:seo
       - name: Lighthouse — все страницы и оба класса устройств
         run: CHROME_PATH="$(node -p "require('@playwright/test').chromium.executablePath()")" npm run check:performance -- --all-pages
+      - name: Убрать контейнер производительности
+        if: always()
+        run: docker rm -f nadt-performance >/dev/null 2>&1 || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
