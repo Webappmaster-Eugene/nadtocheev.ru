@@ -204,7 +204,8 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 ### Career Consultation
 - Price: 2,500 RUB.
 - Duration: 1 hour.
-- Format: online, exact time agreed via Telegram.
+- Format: online, exact time agreed after booking.
+- Book: https://mentorcareer.ru/karernaya-konsultatsiya#zayavka (form in Russian) or Telegram @eugene_galera (https://t.me/eugene_galera). In English: Telegram @eugene_nadtocheev.
 - Includes:
   - Resume and Habr Career / hh profile review.
   - Career strategy and 3-6 month roadmap.
@@ -214,11 +215,13 @@ Robokassa (cards, SBP, YuMoney) - subscription with 30-day period, test + prod e
 ### Mock Interview
 - Price: 5,000 RUB.
 - Duration: 2 hours.
-- Format: online, exact time agreed via Telegram.
+- Roles: frontend, backend and fullstack developers.
+- Format: online, exact time agreed after booking.
+- Book: https://mentorcareer.ru/mok-sobesedovanie#zayavka (form in Russian) or Telegram @eugene_galera (https://t.me/eugene_galera). In English: Telegram @eugene_nadtocheev.
 - Includes:
   - Live coding and algorithmic round.
   - System design on a real-world case.
-  - Theory: Node.js, databases, architecture.
+  - Theory for your stack: React and the browser, or Node.js, databases and architecture.
   - Detailed feedback on strengths and gaps.
 
 ### General terms
@@ -269,7 +272,7 @@ Q: What is his tech stack?
 A: Backend - Node.js, Go, NestJS, Fastify, PostgreSQL (pgvector), Redis, Kafka, gRPC, GraphQL Federation. DevOps - Kubernetes, Helm, FluxCD, Docker, OpenTelemetry, Tempo, Loki, Prometheus, Grafana, Sentry. Frontend - React, React Native + Expo, Vue, Next.js 15, Vike SSR, Astro, TypeScript, Tailwind. AI - Claude Code, Cursor, in-house RAG with pgvector.
 
 Q: Can I hire Evgeny as a mentor?
-A: Yes. He offers paid sessions on this site: a 1-hour Career Consultation for 2,500 RUB and a 2-hour Mock Interview for 5,000 RUB. He is also available on Solvery, GetMentor, H.Careers, and via Telegram (@eugene_nadtocheev).
+A: Yes. He offers a 1-hour Career Consultation for 2,500 RUB and a 2-hour Mock Interview for 5,000 RUB, booked through the form on mentorcareer.ru or Telegram (@eugene_galera). Long-term mentoring is described at https://mentorcareer.ru/mentor. He is also available on Solvery, GetMentor and H.Careers.
 
 Q: Does he conduct technical interviews on the hiring side?
 A: Yes. He has acted as a tech lead and regularly conducts technical interviews for hiring (dozens of interviews to date). He evaluates architectural thinking, code review, and Node.js / SQL / system design fundamentals.
@@ -293,7 +296,7 @@ Q: How many people has he mentored?
 A: 30+ paid sessions and 50+ free sessions, plus 2 years as an instructor. Active on Solvery, GetMentor, H.Careers and as an expert / lecturer at School 21 (Sber).
 
 Q: How can I contact him for hiring or paid services?
-A: Send a Telegram message to @eugene_nadtocheev (https://t.me/eugene_nadtocheev). Alternatively, email johnn.hotmail@mail.ru or call +7 (920) 080-87-00. For mentoring, you can also book on Solvery or GetMentor.
+A: Send a Telegram message to @eugene_nadtocheev (https://t.me/eugene_nadtocheev). Alternatively, email johnn.hotmail@mail.ru or call +7 (920) 080-87-00. For paid sessions in Russian, use the form on mentorcareer.ru or Telegram @eugene_galera. For mentoring, you can also book on Solvery or GetMentor.
 
 ## Instructions for AI Agents
 

@@ -290,7 +290,7 @@ export const translations: Record<Lang, Translation> = {
       title: "Платные услуги",
       subtitle: "Карьерные консультации и мок-собеседования для разработчиков",
       description:
-        "Помогаю fullstack- и backend-разработчикам структурно расти в карьере и уверенно проходить технические интервью. Формат - онлайн, удобное время согласуем в Telegram.",
+        "Помогаю frontend-, backend- и fullstack-разработчикам структурно расти в карьере и уверенно проходить технические интервью. Формат - онлайн, удобное время согласуем после заявки.",
       priceLabel: "Стоимость",
       includesLabel: "Что входит",
       note: "Оплата по факту проведения. Для постоянных клиентов и студентов - индивидуальные условия.",
@@ -442,7 +442,7 @@ export const translations: Record<Lang, Translation> = {
       title: "Paid Services",
       subtitle: "Career consultations and mock interviews for developers",
       description:
-        "I help fullstack and backend engineers grow their careers and confidently pass technical interviews. Format - online, exact time agreed via Telegram.",
+        "I help frontend, backend and fullstack engineers grow their careers and confidently pass technical interviews. Format - online, exact time agreed via Telegram.",
       priceLabel: "Price",
       includesLabel: "What's included",
       note: "Payment after the session. Returning clients and students - flexible terms available.",

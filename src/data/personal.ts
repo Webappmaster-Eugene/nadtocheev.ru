@@ -33,6 +33,12 @@ export const personal = {
     eugeneVibecode: "https://t.me/eugene_vibecode",
   },
 
+  /* Запись на услуги: основная коммерческая площадка - mentorcareer.ru */
+  mentorSite: "https://mentorcareer.ru",
+  mentorProfile: "https://mentorcareer.ru/mentor",
+  bookingTelegram: "https://t.me/eugene_galera",
+  bookingTelegramUsername: "@eugene_galera",
+
   /* Менторство */
   mentoring: {
     solvery: "https://solvery.io/ru/mentor/28861",

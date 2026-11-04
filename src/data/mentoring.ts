@@ -67,7 +67,7 @@ const mentoringRu: MentoringData = {
     },
   ],
   activities: [
-    "Провожу мок-собеседования для fullstack-разработчиков",
+    "Провожу мок-собеседования для frontend-, backend- и fullstack-разработчиков",
     "Карьерные консультации: составление резюме, подготовка к интервью",
     "Менторство по собственной системе и роадмапам",
     "Провёл 30+ платных и 50+ бесплатных консультаций",
@@ -115,7 +115,7 @@ const mentoringEn: MentoringData = {
     },
   ],
   activities: [
-    "Mock interviews for fullstack developers",
+    "Mock interviews for frontend, backend and fullstack developers",
     "Career consulting: resume building, interview preparation",
     "Mentoring based on custom roadmaps and methodology",
     "30+ paid and 50+ free consultations completed",

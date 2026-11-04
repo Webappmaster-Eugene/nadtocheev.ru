@@ -17,7 +17,7 @@ test("telemetry measures real Web Vitals, sanitizes URLs and tracks contact inte
   await page.addScriptTag({ content: `(() => { const config = ${JSON.stringify(config)}; const webVitalsURL = '/_astro/${library}'; ${source}\n})();` });
   await expect.poll(() => page.evaluate(() => (window as any).__siteVitals?.TTFB?.metric_value)).toBeGreaterThanOrEqual(0);
   // Stop navigation in the test while exercising the actual delegated click handler.
-  await page.evaluate(() => document.addEventListener("click", event => { if ((event.target as Element)?.closest('a[href^="https://t.me/"]')) event.preventDefault(); }));
+  await page.evaluate(() => document.addEventListener("click", event => { if ((event.target as Element)?.closest('a[href^="https://t.me/"], a[href^="https://mentorcareer.ru/"]')) event.preventDefault(); }));
   await page.locator('#contacts a[href="https://t.me/eugene_nadtocheev"]').click();
   await page.locator('#services a[data-track="book_consultation"]').click();
   const payload = await page.evaluate(() => JSON.stringify({ google: (window as any).dataLayer.map((args: IArguments) => Array.from(args)), yandex: (window as any).ym.a.map((args: IArguments) => Array.from(args)) }));

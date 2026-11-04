@@ -140,6 +140,8 @@ describe.each(PAGES)("$file", ({ lang, file, url }) => {
       expect(new Set(p.sameAs).size).toBe(p.sameAs.length);
       for (const s of p.sameAs) expect(s).toMatch(/^https:\/\//);
       expect(p.sameAs).toContain(personal.github);
+      expect(p.sameAs).toContain(personal.mentorProfile);
+      expect(p.sameAs).toContain(personal.bookingTelegram);
     });
 
     it("ProfilePage: dateModified = дата сборки, url = canonical", () => {
@@ -216,7 +218,10 @@ describe.each(PAGES)("$file", ({ lang, file, url }) => {
     });
 
     it("услуги, статьи и контакты выведены", () => {
-      for (const s of getServices(lang).items) expect(text(doc.querySelector("#services"))).toContain(s.price);
+      for (const s of getServices(lang).items) {
+        expect(text(doc.querySelector("#services"))).toContain(s.price);
+        expect(doc.querySelector(`#services a[data-track][href="${s.bookingUrl}"]`), s.bookingUrl).toBeTruthy();
+      }
       for (const a of getPublications(lang).articles) expect(doc.querySelector(`#publications a[href="${a.url}"]`), a.url).toBeTruthy();
       const contacts = doc.querySelector("#contacts")!;
       expect(contacts.querySelector(`a[href="${personal.telegram}"]`)).toBeTruthy();

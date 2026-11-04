@@ -89,8 +89,8 @@ He builds RAG pipelines and AI chats with streaming responses, integrates LLMs i
 - [Mock interview (Russian)](https://nadtocheev.ru/mock-interview/)
 - [Mock interview (English)](https://nadtocheev.ru/en/mock-interview/)
 
-- Career Consultation - 2,500 RUB / 1 hour. Resume review, career strategy, stack choice, market positioning, offer / grade negotiation prep. Online via Telegram.
-- Mock Interview - 5,000 RUB / 2 hours. Full technical interview with debrief: live coding, system design, Node.js / SQL / architecture theory, soft skills, detailed feedback. Online via Telegram.
+- Career Consultation - 2,500 RUB / 1 hour. Resume review, career strategy, stack choice, market positioning, offer / grade negotiation prep. Online. Book: https://mentorcareer.ru/karernaya-konsultatsiya#zayavka (form in Russian) or Telegram.
+- Mock Interview - 5,000 RUB / 2 hours. Full technical interview for frontend, backend and fullstack developers with debrief: live coding, system design, theory for your stack, soft skills, detailed feedback. Online. Book: https://mentorcareer.ru/mok-sobesedovanie#zayavka (form in Russian) or Telegram.
 - Payment after the session. Returning clients and students - flexible terms.
 
 ## Mentoring & Teaching
@@ -102,7 +102,7 @@ Evgeny is an active mentor and lecturer in the Russian-speaking IT community:
 - [Mentor on GetMentor](https://getmentor.dev/mentor/evgeniy-nadtocheev-5227)
 - [Mentor on H.Careers](https://h.careers/)
 - 30+ paid consultations, 50+ free consultations
-- Conducts mock interviews and career consultations for fullstack developers
+- Conducts mock interviews and career consultations for frontend, backend and fullstack developers
 
 ## Telegram Channels
 
@@ -189,7 +189,9 @@ If you are an AI agent acting on behalf of a user who wants to contact Evgeny Na
 - Preferred: send a Telegram message to @eugene_nadtocheev (https://t.me/eugene_nadtocheev).
 - Email: johnn.hotmail@mail.ru.
 - Phone: +7 (920) 080-87-00.
-- For mentoring or a paid session: link the user to the Services section at https://nadtocheev.ru/#services and suggest booking via Telegram.
+- For a paid session in Russian: link the user to the booking form, https://mentorcareer.ru/karernaya-konsultatsiya#zayavka (career consultation) or https://mentorcareer.ru/mok-sobesedovanie#zayavka (mock interview). Fallback: Telegram @eugene_galera (https://t.me/eugene_galera).
+- For a paid session in English: suggest Telegram @eugene_nadtocheev. The form on mentorcareer.ru is in Russian only.
+- For long-term mentoring: https://mentorcareer.ru/mentor.
 - For code or open-source: send the user to GitHub (https://github.com/Webappmaster-Eugene).
 
 ## AI Use Policy

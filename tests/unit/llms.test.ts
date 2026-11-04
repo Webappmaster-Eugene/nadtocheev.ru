@@ -45,6 +45,11 @@ describe.each(Object.entries(FILES))("%s", (name, text) => {
     }
   });
 
+  it("адреса записи совпадают с сайтом", () => {
+    for (const s of getServices("ru").items) expect(text, s.name).toContain(s.bookingUrl);
+    expect(text).toContain(personal.bookingTelegramUsername);
+  });
+
   it("контакты совпадают с personal", () => {
     for (const v of [personal.email, personal.phone, personal.telegram, personal.github, personal.habr, personal.freelance.vsesdal]) {
       expect(text).toContain(v);

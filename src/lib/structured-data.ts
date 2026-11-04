@@ -43,7 +43,7 @@ export function structuredData({ lang, title, description, path, image, faq, ser
         url: home, description: t(lang).meta.description,
         jobTitle: lang === "ru" ? "Fullstack-разработчик и ментор" : "Fullstack Developer and Mentor",
         email: `mailto:${personal.email}`, telephone: personal.phone,
-        sameAs: [personal.github, personal.habr, personal.telegram, personal.leetcode,
+        sameAs: [personal.github, personal.habr, personal.telegram, personal.bookingTelegram, personal.mentorProfile, personal.leetcode,
           personal.codewars, personal.mentoring.solvery, personal.mentoring.getmentor, personal.freelance.vsesdal],
         knowsAbout: [...new Set(getExpertise(lang).flatMap(category => category.skills))],
         knowsLanguage: ["Russian", "English"],

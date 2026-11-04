@@ -35,6 +35,12 @@ for (const lang of ["ru", "en"] as const) for (const slug of serviceSlugs) {
       const faq = graph.find((entry: any) => entry["@type"] === "FAQPage");
       expect(faq.mainEntity.map((item: any) => item.name)).toEqual(doc.querySelectorAll("#faq summary").map(item => item.textContent.trim()));
     });
+    it("запись: на русском форма mentorcareer.ru и запасной Telegram, на английском Telegram", () => {
+      const cta = doc.querySelector("a[data-track]");
+      expect(cta?.getAttribute("href")).toBe(page.service.bookingUrl);
+      expect(page.service.bookingUrl).toMatch(lang === "ru" ? /^https:\/\/mentorcareer\.ru\/[a-z-]+#zayavka$/ : /^https:\/\/t\.me\//);
+      expect(Boolean(doc.querySelector('#booking-fallback a[href="https://t.me/eugene_galera"]'))).toBe(lang === "ru");
+    });
   });
 }
 

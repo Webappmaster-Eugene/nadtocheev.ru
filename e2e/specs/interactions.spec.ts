@@ -197,10 +197,17 @@ test.describe("контент разделов", () => {
     await expect(page.locator("#mentoring a[href*='podbor-minuta.ru'], #mentoring a[href*='hhos.ru'], #mentoring a[href*='webappmaster.ru']")).toHaveCount(0);
   });
 
-  test("CTA услуг ведут в Telegram", async ({ page }) => {
+  test("CTA услуг на русском ведут на форму mentorcareer.ru, рядом запасной Telegram", async ({ page }) => {
     await page.goto("/");
-    const ctas = page.locator("#services a[href^='https://t.me/']");
-    expect(await ctas.count()).toBeGreaterThanOrEqual(2);
+    await expect(page.locator('#services a[data-track="book_consultation"]')).toHaveAttribute("href", "https://mentorcareer.ru/karernaya-konsultatsiya#zayavka");
+    await expect(page.locator('#services a[data-track="book_mock_interview"]')).toHaveAttribute("href", "https://mentorcareer.ru/mok-sobesedovanie#zayavka");
+    await expect(page.locator('#booking-fallback a[href="https://t.me/eugene_galera"]')).toHaveCount(1);
+  });
+
+  test("CTA услуг на английском ведут в Telegram: форма только на русском", async ({ page }) => {
+    await page.goto("/en/");
+    await expect(page.locator("#services a[data-track][href^='https://t.me/']")).toHaveCount(2);
+    await expect(page.locator("#booking-fallback")).toHaveCount(0);
   });
 
   test("все target=_blank с noopener", async ({ page }) => {
