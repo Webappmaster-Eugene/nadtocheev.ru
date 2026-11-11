@@ -1,6 +1,6 @@
 /**
  * Поднимает продовый nginx-конфиг в Docker на время тестов.
- *   по умолчанию      - nginx:alpine + смонтированные dist/ и конфиги (быстро, нужен npm run build:test)
+ *   по умолчанию      - nginx:1.30-alpine + смонтированные dist/ и конфиги (быстро, нужен npm run build:test)
  *   NGINX_MODE=image  - полный продовый образ из Dockerfile, как собирает Dokploy
  *   NGINX_URL=https://nadtocheev.ru - ничего не поднимать, проверить внешний адрес (прод)
  */
@@ -46,7 +46,7 @@ export default async function setup(project: TestProject) {
       "-v", `${APP}/dist:/usr/share/nginx/html:ro`,
       "-v", `${APP}/nginx.conf:/etc/nginx/conf.d/default.conf:ro`,
       "-v", `${APP}/nginx-security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro`,
-      "nginx:alpine",
+      "nginx:1.30-alpine",
     );
   }
 

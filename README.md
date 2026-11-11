@@ -4,7 +4,7 @@
 
 **Стек:** Astro 6 + Tailwind CSS v4 + TypeScript (strict) — полностью статический сайт с нулевым клиентским JS-бандлом.
 
-**Деплой:** Docker (multi-stage: node:22-alpine → nginx:alpine) → Dokploy (Traefik для SSL).
+**Деплой:** Docker (multi-stage: node:22-alpine → nginx:1.30-alpine) → Dokploy (Traefik для SSL).
 
 ---
 
@@ -86,7 +86,7 @@ app/
 │   └── favicon*.{svg,ico,png}, apple-touch-icon.png
 ├── scripts/generate-icons.mjs         # Фавиконки и OG-картинки (--og-only)
 ├── astro.config.mjs                   # site URL, Tailwind, Sitemap, инлайн CSS
-├── Dockerfile                         # node:22-alpine → nginx:alpine
+├── Dockerfile                         # node:22-alpine → nginx:1.30-alpine
 ├── nginx.conf                         # Редиректы, 404, gzip, кеширование
 ├── nginx-security-headers.conf        # Security-заголовки (include в каждый location)
 └── docker-compose.yml                 # Для Dokploy
@@ -355,7 +355,7 @@ const tr = t(lang);
 
 1. Dokploy клонирует репозиторий
 2. Docker build: `node:22-alpine` устанавливает зависимости (`npm ci`) и собирает сайт (`npm run build`)
-3. Результат сборки (`dist/`) копируется в `nginx:alpine`
+3. Результат сборки (`dist/`) копируется в `nginx:1.30-alpine`
 4. nginx отдаёт статику с gzip, кешированием и security headers
 5. Traefik проксирует HTTPS-трафик на порт 80 контейнера
 
